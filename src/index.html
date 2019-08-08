@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Social Network</title>
+  <title>Live & Travel</title>
   <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
@@ -12,24 +12,27 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <section class="login">
+  <section id="vista-login" class="login">
     <img class="logo" src="./img/logo.png"  alt="logo">
     <p>«Vive la aventura de viajar»</p>
-    <input class="sesion" type="email" id="email" placeholder="Email">
-    <input class="sesion" type="password" id="password" placeholder="Password">
-    <button class="sesion" id="btnLogin">Log in</button>
+    <input id="txt-email" class="sesion" type="email" placeholder="Ingrese su email..."/>
+    <p id="email-Ok"></p>
+    <input id="txt-password" class="sesion" type="password" placeholder="Ingrese su contraseña..."/>
+    <button class="sesion" id="btn-ingresar">Ingresar</button>
     <p>O bien ingresa con...</p>
     <p>
-        <img class="icon" src="https://img.icons8.com/color/48/000000/facebook-new.png">
-        <img class="icon" src="https://img.icons8.com/color/48/000000/google-plus--v2.png">
+        <input id="btn-facebook" type=image src="https://img.icons8.com/color/48/000000/facebook-new.png" class="icon">
+        <input id="btn-google" type=image src="https://img.icons8.com/color/48/000000/google-plus--v2.png" class="icon">
     </p>
-    <p>¿No tienes una cuenta?<a href="" id="btnRegistrar">Registrate</a></p>
+    <p>¿No tienes una cuenta?<button id="btn-registrarse">Registrarse</button></p>
   </section>
-  <div class="imagen hide" id="imagen">
-    <progress value="0" max="100" id="uploader">0%</progress>
-    <input type="file" value="upload" id="fileButton">    
-    <button id="btnLogout">Logout</button>
-</div >
+
+<section id="vista-cargar-imagen" class="hide">
+  <progress value="0" max="100" id="uploader">0%</progress>
+  <input type="file" value="upload" id="btn-file"/>
+  <button id="btn-cerrar">Cerrar</button>
+</section>
+
 <script src="main.js"></script>
 </body>
 </html>
