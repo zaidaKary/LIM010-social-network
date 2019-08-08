@@ -38,14 +38,14 @@ btnRegistrarse.addEventListener('click',() =>{
     const email = txtEmail.value;
     const pass = txtPassword.value;
     const auth = firebase.auth();
+    //Validando datos del email y password
+    validar(email, pass);
     //Login
     const promise = auth.createUserWithEmailAndPassword(email,pass);
     promise.catch (evento => console.log(evento.message));
 });
 btnCerrar.addEventListener('click', () =>{
-    firebase.auth().signOut(); //deslogea al usuario
-    
-    
+    firebase.auth().signOut(); //deslogea al usuario    
 });
 //Anadiendo un listener en tiempo real, comprueba cualquier cambio de estado en el usuario
 firebase.auth().onAuthStateChanged( firebaseUser => {
@@ -152,16 +152,26 @@ const authAccountGoogle = () => {
 //---------------------------------------------------------------------//
 //VALIDACION DEL EMAIL
 //---------------------------------------------------------------------//
-txtEmail.addEventListener('input', () =>{
-    const campo = event.target;
-    const valid = document.getElementById('email-Ok');
-    const emailRule = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (emailRule.test(campo.value)){
-        valid.innerText = "email válido";
-    }else {
-        valid.innerText = "email con sintaxis incorrecto";
+const validar = (email, password) =>{
+    //Normalmente el formato de un email es: texto.123@texto.texto
+    const expresionEmail =/\w+@\w+\.+[a-z]/; //email lo mas simple
+    //Ingresar constraseña solo texto y numero
+    const expresionPassword = /[a-z][0-9]/;
+    if(email === "" && password === ""){
+        alert('Todos los campos son obligatorios');
+        return false;
+    }else if (email === ""){
+        alert('Campo email obligatorio');
+        return false;
+    }else if (password === ""){
+        alert('Campo Password obligatorio');
+        return false;
+    }else if (!expresionEmail.test(email)){
+        alert('Email no válido');
+        return false;
+    }else if(!expresionPassword.test(password)) {
+        alert('Constraseña no válido (Solo texto y números)');
+        return false;
     }
-});
-
-
+};
 
