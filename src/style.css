@@ -1,4 +1,29 @@
 /*Almacenamiento en Firebase-Ventana de cargar imagen*/
+header{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background:#a4e0d2f2;
+    margin: auto;
+ }
+ header ul{
+     display: flex;
+     border-left: 1px solid #2f38b1;
+     margin: 0 auto;
+     padding: 0px;
+     color:#085eaf;
+ }
+ header li{
+     list-style: none;
+     padding: 0% 15%;
+     cursor: pointer;
+ }
+ header a{
+    color: #174f88;
+    font-family: cursive;
+    margin-right: 10px;
+    text-decoration: none;
+ }
 body{
     display: flex;
     min-height: 100vh;
@@ -31,6 +56,11 @@ body{
 }
 .icon{
     width: 40px;
+}
+.registrar{
+   display: flex;
+   flex-direction: column; 
+   align-items: center;
 }
 /*Ocultando el boton cerrar*/
 .hide{

@@ -3,6 +3,7 @@
 
 // importamos el viewLogin
 import Login from '../view/login-view.js';
+import Registro from '../view/registrar.js';
 import Home from '../view/home-view.js';
 import Different from '../view/404-view.js';
 // Creando un objeto de los componenetes
@@ -10,6 +11,7 @@ const components = {
   login: Login,
   home: Home,
   different: Different,
+  registrar : Registro,
 };
 
 const changeView = (route) => { // nos trae el window.location.hash del main.js cada vez que
@@ -25,6 +27,10 @@ const changeView = (route) => { // nos trae el window.location.hash del main.js 
     case '#/home':
     {
       return container.appendChild(components.home());
+    }
+    case '#/register':
+    {
+      return container.appendChild(components.registrar());
     }
     default:
     {

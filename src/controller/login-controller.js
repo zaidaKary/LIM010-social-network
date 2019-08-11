@@ -59,3 +59,14 @@ export const authAccountFacebook = () => {
       console.log('Detectado un error:', error);
     });
 };
+// registro de usuarios
+export const registroFunction = () => {
+  // Obtener los campos de nombre,email y password
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const pass = document.getElementById('create-pass').value;
+  const pass2 = document.getElementById('repit-pass').value;
+  // registro
+  // falta poner el codigo de registro
+};
+

@@ -1,7 +1,6 @@
-import { loginFunction, authAccountFacebook, authAccountGoogle } from '../controller/login-controller.js';
-
+import { loginFunction, authAccountFacebook, authAccountGoogle, registroFunction } from '../controller/login-controller.js';
 export default () => {
-    const viewLogin = `
+  const viewLogin = `
     <div id="vista-login" class="login">
     <img class="logo" src="./img/logo.png"  alt="logo">
     <p>«Vive la aventura de viajar»</p>
@@ -16,22 +15,25 @@ export default () => {
     <p>¿No tienes una cuenta?&nbsp;<a href="#/register"><span id="btn-registrarse">Registrate</span></a></p>
     
     </div>`;
-    const divElem = document.createElement('div')
-    divElem.innerHTML = viewLogin;
+  const divElem = document.createElement('div');
+  divElem.innerHTML = viewLogin;
+  const btnIngresar = divElem.querySelector('#btn-ingresar');
+  const btnFacebook = divElem.querySelector('#btn-facebook');
+  const btnGoogle = divElem.querySelector('#btn-google');
+  const btnRegistrarse = divElem.querySelector('#btn-registrarse');
 
-    const btnIngresar = divElem.querySelector('#btn-ingresar');
-    const btnFacebook = divElem.querySelector('#btn-facebook');
-    const btnGoogle = divElem.querySelector('#btn-google');
+  btnIngresar.addEventListener('click', () => {
+    loginFunction();
+  });
+  btnFacebook.addEventListener('click', () => {
+    authAccountFacebook();
+  });
+  btnGoogle.addEventListener('click', () => {
+    authAccountGoogle();
+  });
+  btnRegistrarse.addEventListener('click', ()=>{
+    registroFunction();
+  });
 
-    btnIngresar.addEventListener('click', () =>{
-        loginFunction ();
-    });    
-    btnFacebook.addEventListener('click', () => {
-        authAccountFacebook();
-    });
-    btnGoogle.addEventListener('click', () => {
-        authAccountGoogle();
-    });
-
-    return divElem;
+  return divElem;
 };
