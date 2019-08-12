@@ -4,11 +4,13 @@
 //importamos el viewLogin
 import Login from '../view/login-view.js';
 import Home from '../view/home-view.js';
+import Register from '../view/register-view.js';
 import Different from '../view/404-view.js';
 // Creando un objeto de los componenetes
 const components = {
     login: Login,
     home: Home,
+    register: Register,
     different: Different
 };
 
@@ -21,7 +23,10 @@ container.innerHTML = '';
             { 
                 return container.appendChild(components.login()) 
             }
-        
+        case '#/register': 
+            { 
+                return container.appendChild(components.register()) 
+            }
         case '#/home': 
             { 
                 return container.appendChild(components.home()) 

@@ -1,7 +1,7 @@
 /* Se crea este main.js porque se va a ejecutar cuando se 
 inicialice la página, es decir, cuando 
 se haga una recarga de nuestra página */
-import { changeView } from './ruteo/index.js'
+import { changeView } from '../src/lib/controller/ruta.js'
 
 const init = () => { // sirve para cambiar la url
     changeView(window.location.hash)

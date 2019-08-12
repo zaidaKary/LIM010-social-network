@@ -1,3 +1,5 @@
+import { loginFunction, authAccountFacebook, authAccountGoogle } from '../controller/login-controller.js';
+
 export default () => {
     const viewLogin = `
     <div id="vista-login" class="login">
@@ -11,10 +13,24 @@ export default () => {
         <input id="btn-facebook" type=image src="https://img.icons8.com/color/48/000000/facebook-new.png" class="icon">
         <input id="btn-google" type=image src="https://img.icons8.com/color/48/000000/google-plus--v2.png" class="icon">
     </p>
-    <p>¿No tienes una cuenta?<button id="btn-registrarse">Registrarse</button></p>
+    <p>¿No tienes una cuenta?&nbsp;<a href="#/register"><span id="btn-registrarse">Registrate</span></a></p>
     </div>`;
     const divElem = document.createElement('div')
     divElem.innerHTML = viewLogin;
 
+    const btnIngresar = divElem.querySelector('#btn-ingresar');
+    const btnFacebook = divElem.querySelector('#btn-facebook');
+    const btnGoogle = divElem.querySelector('#btn-google');
+
+    btnIngresar.addEventListener('click', () =>{
+        loginFunction ();
+    });    
+    btnFacebook.addEventListener('click', () => {
+        authAccountFacebook();
+    });
+    btnGoogle.addEventListener('click', () => {
+        authAccountGoogle();
+    });
+
     return divElem;
-}
+};
