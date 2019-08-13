@@ -46,6 +46,11 @@ body{
    align-items: center;
    padding: 30% 0;
 }
+.post{
+    padding: 30px;
+    background-color: aliceblue;
+    margin: 10px;
+}
 /*Ocultando el boton cerrar*/
 .hide{
   display: none;
