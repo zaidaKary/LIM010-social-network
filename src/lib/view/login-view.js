@@ -13,7 +13,6 @@ export default () => {
         <input id="btn-google" type=image src="https://img.icons8.com/color/48/000000/google-plus--v2.png" class="icon">
     </p>
     <p>¿No tienes una cuenta?&nbsp;<a href="#/register"><span id="btn-registrarse">Registrate</span></a></p>
-    
     </div>`;
   const divElem = document.createElement('div');
   divElem.innerHTML = viewLogin;
