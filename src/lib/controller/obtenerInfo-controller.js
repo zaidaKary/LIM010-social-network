@@ -11,7 +11,8 @@ export const obtenerInfo = (userName, userCorreo, userImage) => {
 
       userName.textContent = displayName;
       userCorreo.textContent = userEmail;
-      userImage.style.backgroundImage = 'url('+ userPhoto +')';    
+      userImage.src = userPhoto;  
+      userImage.alt = displayName;  
     } else {
       // No user is signed in.
     }

@@ -2,23 +2,40 @@ import { signOff } from '../controller/signoff-controller.js';
 import { obtenerInfo } from '../controller/obtenerInfo-controller.js';
 export default () => {
     const viewHome = ` 
-    <header style="padding-bottom: 105px;">
-    <button id="btn-perfil">Ver Perfil</button>
-    <img class="logo" src="./img/logo.png" alt="logo">
-    <button id="btn-cerrar">Cerrar Sesión</button>
+    <header>
+        <div class="menuBurguer">
+            <button id="menu"><img class="burguer" src="https://img.icons8.com/ios-filled/50/000000/menu-rounded.png"></button>
+            <nav id="superior">
+            <ul>
+            <li id="btn-perfil"><a >Ver Perfil</a></li>
+            <li id="btn-cerrar"><a >Cerrar Sesión</a></li>
+            </ul>
+            </nav>
+        </div>
+        <img src="./img/logoMenu2.png" alt="logo">
     </header>
-    <div id="vista-home">
-    <div id="datos-user" style="text-align: center;">
-    <img class="foto-user" id="foto"/>
-    <label id='name'></label><br>
-    <label id='correo'></label>
-    </div>
-    </div>`;
+    <div id="vista-home" class="post">
+             <img src="./img/user.png" alt="">
+             <div id="datos-user">
+                <img class="foto-user" id="foto" src=""/>
+                <label id="name" for="name"></label><br>
+                <label id="correo" for="name"></label>
+                <p>Apasionada</p>
+             </div>
+            <div class="post">
+            <textarea name="post" id="" cols="30" rows="5" placeholder="¿que quieres compartir hoy?"></textarea>
+            <div id="vista-cargar-imagen">
+            <progress value="0" max="100" id="uploader">0%</progress>    
+            <button>Compartir</button>
+            </div>
+        </div>    
+    </div> `;
     const divElem = document.createElement('div')
     divElem.innerHTML = viewHome;
     const btnCerrar = divElem.querySelector('#btn-cerrar');
     const btnPerfil = divElem.querySelector('#btn-perfil');
-    btnCerrar.addEventListener('click', () =>{
+    btnCerrar.addEventListener('click', (e) =>{
+        e.preventDefault();
         signOff();
     });
     btnPerfil.addEventListener('click', () =>{
