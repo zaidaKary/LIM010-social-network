@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
   <title>Live&Travel</title>
   <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
@@ -29,7 +30,22 @@
   
   <section id="root">
   </section>
-  <footer style="padding-top: 90px;">Creado por Betsy, Zaida & Milca</footer>
+  <!-- <footer style="padding-top: 90px;">Creado por Betsy, Zaida & Milca</footer> -->
+  <script>
+    const firebaseConfig = {
+    apiKey: "AIzaSyAw54jrErsVrWC2Em_kzD3ydeTogwQblVY",
+    authDomain: "pruebaredsocial-7ac42.firebaseapp.com",
+    databaseURL: "https://pruebaredsocial-7ac42.firebaseio.com",
+    projectId: "pruebaredsocial-7ac42",
+    storageBucket: "pruebaredsocial-7ac42.appspot.com",
+    messagingSenderId: "542825444526",
+    appId: "1:542825444526:web:14136e0ecce0ff1b"
+  };
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+// export default db;
+  </script>
 <script type="module" src="./main.js"></script> <!--type="module" pues porque se va a importar y exportar-->
 </body>
 </html>

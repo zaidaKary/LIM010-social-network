@@ -27,18 +27,39 @@ body{
     align-items: center;
     flex-direction: column;  
     padding: 30% 0;
+    font-family: 'Pacifico', cursive;
+    background: white;
+    color: #282929;
 }
 .logo{
-    height: 95px;
-    width: 95px;
+    height: 150px;
 }
 .sesion{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-top: 5%;
     border-radius: 10px;
     padding: 8px;
+    border-color: #dee1ec45;
+    width: 100%;
+}
+.log{
+    background: transparent;
+    border: 2px solid #0b8457;
+    transition-duration: 0.2s;
+    cursor: pointer;
+    width: 50%;
+}
+.log:hover {
+    background-color: #0b8457;
+    color:white;
 }
 .icon{
     width: 40px;
+}
+#btn-registrarse{
+    color: #0b8457;
 }
 .registrar{
    display: flex;
@@ -58,9 +79,50 @@ body{
 
 /* menu hamburguesa */
 button#menu {
+    display: block;
+    background: transparent;
+    border: 2px solid #164e87;
+    border-radius: 6px;
+}
+nav#superior {
     display: none;
 }
-button#menu:focus + nav#superior {
+nav#superior ul {
+    flex-direction: column;
+}
+.burguer{
+   width: 30px;
+}
+.menuBurguer{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+nav#superior ul a:hover {
+    background: #ec7b5f;
+}
+@media all and (min-width: 768px) {
+    .logo{ 
+        height: 300px;
+        padding: 0 80px;
+    }
+    .login{
+        flex-direction: row;
+        padding: 0px;
+    }
+    body{
+        flex-direction: row;
+        display: contents;
+    }
+    .sesion{
+        width: 50%;
+    }
+
+
+    /* button#menu {
+        display: none;
+    }
+	button#menu:focus + nav#superior {
     display: block;
 }
 nav#superior ul {
@@ -80,29 +142,5 @@ nav#superior ul a {
     color: #164e87;
     background: #a9e2d4;
     transition: 1s all;
-}
-nav#superior ul a:hover {
-    background: #ec7b5f;
-}
-@media all and (max-width: 700px) {
-    button#menu {
-        display: block;
-        background: transparent;
-        border: 2px solid #164e87;
-        border-radius: 6px;
-    }
-	nav#superior {
-        display: none;
-    }
-	nav#superior ul {
-        flex-direction: column;
-    }
-    .burguer{
-       width: 30px;
-    }
-    .menuBurguer{
-        display: flex;
-        flex-direction: column;
-        align-items: baseline;
-    }
+} */
 }
