@@ -1,11 +1,4 @@
 /*Almacenamiento en Firebase-Ventana de cargar imagen*/
-header{
-    display: flex;
-    align-items: center;
-    width: 100%;
-    background:#a4e0d2f2;
-    padding-left: 3%;
- }
 body{
     display: flex;
     min-height: 100vh;
@@ -124,31 +117,6 @@ body{
     font-weight: bold;
     color:#164e87;
 }
-
-/* menu hamburguesa */
-button#menu {
-    display: block;
-    background: transparent;
-    border: 2px solid #164e87;
-    border-radius: 6px;
-}
-nav#superior {
-    display: none;
-}
-nav#superior ul {
-    flex-direction: column;
-}
-.burguer{
-   width: 30px;
-}
-.menuBurguer{
-    display: flex;
-    flex-direction: column;
-    align-items: baseline;
-}
-nav#superior ul a:hover {
-    background: #ec7b5f;
-}
 @media all and (min-width: 768px) {
     .login{
         flex-direction: row;
@@ -171,29 +139,4 @@ nav#superior ul a:hover {
         height: -webkit-fill-available;
         background-repeat: no-repeat;
     }
-
-    /* button#menu {
-        display: none;
-    }
-	button#menu:focus + nav#superior {
-    display: block;
-}
-nav#superior ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-nav#superior ul a {
-    display: block;
-    width: 8em;
-    text-decoration: none;
-    padding: .2em 1em;
-    text-align: start;
-    font-family: cursive;
-    font-weight: bold;
-    color: #164e87;
-    background: #a9e2d4;
-    transition: 1s all;
-} */
 }
