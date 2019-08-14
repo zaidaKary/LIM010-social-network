@@ -26,7 +26,6 @@ body{
     display: flex;
     align-items: center;
     flex-direction: column;  
-    padding: 30% 0;
     font-family: 'Pacifico', cursive;
     background: white;
     color: #282929;
@@ -151,10 +150,6 @@ nav#superior ul a:hover {
     background: #ec7b5f;
 }
 @media all and (min-width: 768px) {
-    .logo{ 
-        height: 300px;
-        padding: 0 80px;
-    }
     .login{
         flex-direction: row;
         padding: 0px;
@@ -165,8 +160,17 @@ nav#superior ul a:hover {
     }
     .sesion{
         width: 50%;
+        margin-top: 0%;
     }
-
+    .espacio{
+        margin-top: 10px;
+    }
+    .logoIzquierda{
+        width: 50%;
+        background-image: url(../src/img/travel.gif);
+        height: -webkit-fill-available;
+        background-repeat: no-repeat;
+    }
 
     /* button#menu {
         display: none;
