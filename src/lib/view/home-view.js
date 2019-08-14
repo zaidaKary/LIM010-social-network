@@ -2,17 +2,20 @@ import { signOff } from '../controller/signoff-controller.js';
 import { obtenerInfo } from '../controller/obtenerInfo-controller.js';
 export default () => {
     const viewHome = ` 
-    <header>
-        <div class="menuBurguer">
-            <button id="menu"><img class="burguer" src="https://img.icons8.com/ios-filled/50/000000/menu-rounded.png"></button>
-            <nav id="superior">
-            <ul>
-            <li id="btn-perfil"><a >Ver Perfil</a></li>
-            <li id="btn-cerrar"><a >Cerrar Sesión</a></li>
-            </ul>
-            </nav>
+    <header class="barra-menu" id="barra-menu">
+        <div class="contenedor-logo">
+            <img class="logo-menu" src="./img/logoMenu2.png"  alt="Logo live & travel"/>
         </div>
-        <img src="./img/logoMenu2.png" alt="logo">
+        <div class="contenedor-menu">
+        <input type="checkbox" id="btn-menu">
+        <label class="glyphicon glyphicon-align-justify" for="btn-menu"></label>
+        <nav class="menu">
+            <ul>
+            <li id="btn-perfil"><a>VER PERFIL</a></li>
+            <li id="btn-cerrar"><a>CERRAR SESIÓN</a></li>
+            </ul>
+        </nav>
+        </div>
     </header>
     <div id="vista-home" class="post">
              <img src="" alt="">
