@@ -1,19 +1,20 @@
 import { loginFunction, authAccountFacebook, authAccountGoogle } from '../controller/login-controller.js';
-import { registerFunction } from '../controller/register-controller.js';
 export default () => {
   const viewLogin = `
     <div id="vista-login" class="login">
-    <img class="logo" src="./img/logo.png"  alt="logo">
+    <div class="logo"><img class="logo" src="./img/logo.png"  alt="logo"></div>
+    <div class="sesion">
     <p>«Vive la aventura de viajar»</p>
-    <input id="txt-email" class="sesion" type="email" placeholder="Ingrese su email..."/>
-    <input id="txt-password" class="sesion" type="password" placeholder="Ingrese su contraseña..."/>
-    <button class="sesion" id="btn-ingresar">Ingresar</button>
+    <input id="txt-email" class="sesion" type="email" placeholder="&#128100 Ingrese su email..."/>
+    <input id="txt-password" class="sesion" type="password" placeholder="&#128231 Ingrese su contraseña..."/>
+    <button class="sesion log" id="btn-ingresar"> Log in </button>
     <p>O bien ingresa con...</p>
     <p>
         <input id="btn-facebook" type=image src="https://img.icons8.com/color/48/000000/facebook-new.png" class="icon">
         <input id="btn-google" type=image src="https://img.icons8.com/color/48/000000/google-plus--v2.png" class="icon">
     </p>
     <p>¿No tienes una cuenta?&nbsp;<a href="#/register"><span id="btn-registrarse">Registrate</span></a></p>
+     </div>
     </div>`;
   const divElem = document.createElement('div');
   divElem.innerHTML = viewLogin;
@@ -31,9 +32,5 @@ export default () => {
   btnGoogle.addEventListener('click', () => {
     authAccountGoogle();
   });
-  btnRegistrarse.addEventListener('click', ()=>{
-    registerFunction();
-  });
-
   return divElem;
 };
