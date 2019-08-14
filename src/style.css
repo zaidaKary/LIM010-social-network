@@ -1,0 +1,177 @@
+/*Almacenamiento en Firebase-Ventana de cargar imagen*/
+header{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background:#a4e0d2f2;
+    padding-left: 3%;
+ }
+body{
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    flex-direction: column;
+    align-content: center;
+}
+#uploader{
+    -webkit-appearance: none;
+    appearance: none;
+    width: 50%;
+    margin-bottom: 10px;
+}
+.login{
+    display: flex;
+    align-items: center;
+    flex-direction: column;  
+    font-family: 'Pacifico', cursive;
+    background: white;
+    color: #282929;
+}
+.logo{
+    height: 150px;
+}
+.sesion{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5%;
+    border-radius: 10px;
+    padding: 8px;
+    border-color: #dee1ec45;
+    width: 100%;
+}
+.log{
+    background: transparent;
+    border: 2px solid #0b8457;
+    transition-duration: 0.2s;
+    cursor: pointer;
+    width: 50%;
+}
+.log:hover {
+    background-color: #0b8457;
+    color:white;
+}
+.icon{
+    width: 40px;
+}
+#btn-registrarse{
+    color: #0b8457;
+}
+.register-view{
+    color:#fff !important;
+}
+.registrar{
+   display: flex;
+   flex-direction: column; 
+   align-items: center;
+   padding: 30% 0;
+}
+.post{
+    padding: 30px;
+    background-color: aliceblue;
+    margin: 10px;
+}
+/* Registrar */
+.intro{
+    font-size: 13px;
+}
+.mensaje-error{
+    color: #ff0c19;
+    width: 250px;
+    text-align: center;
+    font-size: 12px;
+    margin: 7px 0 10px;
+    font-family: arial;
+}
+/* .info-alert{
+    border: 1px solid #ff0c19;
+} */
+
+.register{
+    cursor: pointer;
+    padding: 7px 53px;
+    font-size: 15px;
+    transition: 0.3s;
+    background: #164e87;
+    color:#fff;
+}
+/*Ocultando el boton cerrar*/
+.hide{
+  display: none;
+}
+
+/* menu hamburguesa */
+button#menu {
+    display: block;
+    background: transparent;
+    border: 2px solid #164e87;
+    border-radius: 6px;
+}
+nav#superior {
+    display: none;
+}
+nav#superior ul {
+    flex-direction: column;
+}
+.burguer{
+   width: 30px;
+}
+.menuBurguer{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+nav#superior ul a:hover {
+    background: #ec7b5f;
+}
+@media all and (min-width: 768px) {
+    .login{
+        flex-direction: row;
+        padding: 0px;
+    }
+    body{
+        flex-direction: row;
+        display: contents;
+    }
+    .sesion{
+        width: 50%;
+        margin-top: 0%;
+    }
+    .espacio{
+        margin-top: 10px;
+    }
+    .logoIzquierda{
+        width: 50%;
+        background-image: url(../src/img/travel.gif);
+        height: -webkit-fill-available;
+        background-repeat: no-repeat;
+    }
+
+    /* button#menu {
+        display: none;
+    }
+	button#menu:focus + nav#superior {
+    display: block;
+}
+nav#superior ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+nav#superior ul a {
+    display: block;
+    width: 8em;
+    text-decoration: none;
+    padding: .2em 1em;
+    text-align: start;
+    font-family: cursive;
+    font-weight: bold;
+    color: #164e87;
+    background: #a9e2d4;
+    transition: 1s all;
+} */
+}

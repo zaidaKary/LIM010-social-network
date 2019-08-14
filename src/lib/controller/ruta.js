@@ -16,7 +16,7 @@ const components = {
     different: Different
 };
 
-const changeView = (route) => { //nos trae el window.location.hash del main.js cada vez que 
+export const changeView = (route) => { //nos trae el window.location.hash del main.js cada vez que 
                            //cambiemos la URL para poder asociar a cada uno de las vistas
 const container = document.getElementById('root'); 
 container.innerHTML = '';   
@@ -44,4 +44,4 @@ container.innerHTML = '';
     }
 };
 
-export { changeView }; // lo importamos en main.js
+// export { changeView }; // lo importamos en main.js
