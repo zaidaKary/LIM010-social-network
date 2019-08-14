@@ -13,23 +13,23 @@ export const registerFunction = () => {
     //Login
     auth.createUserWithEmailAndPassword(email,pass).then((result) => {
         location.hash = '#/';
-        console.log(result);
-        alert('Usuario creado correctamente');
+        // console.log(result);
+        // alert('Usuario creado correctamente');
       })
       .catch ( error => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        alert(`Error detectado: ${errorMessage}, Tipo:${errorCode}`);
-        console.log('Detectado un error:', error);
+        // alert(`Error detectado: ${errorMessage}, Tipo:${errorCode}`);
+        // console.log('Detectado un error:', error);
         switch(errorCode){
             case 'auth/email-already-in-use':
-                mensajeError.innerHTML = 'La dirección de correo electrónico ya existe.';
+                mensajeError.innerHTML = '*La dirección de correo electrónico ya existe.';
                 break;
               case 'auth/weak-password':
-                mensajeError.innerHTML = 'La contraseña debe tener al menos 6 caracteres.';
+                mensajeError.innerHTML = '*La contraseña debe tener al menos 6 caracteres.';
                 break;
               case 'auth/invalid-email':
-                mensajeError.innerHTML = 'La dirección de correo electrónico es inválido';
+                mensajeError.innerHTML = '*El formato del correo ingresado no es válido, verifica e intente de nuevo.';
                 break;
               default:
                 mensajeError.innerHTML = 'Se ha producido un error';

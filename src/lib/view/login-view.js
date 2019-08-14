@@ -1,4 +1,5 @@
-import { loginFunction, authAccountFacebook, authAccountGoogle, registroFunction } from '../controller/login-controller.js';
+import { loginFunction, authAccountFacebook, authAccountGoogle} from '../controller/login-controller.js';
+
 export default () => {
   const viewLogin = `
     <div id="vista-login" class="login">
@@ -16,10 +17,10 @@ export default () => {
     </div>`;
   const divElem = document.createElement('div');
   divElem.innerHTML = viewLogin;
+   
   const btnIngresar = divElem.querySelector('#btn-ingresar');
   const btnFacebook = divElem.querySelector('#btn-facebook');
   const btnGoogle = divElem.querySelector('#btn-google');
-  const btnRegistrarse = divElem.querySelector('#btn-registrarse');
 
   btnIngresar.addEventListener('click', () => {
     loginFunction();
@@ -30,9 +31,5 @@ export default () => {
   btnGoogle.addEventListener('click', () => {
     authAccountGoogle();
   });
-  btnRegistrarse.addEventListener('click', ()=>{
-    registroFunction();
-  });
-
   return divElem;
 };
