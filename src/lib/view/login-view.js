@@ -21,7 +21,6 @@ export default () => {
   const btnIngresar = divElem.querySelector('#btn-ingresar');
   const btnFacebook = divElem.querySelector('#btn-facebook');
   const btnGoogle = divElem.querySelector('#btn-google');
-  const btnRegistrarse = divElem.querySelector('#btn-registrarse');
 
   btnIngresar.addEventListener('click', () => {
     loginFunction();
