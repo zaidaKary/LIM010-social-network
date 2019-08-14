@@ -46,40 +46,47 @@ body{
    align-items: center;
    padding: 30% 0;
 }
+.post{
+    padding: 30px;
+    background-color: aliceblue;
+    margin: 10px;
+}
 /*Ocultando el boton cerrar*/
 .hide{
   display: none;
 }
 
 /* menu hamburguesa */
-button#menu {
-    display: none;
-}
-button#menu:focus + nav#superior {
-    display: block;
-}
-nav#superior ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-nav#superior ul a {
-    display: block;
-    width: 8em;
-    text-decoration: none;
-    padding: .2em 1em;
-    text-align: start;
-    font-family: cursive;
-    font-weight: bold;
-    color: #164e87;
-    background: #a9e2d4;
-    transition: 1s all;
-}
-nav#superior ul a:hover {
-    background: #ec7b5f;
-}
-@media all and (max-width: 700px) {
+
+@media all and (min-width: 700px) {
+    button#menu {
+        display: none;
+    }
+    button#menu:focus + nav#superior {
+        display: block;
+    }
+    nav#superior ul {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    nav#superior ul a {
+        display: block;
+        width: 8em;
+        text-decoration: none;
+        padding: .2em 1em;
+        text-align: start;
+        font-family: cursive;
+        font-weight: bold;
+        color: #164e87;
+        background: #a9e2d4;
+        transition: 1s all;
+    }
+    nav#superior ul a:hover {
+        background: #ec7b5f;
+    }
+     /*
     button#menu {
         display: block;
         background: transparent;
@@ -100,4 +107,4 @@ nav#superior ul a:hover {
         flex-direction: column;
         align-items: baseline;
     }
-}
+*/ } 

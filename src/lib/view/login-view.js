@@ -1,4 +1,5 @@
-import { loginFunction, authAccountFacebook, authAccountGoogle, registroFunction } from '../controller/login-controller.js';
+import { loginFunction, authAccountFacebook, authAccountGoogle } from '../controller/login-controller.js';
+import { registerFunction } from '../controller/register-controller.js';
 export default () => {
   const viewLogin = `
     <div id="vista-login" class="login">
@@ -31,7 +32,7 @@ export default () => {
     authAccountGoogle();
   });
   btnRegistrarse.addEventListener('click', ()=>{
-    registroFunction();
+    registerFunction();
   });
 
   return divElem;
