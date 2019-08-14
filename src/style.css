@@ -63,7 +63,7 @@ body{
    padding: 30% 0;
 }
 .post{
-    padding: 30px;
+    padding: 3px;
     background-color: aliceblue;
     margin: 10px;
 }
@@ -79,6 +79,14 @@ body{
     margin: 7px 0 10px;
     font-family: arial;
 }
+.contrato{
+    color: #686363;
+    width: 250px;
+    text-align: center;
+    font-size: 13px;
+    margin: 7px 0 10px;
+    font-family: arial;
+}
 /* .info-alert{
     border: 1px solid #ff0c19;
 } */
@@ -90,7 +98,35 @@ body{
     transition: 0.3s;
     background: #164e87;
     color:#fff;
+    margin-bottom :8px;
 }
+/* Post */
+.postear{
+    width: 100%;
+    height: auto;
+    border: 1px solid #898d8a;
+    border-radius: 2px;
+}
+.post textarea{
+        width: 100%;
+        height: 100px;
+        resize: none;
+        border: 1px solid #5AC39B;
+        padding: 7px 20px 7px 20px;
+}
+.comparte{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 30%;
+}
+.compartir{
+    background:#164e87;
+    height: 35px;
+    border-radius: 5px;
+    color: #fff;
+}
+
 /*Ocultando el boton cerrar*/
 .hide{
   display: none;
@@ -116,6 +152,7 @@ body{
 .profile-name{
     font-weight: bold;
     color:#164e87;
+    font-size: 24px;
 }
 @media all and (min-width: 768px) {
     .login{

@@ -4,7 +4,7 @@ header {
   height: 64px;
   top: 0;
   left:0;
-  background: rgba(6, 184, 56, 0.75);
+  background:#5AC39B;
   align-items: center;
   position: fixed;
   z-index: 100;

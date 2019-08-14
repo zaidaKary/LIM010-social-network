@@ -4,7 +4,7 @@ export default () => {
     const viewProfile = `
     <div id="vista-profile" class="login">
             <h1 class="color-perfil text-center">Perfil de Usuario</h1>
-            <img class="foto-user perfil-img" src='./img/profile.png' id="foto"/>
+            <img class="foto-user perfil-img" src='img/user.png' id="foto"/>
             <label class="item-perfil" id="nombre"><strong>Nombres:</strong></label>
             <input type="text"/>
             <label class="item-perfil" id="apellido"><strong>Apellidos:</strong></label>

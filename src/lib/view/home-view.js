@@ -20,18 +20,22 @@ export default () => {
     <div id="vista-home" class="post">
              <img src="" alt="">
              <div id="datos-user">
-                <img class="foto-user" id="foto" src=""/>
+                <img class="foto-user" id="foto" src="img/user.png"/>
                 <div class ="datos">
                 <label class="profile-name" id="name" for="name"></label>
                 <label id="correo" class="profile-name" for="name"></label>
                 </div>
              </div>
+            <div class="postear">
             <div class="post">
-            <textarea name="post" id="" cols="30" rows="5" placeholder="¿que quieres compartir hoy?"></textarea>
-            <div id="vista-cargar-imagen">
-            <progress value="0" max="100" id="uploader">0%</progress>    
-            <button>Compartir</button>
+            <textarea name="post" id="" cols="30" rows="5" placeholder="¿Qué estás pensando?"></textarea>
+            <div class="comparte">   
+            <select name="com" id="" class="compartir">
+            <option value="" class="s">Público</option>
+            <option value="" class="s">Privado</option>
+            </select>
             </div>
+            <div/>
         </div>    
     </div> `;
     const divElem = document.createElement('div')

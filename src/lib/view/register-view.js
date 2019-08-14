@@ -12,7 +12,7 @@ export default () => {
   <input id="txt-password1" class="sesion info-alert espacio" type="password" placeholder="Ingrese su contraseña..."/>
   <p id ="mensaje-error" class ="mensaje-error "></p>
    <button class="sesion register register-view espacio" id ="btn-registrarse">Regístrate</button>
-   <footer>Creado por Betsy, Zaida & Milca</footer>
+  <p class="contrato">Al registrarte, aceptas nuestras<strong>Condiciones, la Política de datos y la Política de cookies</strong>.</p>
    </div>
   </div>`;
   const divElem = document.createElement('div')
