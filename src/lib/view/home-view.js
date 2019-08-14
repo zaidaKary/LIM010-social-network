@@ -18,12 +18,13 @@ export default () => {
         </div>
     </header>
     <div id="vista-home" class="post">
-             <img src="./img/user.png" alt="">
+             <img src="" alt="">
              <div id="datos-user">
                 <img class="foto-user" id="foto" src=""/>
-                <label id="name" for="name"></label><br>
-                <label id="correo" for="name"></label>
-                <p>Apasionada</p>
+                <div class ="datos">
+                <label class="profile-name" id="name" for="name"></label>
+                <label id="correo" class="profile-name" for="name"></label>
+                </div>
              </div>
             <div class="post">
             <textarea name="post" id="" cols="30" rows="5" placeholder="¿que quieres compartir hoy?"></textarea>
