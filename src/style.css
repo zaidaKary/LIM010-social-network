@@ -104,6 +104,28 @@ body{
   display: none;
 }
 
+/* Perfil User */
+#datos-user{
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+}
+.datos{
+    display: flex;
+    flex-direction: column;
+}
+#foto {
+    width: 20%;
+    height: 15%;
+    border: 1px solid rgb(84, 90, 88);
+    border-radius: 50%;
+    margin: 5%;
+  }
+.profile-name{
+    font-weight: bold;
+    color:#164e87;
+}
+
 /* menu hamburguesa */
 button#menu {
     display: block;
