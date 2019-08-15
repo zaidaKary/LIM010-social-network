@@ -25,14 +25,11 @@ export const obtenerInfo = (userName, userCorreo, userImage) => {
     }
   });
 };
-// export const obtenerUsuario = (userName) => {
-//   const auth = firebase.auth();
-//   return auth.onAuthStateChanged( user => {
-//     if (user) {
-//       const displayName = user.displayName;
-//         userName.textContent = displayName;
-//     } else {
-//       // No user is signed in.
-//     }
+
+// auth.createUserWithEmailAndPassword(email,pass).then((result) => {
+  
+//   return db.collection('users').doc(result.user.uid).set({
+//       Username: username,
+//       Foto: 'https://image.flaticon.com/icons/png/512/16/16363.png',
+//       Email: email
 //   });
-// };

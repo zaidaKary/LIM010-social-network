@@ -1,9 +1,11 @@
 //---------------------------------------------------------------------//
 //REGISTRO DE UN NUEVO USUARIO
 //---------------------------------------------------------------------//
+import { db } from '../../main.js';
 export const registerFunction = () => {
     //Obtener los campos email y password
     //Comprobando que el email sea real
+    const username = document.getElementById('txt-username').value;
     const email = document.getElementById('txt-email').value;
     const pass = document.getElementById('txt-password1').value;
     const mensajeError = document.getElementById('mensaje-error');
@@ -13,6 +15,11 @@ export const registerFunction = () => {
     //Login
     auth.createUserWithEmailAndPassword(email,pass).then((result) => {
         location.hash = '#/';
+        return db.collection('users').doc(result.user.uid).set({
+            Username: username,
+            Foto: 'https://image.flaticon.com/icons/png/512/16/16363.png',
+            Email: email
+        });
         // console.log(result);
         // alert('Usuario creado correctamente');
       })
