@@ -1,5 +1,5 @@
 // NOTA: Instalar el LIVE SERVER para usar puerto
-import {signInWithEmailAndPassword} from '../model/modelFirebase.js'
+import {signInWithEmailAndPassword, signInGoogle, signInFacebook} from '../model/modelFirebase.js'
 // ---------------------------------------------------------------------//
 // AUTENTICACIÓN CON CUALQUIER OTRA CUENTA
 // ---------------------------------------------------------------------//
@@ -10,7 +10,8 @@ export const loginFunction = () => {
   const mensajeError = document.getElementById('mensaje-error');
   // const auth = firebase.auth();
   // Login
-  const promise = signInWithEmailAndPassword(email, pass).then((result) => {
+  signInWithEmailAndPassword(email, pass)
+    .then((result) => {
     location.hash = '#/home';
     console.log('autenticado usuario ', result);
   })
@@ -33,15 +34,14 @@ export const loginFunction = () => {
               mensajeError.innerHTML = 'Se ha producido un error';
       }
     });
-  promise.catch(evento => console.log(evento.message));
+  // promise.catch(evento => console.log(evento.message));
 };
 // ---------------------------------------------------------------------//
 // AUTENTICACIÓN CON GOOGLE EN FIREBASE
 // ---------------------------------------------------------------------//
 export const authAccountGoogle = () => {
-  const provider = new firebase.auth.GoogleAuthProvider();
-  const authService = firebase.auth();
-  authService.signInWithPopup(provider).then((result) => {
+     signInGoogle()
+    .then((result) => {
     const user = result.user;
     const token = result.credential.accessToken;
     location.hash = '#/home';
@@ -58,11 +58,8 @@ export const authAccountGoogle = () => {
 // AUTENTICACIÓN CON FACEBOOK EN FIREBASE
 // ---------------------------------------------------------------------//
 export const authAccountFacebook = () => {
-  // creando el provider de autenticacion
-  const provider = new firebase.auth.FacebookAuthProvider();
-  // accediendo al servicio de autenticación
-  const authService = firebase.auth();
-  authService.signInWithPopup(provider).then((result) => {
+    signInFacebook()
+    .then((result) => {
     const user = result.user;
     const token = result.credential.accessToken;
     location.hash = '#/home';
