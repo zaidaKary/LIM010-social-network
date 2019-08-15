@@ -121,6 +121,7 @@ body{
     border-radius: 5px;
     color: #fff;
     border: none;
+    cursor:pointer;
 }
 
 /*Ocultando el boton cerrar*/

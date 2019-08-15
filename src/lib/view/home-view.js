@@ -33,6 +33,7 @@ export default () => {
     <div class="post">
       <textarea  name="post" id="new-post" cols="30" rows="5" placeholder="¿Qué quieres compartir?"></textarea>
       <div class="comparte">
+      <image class="glyphicon glyphicon-picture" src=""/>
        <button  id="btn-compartir"class="compartir">Compartir</>
       </div>
     </div>
