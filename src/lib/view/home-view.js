@@ -56,6 +56,5 @@ export default () => {
   const userImage = divElem.querySelector('#foto');
 
   obtenerInfo(userName, userCorreo, userImage);
-
   return divElem;
 }
