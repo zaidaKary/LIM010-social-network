@@ -6,7 +6,7 @@ header {
   left:0;
   background:#5AC39B;
   align-items: center;
-  position: fixed;
+  /* position: fixed; */
   z-index: 100;
 }
 header label {
@@ -20,7 +20,7 @@ header label {
   display: none;
 }
 .menu ul {
-  background: rgba(10, 10, 10, 1);
+  background: #164e87;
   display:flex;
   list-style: none;
   height: 64px;
