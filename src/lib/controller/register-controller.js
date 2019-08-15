@@ -11,7 +11,7 @@ export const registerFunction = () => {
     //Validando datos del email y password
     // validar(email, pass);
     //Login
-    auth.createUserWithEmailAndPassword(email,pass).then((result) => {
+    auth.createUserWithEmailAndPassword(email,pass).then((cred) => {
         location.hash = '#/';
         // console.log(result);
         // alert('Usuario creado correctamente');
