@@ -1,6 +1,6 @@
 import { signOff } from '../controller/signoff-controller.js';
 import { obtenerInfo } from '../controller/obtenerInfo-controller.js';
-
+import {publicarPost} from  '../controller/post-controller.js';
 export default () => {
   const viewHome = ` 
     <header class="barra-menu" id="barra-menu">
@@ -55,6 +55,11 @@ export default () => {
   const userName = divElem.querySelector('#name');
   const userCorreo = divElem.querySelector('#correo');
   const userImage = divElem.querySelector('#foto');
+
+  const btnCompartir = divElem.querySelector('#btn-compartir');
+  btnCompartir.addEventListener('click', () => {
+    publicarPost();
+  });
 
   obtenerInfo(userName, userCorreo, userImage);
 
