@@ -27,12 +27,9 @@ export default () => {
                 </div>
              </div>
             <div class="post">
-            <textarea name="post" id="" cols="30" rows="5" placeholder="¿que quieres compartir hoy?"></textarea>
-            <div id="vista-cargar-imagen">
-            <progress value="0" max="100" id="uploader">0%</progress>    
+            <textarea name="post" id="" cols="30" rows="5" placeholder="¿que quieres compartir hoy?"></textarea> 
             <button>Compartir</button>
-            </div>
-        </div>    
+            </div>    
     </div> `;
     const divElem = document.createElement('div')
     divElem.innerHTML = viewHome;

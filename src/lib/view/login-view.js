@@ -9,6 +9,7 @@ export default () => {
     <p>«Vive la aventura de viajar»</p>
     <input id="txt-email" class="sesion espacio" type="email" placeholder="&#128100 Ingrese su email..."/>
     <input id="txt-password" class="sesion espacio" type="password" placeholder="&#128231 Ingrese su contraseña..."/>
+    <p id ="mensaje-error" class ="mensaje-error "></p>
     <button class="sesion log espacio" id="btn-ingresar"> Log in </button>
     <p>O bien ingresa con...</p>
     <p>
