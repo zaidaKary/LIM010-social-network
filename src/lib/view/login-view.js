@@ -6,9 +6,11 @@ export default () => {
     <div class="logoIzquierda"></div>
     <div class="sesion">
     <img class="logo" src="./img/logo.png"  alt="logo">
-    <p>«Vive la aventura de viajar»</p>
-    <input id="txt-email" class="sesion espacio" type="email" placeholder="&#128100 Ingrese su email..."/>
-    <input id="txt-password" class="sesion espacio" type="password" placeholder="&#128231 Ingrese su contraseña..."/>
+    <p class="font">«Vive la aventura de viajar»</p>
+    <input id="txt-email" class="sesion" type="email" placeholder="&#128100 Ingrese su email..."/>
+    <input id="txt-password" class="sesion" type="password" placeholder="&#128231 Ingrese su contraseña..."/>
+    <span id="icon-clave" class="icon-input icon-clave"></span>
+    <p id ="mensaje-error" class ="mensaje-error "></p>
     <button class="sesion log espacio" id="btn-ingresar"> Log in </button>
     <p>O bien ingresa con...</p>
     <p>
@@ -16,6 +18,7 @@ export default () => {
         <input id="btn-google" type=image src="https://img.icons8.com/color/48/000000/google-plus--v2.png" class="icon">
     </p>
     <p>¿No tienes una cuenta?&nbsp;<a href="#/register"><span id="btn-registrarse">Registrate</span></a></p>
+    <footer >Creado por Betsy, Zaida & Milca</footer>
      </div>
     </div>`;
   const divElem = document.createElement('div');

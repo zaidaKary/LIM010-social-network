@@ -9,4 +9,3 @@ const init = () => { // sirve para cambiar la url
 };
 
 window.addEventListener('load', init);// cada vez que haya una recarga (load) se ejecuta esta funcion
-

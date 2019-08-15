@@ -1,26 +1,24 @@
-import { guardarDatos } from '../controller/profile-controller.js';
+// import { guardarDatos } from '../controller/profile-controller.js';
 
 export default () => {
     const viewProfile = `
-    <div id="vista-profile" class="login">
-            <h1 class="color-perfil text-center">Perfil de Usuario</h1>
-            <img class="foto-user" src='./img/profile.png' id="foto"/>
-            <label class="item-perfil" id="nombre"><strong>Nombres:</strong></label>
+    <div id="vista-profile" class="perfil">
+        <div class="perfil-contenedor">
+            <label class="nombre-perfil">Perfil de Usuario</label>
+            <img src='./img/profile.png' id="foto"/>
+            <label id="nombre"><strong>Nombres:</strong></label>
             <input type="text"/>
-            <label class="item-perfil" id="apellido"><strong>Apellidos:</strong></label>
+            <label id="apellido"><strong>Apellidos:</strong></label>
             <input type="text"/>
-            <label class="item-perfil" id="nacimiento"><strong>Lugar de Nacimiento:</strong></label>
+            <label id="nacimiento"><strong>Lugar de Nacimiento:</strong></label>
             <input type="text"/>
-            <label class="item-perfil" id="telefono"><strong>Celular/Teléfono:</strong></label>
+            <label id="telefono"><strong>Celular/Teléfono:</strong></label>
             <input type="text"/>
-            <label class="item-perfil" id="correo"><strong>Email:</strong></label>
+            <label id="correo"><strong>Email:</strong></label>
             <input type="text"/>
-            <div class="editar">
-                <button id="editar-perfil">Editar</button>
-            </div>
-            <div class="guardar">
+            <button id="editar-perfil">Editar</button>
             <button id="guardar-perfil">Guardar</button>
-            </div>         
+        <div>        
     </div>`;
     const divElem = document.createElement('div')
     divElem.innerHTML = viewProfile;
@@ -33,8 +31,8 @@ export default () => {
 
     const btnGuardar = divElem.querySelector('#guardar-perfil');
 
-    btnGuardar.addEventListener('click', () => {
-        guardarDatos(userNombre, userApellido, userNacimiento, userTelefono, userCorreo);
-    });
+    // btnGuardar.addEventListener('click', () => {
+    //     guardarDatos(userNombre, userApellido, userNacimiento, userTelefono, userCorreo);
+    // });
     return divElem;
 };
