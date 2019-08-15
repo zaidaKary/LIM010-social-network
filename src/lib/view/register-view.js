@@ -6,12 +6,12 @@ export default () => {
   <div class="logoIzquierda"></div>
   <div class="sesion">
   <img class="logo" src="./img/logo.png"  alt="logo">
-  <p class="intro"><strong>«Vive la aventura de viajar» </strong></p>
-  <input id="txt-username" class="sesion name info-alert espacio" type="text" placeholder="&#128100 Nombre"/>
-  <input id="txt-email" class="sesion info-alert espacio" type="email" placeholder="&#128231 ejemplo@mail.com"/>
-  <input id="txt-password1" class="sesion info-alert espacio" type="password" placeholder="Ingrese su contraseña..."/>
+  <p class="font">«Vive la aventura de viajar»</p>
+  <input id="txt-username" class="sesion" type="text" placeholder="&#128100 Nombre"/>
+  <input id="txt-email" class="sesion" type="email" placeholder="&#128231 ejemplo@mail.com"/>
+  <input id="txt-password1" class="sesion" type="password" placeholder="Ingrese su contraseña..."/>
   <p id ="mensaje-error" class ="mensaje-error "></p>
-   <button class="sesion register register-view espacio" id ="btn-registrarse">Regístrate</button>
+   <button class="sesion log espacio" id ="btn-registrarse">Regístrate</button>
   <p class="contrato">Al registrarte, aceptas nuestras<strong>Condiciones, la Política de datos y la Política de cookies</strong>.</p>
    </div>
   </div>`;
