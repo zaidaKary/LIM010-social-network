@@ -9,12 +9,6 @@ body{
     flex-direction: column;
     align-content: center;
 }
-#uploader{
-    -webkit-appearance: none;
-    appearance: none;
-    width: 50%;
-    margin-bottom: 10px;
-}
 .login{
     display: flex;
     align-items: center;
@@ -96,7 +90,7 @@ body{
   display: none;
 }
 
-/* Perfil User */
+/* Perfil User Inicio*/
 #datos-user{
     flex-direction: row;
     display: flex;
@@ -107,16 +101,40 @@ body{
     flex-direction: column;
 }
 #foto {
-    width: 20%;
-    height: 15%;
+    width: 31%;
+    height: 21%;
     border: 1px solid rgb(84, 90, 88);
     border-radius: 50%;
     margin: 5%;
+    display: flex;
+    align-self: center;
   }
 .profile-name{
     font-weight: bold;
     color:#164e87;
 }
+/* Perfil User*/
+.perfil {
+    display: flex;
+    justify-content: center;
+}
+.perfil-contenedor {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-content: center;
+    background: rgba(190, 20, 20, 0.37);
+    width: 331px;
+    height: 507px;
+}
+.nombre-perfil {
+    text-align: center;
+    font-size: x-large;
+    color: blue;
+    font-weight: bold;
+    font-family: cursive;
+}
+    
 @media all and (min-width: 768px) {
     .login{
         flex-direction: row;
@@ -132,6 +150,7 @@ body{
     }
     .espacio{
         margin-top: 10px;
+        font-family: auto;
     }
     .logoIzquierda{
         width: 50%;
