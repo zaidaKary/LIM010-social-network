@@ -9,7 +9,7 @@ export const registerFunction = () => {
     const mensajeError = document.getElementById('mensaje-error');
     const auth = firebase.auth();
     //Validando datos del email y password
-    validar(email, pass);
+    // validar(email, pass);
     //Login
     auth.createUserWithEmailAndPassword(email,pass).then((result) => {
         location.hash = '#/';
@@ -20,7 +20,7 @@ export const registerFunction = () => {
         const errorCode = error.code;
         const errorMessage = error.message;
         // alert(`Error detectado: ${errorMessage}, Tipo:${errorCode}`);
-        // console.log('Detectado un error:', error);
+        console.log('Detectado un error:', error, errorMessage);
         switch(errorCode){
             case 'auth/email-already-in-use':
                 mensajeError.innerHTML = '*La dirección de correo electrónico ya existe.';
