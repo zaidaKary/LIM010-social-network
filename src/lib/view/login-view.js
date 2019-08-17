@@ -1,4 +1,4 @@
-import { loginFunction, authAccountFacebook, authAccountGoogle} from '../controller/login-controller.js';
+import { loginFunction, authAccountFacebook, authAccountGoogle } from '../controller/login-controller.js';
 
 export default () => {
   const viewLogin = `
@@ -23,7 +23,6 @@ export default () => {
     </div>`;
   const divElem = document.createElement('div');
   divElem.innerHTML = viewLogin;
-   
   const btnIngresar = divElem.querySelector('#btn-ingresar');
   const btnFacebook = divElem.querySelector('#btn-facebook');
   const btnGoogle = divElem.querySelector('#btn-google');

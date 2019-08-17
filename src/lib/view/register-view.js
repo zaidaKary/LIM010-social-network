@@ -15,11 +15,11 @@ export default () => {
   <p class="contrato">Al registrarte, aceptas nuestras<strong>Condiciones, la Política de datos y la Política de cookies</strong>.</p>
    </div>
   </div>`;
-  const divElem = document.createElement('div')
+  const divElem = document.createElement('div');
   divElem.innerHTML = viewRegister;
   const btnRegistrarse = divElem.querySelector('#btn-registrarse');
-  btnRegistrarse.addEventListener('click',() =>{
-      registerFunction();
-  });  
-return divElem;
+  btnRegistrarse.addEventListener('click', () => {
+    registerFunction();
+  });
+  return divElem;
 };

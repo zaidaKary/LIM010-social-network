@@ -1,5 +1,4 @@
 import { signOff } from '../controller/signoff-controller.js';
-import { obtenerInfo } from '../controller/obtenerInfo-controller.js';
 
 export default () => {
   const viewHome = ` 
@@ -41,7 +40,7 @@ export default () => {
     </div>
   </div>
 </div>`;
-  const divElem = document.createElement('div')
+  const divElem = document.createElement('div');
   divElem.innerHTML = viewHome;
   const btnCerrar = divElem.querySelector('#btn-cerrar');
   const btnPerfil = divElem.querySelector('#btn-perfil');
@@ -50,13 +49,7 @@ export default () => {
     signOff();
   });
   btnPerfil.addEventListener('click', () => {
-    location.hash = '#/perfil';
+    window.location.hash = '#/perfil';
   });
-  const userName = divElem.querySelector('#name');
-  const userCorreo = divElem.querySelector('#correo');
-  const userImage = divElem.querySelector('#foto');
-
-  obtenerInfo(userName, userCorreo, userImage);
-
   return divElem;
-}
+};

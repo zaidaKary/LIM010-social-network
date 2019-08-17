@@ -1,4 +1,4 @@
 export const signOff = () => {
-    firebase.auth().signOut();
-    location.hash = '#/';
+  firebase.auth().signOut();
+  window.location.hash = '#/';
 };
