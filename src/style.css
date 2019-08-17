@@ -21,7 +21,7 @@ body{
     height: 150px;
 }
 .sesion{
-    font-family: Arial;
+    /* font-family: Arial; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -68,7 +68,6 @@ body{
     text-align: center;
     font-size: 12px;
     margin: 7px 0 10px;
-    font-family: arial;
 }
 .contrato{
     color: #686363;
@@ -76,7 +75,6 @@ body{
     text-align: center;
     font-size: 11px;
     margin: 70px 0 10px;
-    font-family: arial;
 }
 .font{
     font-family:'Pacifico', cursive;
@@ -112,7 +110,7 @@ body{
     cursor:pointer;
 }
 footer{
-    margin-top: 70px;
+    margin-top: 60px;
     font-size: 11px;
 }
 /*Ocultando el boton cerrar*/

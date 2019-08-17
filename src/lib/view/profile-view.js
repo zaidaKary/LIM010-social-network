@@ -1,7 +1,7 @@
 // import { guardarDatos } from '../controller/profile-controller.js';
 
 export default () => {
-    const viewProfile = `
+  const viewProfile = `
     <div id="vista-profile" class="perfil">
         <div class="perfil-contenedor">
             <label class="nombre-perfil">Perfil de Usuario</label>
@@ -20,19 +20,19 @@ export default () => {
             <button id="guardar-perfil">Guardar</button>
         <div>        
     </div>`;
-    const divElem = document.createElement('div')
-    divElem.innerHTML = viewProfile;
+  const divElem = document.createElement('div');
+  divElem.innerHTML = viewProfile;
 
-    const userNombre = divElem.querySelector('#nombre').value;
-    const userApellido = divElem.querySelector('#apellido').value;
-    const userNacimiento = divElem.querySelector('#nacimiento').value;
-    const userTelefono = divElem.querySelector('#telefono').value;
-    const userCorreo = divElem.querySelector('#correo').value;
+  //   const userNombre = divElem.querySelector('#nombre').value;
+  //   const userApellido = divElem.querySelector('#apellido').value;
+  //   const userNacimiento = divElem.querySelector('#nacimiento').value;
+  //   const userTelefono = divElem.querySelector('#telefono').value;
+  //   const userCorreo = divElem.querySelector('#correo').value;
 
-    const btnGuardar = divElem.querySelector('#guardar-perfil');
+  //   const btnGuardar = divElem.querySelector('#guardar-perfil');
 
-    // btnGuardar.addEventListener('click', () => {
-    //     guardarDatos(userNombre, userApellido, userNacimiento, userTelefono, userCorreo);
-    // });
-    return divElem;
+  // btnGuardar.addEventListener('click', () => {
+  //     guardarDatos(userNombre, userApellido, userNacimiento, userTelefono, userCorreo);
+  // });
+  return divElem;
 };
