@@ -1,19 +1,15 @@
+import { createUserWithEmailAndPassword } from '../model/modelRegisterFirebase.js';
+import { guardarRegistro } from '../model/modelguardarRegistro.js';
 // ---------------------------------------------------------------------//
 // REGISTRO DE UN NUEVO USUARIO
 // ---------------------------------------------------------------------//
-export const registerFunction = () => {
-  // Obtener los campos email y password
-  // Comprobando que el email sea real
-  const email = document.getElementById('txt-email').value;
-  const pass = document.getElementById('txt-password1').value;
-  const mensajeError = document.getElementById('mensaje-error');
-  const auth = firebase.auth();
+export const registerFunction = (email, pass, mensajeError,username,foto) => {
   // Validando datos del email y password
   // validar(email, pass);
-  // Login
-  auth.createUserWithEmailAndPassword(email, pass).then(() => {
+  createUserWithEmailAndPassword(email, pass).then((result) => {
     window.location.hash = '#/';
-    // console.log(result);
+    guardarRegistro(username, foto, email);
+    console.log(result);
     // alert('Usuario creado correctamente');
   })
     .catch((error) => {

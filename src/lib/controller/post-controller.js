@@ -1,5 +1,4 @@
 
-
 export const publicarPost = () => {
   const email = document.getElementById('correo').value;
   const post = document.getElementById('new-post').value;

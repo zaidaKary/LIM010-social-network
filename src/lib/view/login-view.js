@@ -23,12 +23,15 @@ export default () => {
     </div>`;
   const divElem = document.createElement('div');
   divElem.innerHTML = viewLogin;
+  const mensajeError = divElem.querySelector('#mensaje-error');
   const btnIngresar = divElem.querySelector('#btn-ingresar');
   const btnFacebook = divElem.querySelector('#btn-facebook');
   const btnGoogle = divElem.querySelector('#btn-google');
 
   btnIngresar.addEventListener('click', () => {
-    loginFunction();
+    const email = divElem.querySelector('#txt-email').value;
+    const pass = divElem.querySelector('#txt-password').value;
+    loginFunction(email,pass,mensajeError);
   });
   btnFacebook.addEventListener('click', () => {
     authAccountFacebook();
@@ -36,5 +39,6 @@ export default () => {
   btnGoogle.addEventListener('click', () => {
     authAccountGoogle();
   });
+  
   return divElem;
 };
