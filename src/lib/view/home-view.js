@@ -1,4 +1,4 @@
-import { signOff } from '../controller/signoff-controller.js';
+import { cerrarSesion } from '../model/modelFirebase.js';
 
 export default () => {
   const viewHome = ` 
@@ -11,7 +11,7 @@ export default () => {
     <label class="glyphicon glyphicon-align-justify" for="btn-menu"></label>
     <nav class="menu">
       <ul>
-        <li id="btn-perfil"><a>VER PERFIL</a></li>
+        <li id="btn-perfil"><a> PERFIL </a></li>
         <li id="btn-cerrar"><a>CERRAR SESIÓN</a></li>
       </ul>
     </nav>
@@ -44,12 +44,18 @@ export default () => {
   divElem.innerHTML = viewHome;
   const btnCerrar = divElem.querySelector('#btn-cerrar');
   const btnPerfil = divElem.querySelector('#btn-perfil');
+  const btnCompartir = divElem.querySelector('#btn-compartir');
   btnCerrar.addEventListener('click', (e) => {
     e.preventDefault();
-    signOff();
+    cerrarSesion();
+    window.location.hash = '#/';
   });
   btnPerfil.addEventListener('click', () => {
     window.location.hash = '#/perfil';
   });
+  btnCompartir.addEventListener('click', () => {
+
+  });
   return divElem;
 };
+

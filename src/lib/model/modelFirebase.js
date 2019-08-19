@@ -1,9 +1,15 @@
 export const signInWithEmailAndPassword = (email, pass) => {
-  firebase.auth().signInWithEmailAndPassword(email, pass);
+  return firebase.auth().signInWithEmailAndPassword(email, pass);
 };
 export const signInGoogle = () => {
-  firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  return firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider());
 };
 export const signInFacebook = () => {
-  firebase.auth().signInWithPopup(new firebase.auth.FacebookAuthProvider());
+  return firebase.auth().signInWithPopup(new firebase.auth.FacebookAuthProvider());
+};
+export const createUserWithEmailAndPassword = (email, pass) => {
+  return firebase.auth().createUserWithEmailAndPassword(email, pass);
+};
+export const cerrarSesion = () => {
+  return firebase.auth().signOut();
 };

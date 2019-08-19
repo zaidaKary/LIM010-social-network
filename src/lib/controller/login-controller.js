@@ -1,5 +1,5 @@
 // NOTA: Instalar el LIVE SERVER para usar puerto
-import { signInWithEmailAndPassword, signInGoogle, signInFacebook } from '../model/modelLoginFirebase.js';
+import { signInWithEmailAndPassword, signInGoogle, signInFacebook } from '../model/modelFirebase.js';
 // ---------------------------------------------------------------------//
 // AUTENTICACIÓN CON CUALQUIER OTRA CUENTA
 // ---------------------------------------------------------------------//
