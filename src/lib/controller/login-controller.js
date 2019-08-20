@@ -1,13 +1,16 @@
 // NOTA: Instalar el LIVE SERVER para usar puerto
-import { signInWithEmailAndPassword, signInGoogle, signInFacebook } from '../model/modelLoginFirebase.js';
+import { signInWithEmailAndPassword, signInGoogle, signInFacebook,userCurrent } from '../model/modelLoginFirebase.js';
 // ---------------------------------------------------------------------//
 // AUTENTICACIÓN CON CUALQUIER OTRA CUENTA
 // ---------------------------------------------------------------------//
 export const loginFunction = (email, pass, mensajeError) => {
-  signInWithEmailAndPassword(email, pass).then((result) => {
+  signInWithEmailAndPassword(email, pass).
+    then(() => {
+      console.log(email);
+      // console.log(result);
+
+
       window.location.hash = '#/home';
-      console.log('autenticado usuario ');
-      console.log(result);
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -27,6 +30,7 @@ export const loginFunction = (email, pass, mensajeError) => {
         default:
           mensajeError.innerHTML = 'Se ha producido un error';
       }
+
     });
   // promise.catch(evento => console.log(evento.message));
 };

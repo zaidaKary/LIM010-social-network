@@ -31,7 +31,7 @@ export default () => {
   btnIngresar.addEventListener('click', () => {
     const email = divElem.querySelector('#txt-email').value;
     const pass = divElem.querySelector('#txt-password').value;
-    loginFunction(email,pass,mensajeError);
+    loginFunction(email,pass);
   });
   btnFacebook.addEventListener('click', () => {
     authAccountFacebook();

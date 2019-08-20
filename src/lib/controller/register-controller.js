@@ -1,15 +1,48 @@
-import { createUserWithEmailAndPassword } from '../model/modelRegisterFirebase.js';
-import { guardarRegistro } from '../model/modelguardarRegistro.js';
+// import { createUserWithEmailAndPassword } from '../model/modelRegisterFirebase.js';
+// import { guardarRegistro } from '../model/modelguardarRegistro.js';
+import { db } from './../../main.js';
+import {userCurrent,createUser} from '../model/modelLoginFirebase.js';
 // ---------------------------------------------------------------------//
 // REGISTRO DE UN NUEVO USUARIO
 // ---------------------------------------------------------------------//
-export const registerFunction = (email, pass, mensajeError,username,foto) => {
+const createProfile = (id, name, email) => {
+  db.collection('users').doc(id).set({
+    name, email
+  });
+  const user = userCurrent();
+
+  user.updateProfile({
+    displayName: name,
+  });
+};
+
+export const getName = (userName) => {
+  const user = userCurrent().uid;
+  db.collection('users').doc(user).get().then((doc) => {
+    if (doc.exists) {
+      console.log('Document data:', doc.data().name);
+      userName.textContent = doc.data().name;
+    } else {
+      doc.data()
+
+    }
+  })
+    .catch(() => {
+      console.log('Error getting document:', error);
+    });
+};
+
+export const registerFunction = (email, pass, mensajeError) => {
   // Validando datos del email y password
   // validar(email, pass);
-  createUserWithEmailAndPassword(email, pass).then((result) => {
+  createUser(email, pass,foto)
+  .then(() => {
+    const use = userCurrent();
+    createProfile(use,name,email);
+    getName(user.uid);
     window.location.hash = '#/';
-    guardarRegistro(username, foto, email);
-    console.log(result);
+    // guardarRegistro(username, foto, email);
+    // console.log(result);
     // alert('Usuario creado correctamente');
   })
     .catch((error) => {
@@ -32,23 +65,3 @@ export const registerFunction = (email, pass, mensajeError,username,foto) => {
       }
     });
 };
-// ---------------------------------------------------------------------//
-// VALIDACION DEL EMAIL Y PASSWORD
-// ---------------------------------------------------------------------//
-// const validar = (email, password) => {
-//   // Normalmente el formato de un email es: texto.123@texto.texto
-//   const expresionEmail = /\w+@\w+\.+[a-z]/; // email lo mas simple
-//   // Ingresar constraseña solo texto y numero
-//   const expresionPassword = /[a-z][0-9]/;
-//   if (email === '' && password === '') {
-//     alert('Todos los campos son obligatorios');
-//   } else if (email === '') {
-//     alert('Campo email obligatorio');
-//   } else if (password === '') {
-//     alert('Campo Password obligatorio');
-//   } else if (!expresionEmail.test(email)) {
-//     alert('Email no válido');
-//   } else if (!expresionPassword.test(password)) {
-//     alert('Constraseña no válido (Solo texto y números)');
-//   }
-// };

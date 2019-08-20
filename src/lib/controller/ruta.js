@@ -30,6 +30,7 @@ export const changeView = (route) => {
     {
       return container.appendChild(components.register());
     }
+
     case '#/home':
     {
       return container.appendChild(components.home());
