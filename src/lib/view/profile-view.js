@@ -31,13 +31,8 @@ export default () => {
   });
 
   btnGuardar.addEventListener('click', () => {
-    const email = divElem.querySelector('#correo').value;
-    console.log(email);
     const nuevoUserNombre = divElem.querySelector('#nombre').value;
-    actualizandoPerfil(nuevoUserNombre,email).then(() => {
-      // pintarInfoPerfil(nuevoUserNombre,userCorreo);
-     
-    });
+    actualizandoPerfil(nuevoUserNombre);
     userNombre.disabled = true;
   });
 

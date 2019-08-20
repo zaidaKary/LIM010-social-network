@@ -1,7 +1,7 @@
 
-import { savePost,deletePost } from '../controller/postContr.js';
+import { savePost, deletePost } from '../controller/postContr.js';
 import { obtenerInfo } from '../controller/obtenerInfo-controller.js';
-import { cerrarSesion } from '../model/modelLoginFirebase.js';
+import { cerrarSesion } from '../model/modelFirebase.js'
 
 export default () => {
   const viewHome = ` 
@@ -71,7 +71,6 @@ export default () => {
     cerrarSesion();
     window.location.hash = '#/';
   });
-
 
   btnPerfil.addEventListener('click', () => {
     window.location.hash = '#/perfil';
