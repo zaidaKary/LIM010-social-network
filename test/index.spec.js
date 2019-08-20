@@ -7,7 +7,6 @@ const mockdatabase = new firebasemock.MockFirebase();
 mockauth.autoFlush();
 
 global.firebase = firebasemock.MockFirebaseSdk(
-  // use null if your code does not use RTDB
   path => (path ? mockdatabase.child(path) : null),
   () => mockauth,
 );

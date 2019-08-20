@@ -23,13 +23,11 @@ export const savePost = (event) => {
         querySnapshot.forEach((doc) => {
            
             // doc.data() is never undefined for query doc snapshots
-            console.log(`${doc.id}," => ", ${doc.data().email}`);
-            postCreados.innerHTML += `
-    
+            postCreados.innerHTML += `    
             <tr>
-            <th scope="col">${doc.id}</th>
+            <th scope="col">${doc.data.id}</th>
             <th scope="col">${user.email}</th>
-            <th scope="col">${notePost}</th>
+            <th scope="col">${doc.data().notes}</th>
             <td><button id="${doc.id}" name="delete" class="compartir" >Eliminar</button></td>
           </tr>`;
 
