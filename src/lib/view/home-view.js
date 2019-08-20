@@ -1,16 +1,65 @@
-import { signOff } from '../controller/signoff-controller.js'
+import { signOff } from '../controller/signoff-controller.js';
+import { obtenerInfo } from '../controller/obtenerInfo-controller.js';
 export default () => {
-    const viewHome = `  
-    <div id="vista-cargar-imagen">
-    <progress value="0" max="100" id="uploader">0%</progress>
-    <input type="file" value="upload" id="btn-file"/>
-    <button id="btn-cerrar">Cerrar</button>
-    </div>`;
-    const divElem = document.createElement('div')
-    divElem.innerHTML = viewHome;
-    const btnCerrar = divElem.querySelector('#btn-cerrar');
-    btnCerrar.addEventListener('click', () =>{
-        signOff();
-    });
-    return divElem;
-}
+  const viewHome = ` 
+    <header class="barra-menu" id="barra-menu">
+  <div class="contenedor-logo">
+    <img class="logo-menu" src="./img/logoMenu2.png" alt="Logo live & travel" />
+  </div>
+  <div class="contenedor-menu">
+    <input type="checkbox" id="btn-menu">
+    <label class="glyphicon glyphicon-align-justify" for="btn-menu"></label>
+    <nav class="menu">
+      <ul>
+        <li id="btn-perfil"><a>VER PERFIL</a></li>
+        <li id="btn-cerrar"><a>CERRAR SESIÓN</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<div id="vista-home" class="container-post">
+  <div class="profile-content">
+  <div class="content">
+    <div id="datos-user">
+      <img class="foto-user" id="foto" src="./img/profile.png" />
+      <div class="datos">
+        <label class="profile-name" id="name" for="name"></label>
+        <label id="correo" class="profile-name" for="name"></label>
+      </div>
+    </div>
+  
+  <div class="postear">
+    <div class="post">
+      <textarea  name="post" id="new-post" cols="30" rows="5" placeholder="¿Qué quieres compartir?"></textarea>
+      <div class="comparte">
+      <image class="glyphicon glyphicon-picture" src=""/>
+       <button  id="btn-compartir"class="compartir">Compartir</>
+      </div>
+    </div>
+    </div>
+    </div>
+  </div>
+</div>`;
+  const divElem = document.createElement('div');
+  divElem.innerHTML = viewHome;
+  const userName = divElem.querySelector('#name');
+  const userCorreo = divElem.querySelector('#correo');
+  const userImage = divElem.querySelector('#foto');
+  const btnCerrar = divElem.querySelector('#btn-cerrar');
+  const btnPerfil = divElem.querySelector('#btn-perfil');
+  const btnCompartir = divElem.querySelector('#btn-compartir');
+  btnCerrar.addEventListener('click', (e) => {
+    e.preventDefault();
+    signOff();
+  });
+  btnPerfil.addEventListener('click', () => {
+    window.location.hash = '#/perfil';
+  });
+  obtenerInfo(userName, userCorreo,userImage); // pinta en el home esos datos de argumento
+  // publicando post
+  btnCompartir.addEventListener('click', () =>{
+    
+  });
+
+  return divElem;
+};
