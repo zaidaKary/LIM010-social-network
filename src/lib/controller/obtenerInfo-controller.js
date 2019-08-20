@@ -1,40 +1,25 @@
-export const obtenerInfo = () => {
-  const userName = document.getElementById('name');
-  const userCorreo = document.getElementById('correo');
-  const userImage = document.getElementById('foto');
+import {db} from '../../main.js';
+
+export const obtenerInfo = (userName, userCorreo,userImage) => { //pinta en el home el nombre, foto y correo
   const auth = firebase.auth();
   return auth.onAuthStateChanged((user) => {
     if (user) {
-      const displayName = user.displayName;
-      const userEmail = user.email;
-      const userPhoto = user.photoURL;
-      if (displayName == null && userPhoto == null) {
-        console.log(user);
-        console.log(displayName, userPhoto, userEmail);
-        userName.textContent = 'Usuario Nuevo';
-        userCorreo.textContent = userEmail;
-        userImage.src = './img/profile.png';
-      } else{
-      // User is signed in.
-        console.log(user);
-        console.log(displayName, userPhoto, userEmail);
-        userName.textContent = displayName;
-        userCorreo.textContent = userEmail;
-        userImage.src = userPhoto;
-      }
-    } else {
-      // No user is signed in.
+      // El usuario ha iniciado sesión.
+      const id = firebase.auth().currentUser.uid;
+      // Obtención de datos de un documento
+      db.collection('users').where("ID", "==", id).get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => { // forEach -> se repite por cada documento que este en users
+        // console.log(doc.id, " => ", doc.data());
+        console.log("Datos del documento:", doc.data());
+        userName.textContent = doc.data().Nombre;// consoleamos el nombre que hay en el documento
+        userCorreo.textContent = doc.data().Email;// consoleamos el nombre que hay en el documento
+        userImage.src = doc.data().Foto;
+      });
+    }).catch((error) => {
+      console.log("Error al obtener el documento", error);
+    });
+  } else {
+      // Ningún usuario ha iniciado sesión.
     }
   });
 };
-// export const obtenerUsuario = (userName) => {
-//   const auth = firebase.auth();
-//   return auth.onAuthStateChanged( user => {
-//     if (user) {
-//       const displayName = user.displayName;
-//         userName.textContent = displayName;
-//     } else {
-//       // No user is signed in.
-//     }
-//   });
-// };
