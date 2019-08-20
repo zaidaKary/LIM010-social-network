@@ -26,10 +26,10 @@ export const pintarInfoPerfil = (userName, userCorreo,userfoto) => {
   }
 });
 };
-
 // Actualizando perfil en la base de datos
-export const actualizandoPerfil = (nuevoUserNombre, email) => {
-  return db.collection('users').where("Email", "==", email).update({
+export const actualizandoPerfil = (nuevoUserNombre) => {
+  const user = firebase.auth().currentUser.uid; // obteniendo id de usuario
+  return db.collection('users').doc(user).update({
     Nombre: nuevoUserNombre,
   }).then(() => {
     // console.log('Document successfully updated!');
@@ -40,3 +40,4 @@ export const actualizandoPerfil = (nuevoUserNombre, email) => {
     // console.error('Error updating document: ', error);
   });
 };
+

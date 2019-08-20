@@ -17,7 +17,7 @@ export const obtenerNombreEmail = (email) => {
     });
   };
 const crearUsuario = (id, name, email, foto) => {
-  db.collection('users').add({ // agrega datos en la colección
+  db.collection('users').doc(id).set({ // agrega datos en la colección
     ID: id,
     Nombre: name,
     Email: email,
