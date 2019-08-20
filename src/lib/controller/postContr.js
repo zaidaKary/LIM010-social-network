@@ -1,4 +1,4 @@
-import { userCurrent } from '../model/modelLoginFirebase.js';
+import { userCurrent } from '../model/modelFirebase.js';
 import { addPostFirebase } from '../model/modelPost.js';
 import { db } from '../../main.js';
 
@@ -34,8 +34,6 @@ export const savePost = (event) => {
         });
     });
 };
-
-
 export const deletePost = (id) => {
     //event.preventDefault();
     // const id = event.target.id;

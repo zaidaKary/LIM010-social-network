@@ -1,6 +1,5 @@
 // El controlador asocia el cambio de la ruta con las vistas
 // changeView -> cambio de vistas,
-
 // importamos el viewLogin
 import Login from '../view/login-view.js';
 import Home from '../view/home-view.js';

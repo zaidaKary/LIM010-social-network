@@ -1,10 +1,10 @@
 import { createUserWithEmailAndPassword } from '../model/modelFirebase.js';
-// import { guardarRegistro } from '../model/modelguardarRegistro.js';
+import { db } from '../../main.js';
 // REGISTRO DE UN NUEVO USUARIO
-// ---------------------------------------------------------------------//
 export const obtenerNombreEmail = (email) => {
   // Obtención de datos de un documento
-  db.collection('users').where("Email", "==", email).get().then((querySnapshot) => {
+  db.collection('users').where("Email", "==", email).get()
+    .then((querySnapshot) => {
         querySnapshot.forEach((doc) => { // forEach -> se repite por cada documento que este en users
             // console.log(doc.id, " => ", doc.data());
             console.log(doc.data().Nombre);// consoleamos el nombre que hay en el documento
@@ -25,9 +25,8 @@ const crearUsuario = (id, name, email, foto) => {
 };
 //el set -> doc(id)
 export const registerFunction = (email, pass, mensajeError,username, foto) => {
-  // Validando datos del email y password
-  // validar(email, pass);
-  createUserWithEmailAndPassword(email, pass).then((result) => {
+  createUserWithEmailAndPassword(email, pass)
+    .then((result) => {
     const user = firebase.auth().currentUser;// obtiene el usuario que accedió
     console.log(user); 
     obtenerNombreEmail(email); // obtenemos nombre y email del usuario creado
@@ -57,23 +56,3 @@ export const registerFunction = (email, pass, mensajeError,username, foto) => {
       }
     });
 };
-// ---------------------------------------------------------------------//
-// VALIDACION DEL EMAIL Y PASSWORD
-// ---------------------------------------------------------------------//
-// const validar = (email, password) => {
-//   // Normalmente el formato de un email es: texto.123@texto.texto
-//   const expresionEmail = /\w+@\w+\.+[a-z]/; // email lo mas simple
-//   // Ingresar constraseña solo texto y numero
-//   const expresionPassword = /[a-z][0-9]/;
-//   if (email === '' && password === '') {
-//     alert('Todos los campos son obligatorios');
-//   } else if (email === '') {
-//     alert('Campo email obligatorio');
-//   } else if (password === '') {
-//     alert('Campo Password obligatorio');
-//   } else if (!expresionEmail.test(email)) {
-//     alert('Email no válido');
-//   } else if (!expresionPassword.test(password)) {
-//     alert('Constraseña no válido (Solo texto y números)');
-//   }
-// };

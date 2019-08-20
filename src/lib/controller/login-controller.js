@@ -3,23 +3,19 @@ import { signInWithEmailAndPassword, signInGoogle, signInFacebook } from '../mod
 import { db } from '../../main.js'
 //creando una funcion que guarde los datos del google y facebook en la bd
 export const guardandoDatosGF = (id, name, email, foto) => {
-  db.collection('users').add({ // agrega datos en la colección
+  db.collection('users').doc(id).set({ // agrega datos en la colección
     ID: id,
     Nombre: name,
     Email: email,
     Foto: foto
   });
 };
-// ---------------------------------------------------------------------//
 // AUTENTICACIÓN CON CUALQUIER OTRA CUENTA
-// ---------------------------------------------------------------------//
 export const loginFunction = (email, pass, mensajeError) => {
   signInWithEmailAndPassword(email, pass).
     then(() => {
       console.log(email);
       // console.log(result);
-
-
       window.location.hash = '#/home';
     })
     .catch((error) => {
@@ -42,19 +38,18 @@ export const loginFunction = (email, pass, mensajeError) => {
       }
 
     });
-  // promise.catch(evento => console.log(evento.message));
 };
 // ---------------------------------------------------------------------//
 // AUTENTICACIÓN CON GOOGLE EN FIREBASE
 // ---------------------------------------------------------------------//
 export const authAccountGoogle = () => {
   signInGoogle()
-    .then((result) => {
-      const user = result.user;
-      const token = result.credential.accessToken;
+    .then((resultado) => {
+      const user = resultado.user;
+      const token = resultado.credential.accessToken;
       guardandoDatosGF(user.uid,user.displayName,user.email,user.photoURL);
       window.location.hash = '#/home';
-      console.log('autenticado usuario ', result.user, user, token);
+      console.log('autenticado usuario ', resultado.user, user, token);
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -73,7 +68,6 @@ export const authAccountFacebook = () => {
       const token = result.credential.accessToken;
       guardandoDatosGF(user.uid,user.displayName,user.email,user.photoURL);
       window.location.hash = '#/home';
-      // todo correcto
       console.log('autenticado usuario ', result.user, user, token);
     })
     .catch((error) => {

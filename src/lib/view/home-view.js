@@ -1,7 +1,6 @@
-
-import { savePost,deletePost } from '../controller/postContr.js';
+import { savePost, deletePost } from '../controller/postContr.js';
 import { obtenerInfo } from '../controller/obtenerInfo-controller.js';
-import { cerrarSesion } from '../model/modelLoginFirebase.js';
+import { cerrarSesion } from '../model/modelFirebase.js'
 
 export default () => {
   const viewHome = ` 
@@ -30,8 +29,6 @@ export default () => {
         <label id="correo" class="profile-name" for="name"></label>
       </div>
     </div>
-  
-
   <div class="postear">
     <div class="post">
     <form id="form-post">
@@ -71,21 +68,14 @@ export default () => {
     cerrarSesion();
     window.location.hash = '#/';
   });
-
-
   btnPerfil.addEventListener('click', () => {
     window.location.hash = '#/perfil';
   });
-
   obtenerInfo(userName, userCorreo, userImage); // pinta en el home esos datos de argumento
-
   btnCompartir.addEventListener('click', savePost);
-
-
   const btnDeletePost = document.querySelectorAll('.delete');
   for (const button of btnDeletePost) {
     button.addEventListener('click', deletePost);
   }
-
   return divElem;
 }

@@ -28,8 +28,8 @@ export const pintarInfoPerfil = (userName, userCorreo,userfoto) => {
 };
 // Actualizando perfil en la base de datos
 export const actualizandoPerfil = (nuevoUserNombre) => {
-  const user = firebase.auth().currentUser.uid; // obteniendo id de usuario
-  return db.collection('users').doc(user).update({
+  const id = firebase.auth().currentUser.uid; // obteniendo id de usuario
+  return db.collection('users').doc(id).update({
     Nombre: nuevoUserNombre,
   }).then(() => {
     // console.log('Document successfully updated!');
