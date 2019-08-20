@@ -32,7 +32,14 @@
     "stylelint": "^10.1.0",
     "stylelint-config-recommended": "^2.2.0"
   },
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 32b2557d72c9e55b5a43ef0659bc0f6eee1b18be
   "dependencies": {
     "firebase": "^6.2.4"
   }
+=======
+  "dependencies": {}
+>>>>>>> 184cf6255b9a413dd1bc2becc3f5b7f83da358ff
 }
