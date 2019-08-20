@@ -1,6 +1,5 @@
 import { signOff } from '../controller/signoff-controller.js';
 import { obtenerInfo } from '../controller/obtenerInfo-controller.js';
-import {publicarPost} from  '../controller/post-controller.js';
 export default () => {
   const viewHome = ` 
     <header class="barra-menu" id="barra-menu">
@@ -22,7 +21,7 @@ export default () => {
   <div class="profile-content">
   <div class="content">
     <div id="datos-user">
-      <img class="foto-user" id="foto" src="img/user.png" />
+      <img class="foto-user" id="foto" src="./img/profile.png" />
       <div class="datos">
         <label class="profile-name" id="name" for="name"></label>
         <label id="correo" class="profile-name" for="name"></label>
@@ -41,26 +40,26 @@ export default () => {
     </div>
   </div>
 </div>`;
-  const divElem = document.createElement('div')
+  const divElem = document.createElement('div');
   divElem.innerHTML = viewHome;
+  const userName = divElem.querySelector('#name');
+  const userCorreo = divElem.querySelector('#correo');
+  const userImage = divElem.querySelector('#foto');
   const btnCerrar = divElem.querySelector('#btn-cerrar');
   const btnPerfil = divElem.querySelector('#btn-perfil');
+  const btnCompartir = divElem.querySelector('#btn-compartir');
   btnCerrar.addEventListener('click', (e) => {
     e.preventDefault();
     signOff();
   });
   btnPerfil.addEventListener('click', () => {
-    location.hash = '#/perfil';
+    window.location.hash = '#/perfil';
   });
-  const userName = divElem.querySelector('#name');
-  const userCorreo = divElem.querySelector('#correo');
-  const userImage = divElem.querySelector('#foto');
-
-  const btnCompartir = divElem.querySelector('#btn-compartir');
-  btnCompartir.addEventListener('click', () => {
-    publicarPost();
+  obtenerInfo(userName, userCorreo,userImage); // pinta en el home esos datos de argumento
+  // publicando post
+  btnCompartir.addEventListener('click', () =>{
+    
   });
 
-  obtenerInfo(userName, userCorreo, userImage);
   return divElem;
-}
+};

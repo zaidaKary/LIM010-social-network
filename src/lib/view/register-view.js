@@ -15,11 +15,17 @@ export default () => {
   <p class="contrato">Al registrarte, aceptas nuestras<strong>Condiciones, la Política de datos y la Política de cookies</strong>.</p>
    </div>
   </div>`;
-  const divElem = document.createElement('div')
+  const divElem = document.createElement('div');
   divElem.innerHTML = viewRegister;
+  const foto = 'https://image.flaticon.com/icons/png/512/16/16363.png';
+  const mensajeError = divElem.querySelector('#mensaje-error');
   const btnRegistrarse = divElem.querySelector('#btn-registrarse');
-  btnRegistrarse.addEventListener('click',() =>{
-      registerFunction();
-  });  
-return divElem;
+  btnRegistrarse.addEventListener('click', () => {
+    const username = divElem.querySelector('#txt-username').value;
+    const email = divElem.querySelector('#txt-email').value;
+    const pass = divElem.querySelector('#txt-password1').value;
+    registerFunction(email, pass, mensajeError,username,foto);
+  });
+
+  return divElem;
 };

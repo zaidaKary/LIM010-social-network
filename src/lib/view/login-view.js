@@ -1,4 +1,4 @@
-import { loginFunction, authAccountFacebook, authAccountGoogle} from '../controller/login-controller.js';
+import { loginFunction, authAccountFacebook, authAccountGoogle, mostrarPassword } from '../controller/login-controller.js';
 
 export default () => {
   const viewLogin = `
@@ -8,8 +8,10 @@ export default () => {
     <img class="logo" src="./img/logo.png"  alt="logo">
     <p class="font">«Vive la aventura de viajar»</p>
     <input id="txt-email" class="sesion" type="email" placeholder="&#128100 Ingrese su email..."/>
-    <input id="txt-password" class="sesion" type="password" placeholder="&#128231 Ingrese su contraseña..."/>
-    <span id="icon-clave" class="icon-input icon-clave"></span>
+    <div class="ojo">
+    <input id="txt-password" class="sesion" type="password" placeholder="&#128231 Ingrese su contraseña...">
+    <span id="mostrar-pass" class="glyphicon glyphicon-eye-open"></span>
+    </div>
     <p id ="mensaje-error" class ="mensaje-error "></p>
     <button class="sesion log espacio" id="btn-ingresar"> Log in </button>
     <p>O bien ingresa con...</p>
@@ -23,19 +25,25 @@ export default () => {
     </div>`;
   const divElem = document.createElement('div');
   divElem.innerHTML = viewLogin;
-   
+  const mensajeError = divElem.querySelector('#mensaje-error');
   const btnIngresar = divElem.querySelector('#btn-ingresar');
   const btnFacebook = divElem.querySelector('#btn-facebook');
   const btnGoogle = divElem.querySelector('#btn-google');
+  const mostrarPass = divElem.querySelector('#mostrar-pass');
 
   btnIngresar.addEventListener('click', () => {
-    loginFunction();
+    const email = divElem.querySelector('#txt-email').value;
+    const pass = divElem.querySelector('#txt-password').value;
+    loginFunction(email,pass,mensajeError);
   });
   btnFacebook.addEventListener('click', () => {
     authAccountFacebook();
   });
   btnGoogle.addEventListener('click', () => {
     authAccountGoogle();
+  });
+  mostrarPass.addEventListener('click', () => {
+    mostrarPassword();
   });
   return divElem;
 };

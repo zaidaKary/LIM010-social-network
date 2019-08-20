@@ -1,37 +1,46 @@
-import { guardarDatos } from '../controller/profile-controller.js';
+import { pintarInfoPerfil ,actualizandoPerfil} from '../controller/profile-controller.js';
 
 export default () => {
-    const viewProfile = `
+  const viewProfile = `
     <div id="vista-profile" class="perfil">
         <div class="perfil-contenedor">
             <label class="nombre-perfil">Perfil de Usuario</label>
-            <img src='./img/profile.png' id="foto"/>
-            <label><strong>Nombres:</strong></label>
-            <input id="nombre" type="text"/>
-            <label><strong>Apellidos:</strong></label>
-            <input id="apellido" type="text"/>
-            <label><strong>Lugar de Nacimiento:</strong></label>
-            <input id="nacimiento" type="text"/>
-            <label><strong>Celular/Teléfono:</strong></label>
-            <input id="telefono" type="text"/>
+            <img id="foto"/>
+            <label><strong>Nombre:</strong></label>
+            <input id="nombre" type="text" disabled/>
             <label><strong>Email:</strong></label>
-            <input id="correo" type="text"/>
-            <button id="editar-perfil">Editar</button>
-            <button id="guardar-perfil">Guardar</button>
+            <input id="correo" type="text" disabled/>
+            <button class="sesion log espacio" id="editar-perfil">Editar</button>
+            <button class="sesion log espacio" id="guardar-perfil">Guardar</button>
+            <button class="sesion log espacio" id="inicio">Inicio</button>
         <div>        
     </div>`;
-    const divElem = document.createElement('div')
-    divElem.innerHTML = viewProfile;
+  const divElem = document.createElement('div');
+  divElem.innerHTML = viewProfile;
 
-    const btnGuardar = divElem.querySelector('#guardar-perfil');
+  const userNombre = divElem.querySelector('#nombre');
+  const userCorreo = divElem.querySelector('#correo');
+  const userFoto = divElem.querySelector('#foto');
+  const btnGuardar = divElem.querySelector('#guardar-perfil');
+  const btnEditar = divElem.querySelector('#editar-perfil');
+  const btnInicio = divElem.querySelector('#inicio');
+  pintarInfoPerfil(userNombre,userCorreo, userFoto);
+  // obteniendoDatosUsuario();
+  btnEditar.addEventListener('click', () => {
+    userNombre.disabled = false;
+  });
 
-    btnGuardar.addEventListener('click', () => {
-        const userNombre = divElem.querySelector('#nombre').value;
-        const userApellido = divElem.querySelector('#apellido').value;
-        const userNacimiento = divElem.querySelector('#nacimiento').value;
-        const userTelefono = divElem.querySelector('#telefono').value;
-        const userCorreo = divElem.querySelector('#correo').value;
-        guardarDatos(userNombre, userApellido, userNacimiento, userTelefono, userCorreo);
+  btnGuardar.addEventListener('click', () => {
+    const nuevoUserNombre = divElem.querySelector('#nombre').value;
+    actualizandoPerfil(nuevoUserNombre).then(() => {
+      // pintarInfoPerfil(nuevoUserNombre,userCorreo);
+     
     });
-    return divElem;
+    userNombre.disabled = true;
+  });
+
+  btnInicio.addEventListener('click', () =>{
+    window.location.hash = '#/home';
+  });
+  return divElem;
 };

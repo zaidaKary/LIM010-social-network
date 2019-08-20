@@ -21,7 +21,7 @@ body{
     height: 150px;
 }
 .sesion{
-    font-family: Arial;
+    /* font-family: Arial; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -47,6 +47,14 @@ body{
 .icon{
     width: 40px;
 }
+.ojo{
+    position: relative;
+    width: 100%;
+}
+.glyphicon {
+    position: absolute;
+    margin: 10% 0% 0 90%;
+}
 .register-view{
     color:#fff !important;
 }
@@ -68,7 +76,6 @@ body{
     text-align: center;
     font-size: 12px;
     margin: 7px 0 10px;
-    font-family: arial;
 }
 .contrato{
     color: #686363;
@@ -76,7 +83,6 @@ body{
     text-align: center;
     font-size: 11px;
     margin: 70px 0 10px;
-    font-family: arial;
 }
 .font{
     font-family:'Pacifico', cursive;
@@ -84,7 +90,7 @@ body{
 }
 /* Post */
 .postear{
-    width: 100%;
+    width: 95%;
     height: auto;
     border: 1px solid #898d8a;
     border-radius: 2px;
@@ -112,7 +118,7 @@ body{
     cursor:pointer;
 }
 footer{
-    margin-top: 70px;
+    margin-top: 60px;
     font-size: 11px;
 }
 /*Ocultando el boton cerrar*/
@@ -164,14 +170,14 @@ footer{
     flex-flow: column wrap;
     justify-content: center;
     align-content: center;
-    background: rgba(190, 20, 20, 0.37);
+    background: #eac100bd;;
     width: 331px;
     height: 507px;
 }
 .nombre-perfil {
     text-align: center;
     font-size: x-large;
-    color: blue;
+    color:#10316b;
     font-weight: bold;
     font-family: cursive;
 }
@@ -213,7 +219,7 @@ header {
     text-decoration: none;
   }
   .menu a:hover {
-    background: rgba(80, 78, 78, 0.836);
+    background:rgb(144, 165, 183);
     top: 0%;
     color: #FFFFFF;
     text-decoration: none;
@@ -245,15 +251,18 @@ header {
     #btn-menu:checked ~ .menu {
         transform: translateX(0%);
     }
-    .glyphicon {
-      font-size: 35px;
-    }
   }
   /*estilos para desktop */
 @media all and (min-width: 768px) {
     .login{
         flex-direction: row;
         padding: 0px;
+    }
+    .ojo{
+        margin-left: 50%;
+    }
+    .glyphicon{
+        margin: 4% 0% 0 45%;
     }
     body{
         flex-direction: row;

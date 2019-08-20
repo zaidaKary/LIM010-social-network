@@ -1,35 +1,27 @@
-export const obtenerInfo = (userName, userCorreo, userImage) => {
+import {db} from '../../main.js';
+
+export const obtenerInfo = (userName, userCorreo,userImage) => { //pinta en el home el nombre, foto y correo
   const auth = firebase.auth();
-  return auth.onAuthStateChanged( user => {
+  return auth.onAuthStateChanged((user) => {
     if (user) {
-      const displayName = user.displayName;
-      const userEmail = user.email;
-      const userPhoto = user.photoURL;
-      if(displayName == null && userPhoto == null){
-        console.log(user);
-        console.log(displayName,userPhoto,userEmail);
-        
-        userName.textContent = 'Usuario Nuevo';
-        userCorreo.textContent = userEmail;
-        userImage.src = './img/profile.png';
-      }else{
-      // User is signed in.
-      console.log(user);
-      console.log(displayName,userPhoto,userEmail);
-      userName.textContent = displayName;
-      userCorreo.textContent = userEmail;
-      userImage.src = userPhoto;
-    }  
+      // El usuario ha iniciado sesión.
+      const user1 = firebase.auth().currentUser.uid;// obtiene el uid de un usuario
+      // Obtención de un documento
+      db.collection('users').doc(user1).get().then((doc) => {
+          if (doc.exists) {
+              console.log("Datos del documento:", doc.data());
+              console.log(user1)// nos vota el id del usuario
+              userName.textContent = doc.data().Nombre;
+              userCorreo.textContent = doc.data().Email;
+              userImage.src = doc.data().Foto;
+          } else {
+              console.log("No hay tal documento!", doc.data());
+          }
+      }).catch((error) => {
+          console.log("Error al obtener el documento", error);
+      });
     } else {
-      // No user is signed in.
+      // Ningún usuario ha iniciado sesión.
     }
   });
 };
-
-// auth.createUserWithEmailAndPassword(email,pass).then((result) => {
-  
-//   return db.collection('users').doc(result.user.uid).set({
-//       Username: username,
-//       Foto: 'https://image.flaticon.com/icons/png/512/16/16363.png',
-//       Email: email
-//   });
