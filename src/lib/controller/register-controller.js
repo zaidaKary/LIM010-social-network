@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword } from '../model/modelFirebase.js';
-import { guardarRegistro } from '../model/modelguardarRegistro.js';
+// import { guardarRegistro } from '../model/modelguardarRegistro.js';
 // REGISTRO DE UN NUEVO USUARIO
 // ---------------------------------------------------------------------//
 export const registerFunction = (email, pass, mensajeError,username,foto) => {
@@ -7,7 +7,7 @@ export const registerFunction = (email, pass, mensajeError,username,foto) => {
   // validar(email, pass);
   createUserWithEmailAndPassword(email, pass).then((result) => {
     window.location.hash = '#/';
-    guardarRegistro(username, foto, email);
+    // guardarRegistro(username, foto, email);
     console.log(result);
     // alert('Usuario creado correctamente');
   })
