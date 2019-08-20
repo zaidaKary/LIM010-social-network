@@ -1,7 +1,7 @@
 
-import { savePost,deletePost } from '../controller/postContr.js';
+import { savePost, deletePost } from '../controller/postContr.js';
 import { obtenerInfo } from '../controller/obtenerInfo-controller.js';
-import { cerrarSesion } from '../model/modelLoginFirebase.js';
+import { cerrarSesion } from '../model/modelFirebase.js'
 
 export default () => {
   const viewHome = ` 
@@ -11,7 +11,7 @@ export default () => {
   </div>
   <div class="contenedor-menu">
     <input type="checkbox" id="btn-menu">
-    <label class="glyphicon glyphicon-align-justify" for="btn-menu"></label>
+    <label class="glyphicon glyphicon-align-justify menu-movil" for="btn-menu"></label>
     <nav class="menu">
       <ul>
         <li id="btn-perfil"><a> PERFIL </a></li>
@@ -71,7 +71,6 @@ export default () => {
     cerrarSesion();
     window.location.hash = '#/';
   });
-
 
   btnPerfil.addEventListener('click', () => {
     window.location.hash = '#/perfil';

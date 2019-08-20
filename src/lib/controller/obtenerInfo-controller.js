@@ -7,7 +7,8 @@ export const obtenerInfo = (userName, userCorreo,userImage) => { //pinta en el h
       // El usuario ha iniciado sesión.
       const id = firebase.auth().currentUser.uid;
       // Obtención de datos de un documento
-      db.collection('users').where("ID", "==", id).get().then((querySnapshot) => {
+      db.collection('users').where("ID", "==", id).get()
+      .then((querySnapshot) => {
         querySnapshot.forEach((doc) => { // forEach -> se repite por cada documento que este en users
         // console.log(doc.id, " => ", doc.data());
         console.log("Datos del documento:", doc.data());

@@ -3,6 +3,12 @@ inicialice la página, es decir, cuando
 se haga una recarga de nuestra página */
 import { changeView } from './lib/controller/ruta.js';
 
+const init = () => { // sirve para cambiar la url
+  changeView(window.location.hash);
+  window.addEventListener('hashchange', () => changeView(window.location.hash));// hash -> para que nos traiga despues del #
+};
+
+window.addEventListener('load', init);// cada vez que haya una recarga (load) se ejecuta esta funcion
 
 // Inicia la configuracion de Firebase
 const firebaseConfig = {
@@ -17,11 +23,3 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 export const db = firebase.firestore();
-
-const init = () => { // sirve para cambiar la url
-  changeView(window.location.hash);
-  window.addEventListener('hashchange', () => changeView(window.location.hash));// hash -> para que nos traiga despues del #
-};
-
-window.addEventListener('load', init);// cada vez que haya una recarga (load) se ejecuta esta funcion
-

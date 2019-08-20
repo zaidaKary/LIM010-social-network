@@ -22,6 +22,9 @@ module.exports = {
     'linebreak-style': 0,
     'prefer-destructuring': 0,
 <<<<<<< HEAD
+    'import/extensions': "0",
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
     'import/extensions': "0",
 =======
@@ -30,6 +33,7 @@ module.exports = {
 =======
     'import/extensions': "0",
 >>>>>>> 8d3b6dfe1bc6735d4e21af12a4f168e40dfb06d0
+>>>>>>> 53e0b6690ac1dbed982ff287c7c4d72bbe63081a
     'import/prefer-default-export': 0,
     'jest/no-disabled-tests': 'warn',
     'jest/no-focused-tests': 'error',

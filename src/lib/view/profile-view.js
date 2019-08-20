@@ -10,9 +10,9 @@ export default () => {
             <input id="nombre" type="text" disabled/>
             <label><strong>Email:</strong></label>
             <input id="correo" type="text" disabled/>
-            <button id="editar-perfil">Editar</button>
-            <button id="guardar-perfil">Guardar</button>
-            <button id="inicio">Inicio</button>
+            <button class="sesion log espacio" id="editar-perfil">Editar</button>
+            <button class="sesion log espacio" id="guardar-perfil">Guardar</button>
+            <button class="sesion log espacio" id="inicio">Inicio</button>
         <div>        
     </div>`;
   const divElem = document.createElement('div');
@@ -31,13 +31,8 @@ export default () => {
   });
 
   btnGuardar.addEventListener('click', () => {
-    const email = divElem.querySelector('#correo').value;
-    console.log(email);
     const nuevoUserNombre = divElem.querySelector('#nombre').value;
-    actualizandoPerfil(nuevoUserNombre,email).then(() => {
-      // pintarInfoPerfil(nuevoUserNombre,userCorreo);
-     
-    });
+    actualizandoPerfil(nuevoUserNombre);
     userNombre.disabled = true;
   });
 
