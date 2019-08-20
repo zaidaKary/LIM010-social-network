@@ -1,5 +1,16 @@
 // NOTA: Instalar el LIVE SERVER para usar puerto
-import { signInWithEmailAndPassword, signInGoogle, signInFacebook,userCurrent } from '../model/modelLoginFirebase.js';
+import { signInWithEmailAndPassword, signInGoogle, signInFacebook } from '../model/modelLoginFirebase.js';
+import { db } from '../../main.js'
+//creando una funcion que guarde los datos del google y facebook en la bd
+export const guardandoDatosGF = (id, name, email, foto) => {
+  db.collection('users').add({ // agrega datos en la colección
+    ID: id,
+    Nombre: name,
+    Email: email,
+    Foto: foto
+  });
+};
+
 // ---------------------------------------------------------------------//
 // AUTENTICACIÓN CON CUALQUIER OTRA CUENTA
 // ---------------------------------------------------------------------//
@@ -42,6 +53,7 @@ export const authAccountGoogle = () => {
     .then((result) => {
       const user = result.user;
       const token = result.credential.accessToken;
+      guardandoDatosGF(user.uid,user.displayName,user.email,user.photoURL);
       window.location.hash = '#/home';
       console.log('autenticado usuario ', result.user, user, token);
     })
@@ -60,6 +72,7 @@ export const authAccountFacebook = () => {
     .then((result) => {
       const user = result.user;
       const token = result.credential.accessToken;
+      guardandoDatosGF(user.uid,user.displayName,user.email,user.photoURL);
       window.location.hash = '#/home';
       // todo correcto
       console.log('autenticado usuario ', result.user, user, token);
@@ -70,4 +83,13 @@ export const authAccountFacebook = () => {
       alert(`Error detectado: ${errorMessage}, Tipo:${errorCode}`);
       console.log('Detectado un error:', error);
     });
+};
+// Mostrar constraseña ojo
+export const mostrarPassword = () => {
+  const pass = document.querySelector('#txt-password');
+  if (pass.type === 'password') {
+    pass.type = 'text';
+  } else {
+    pass.type = 'password';
+  }
 };

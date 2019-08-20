@@ -17,15 +17,14 @@ export default () => {
   </div>`;
   const divElem = document.createElement('div');
   divElem.innerHTML = viewRegister;
-  // const foto = 'https://image.flaticon.com/icons/png/512/16/16363.png';
+  const foto = 'https://image.flaticon.com/icons/png/512/16/16363.png';
   const mensajeError = divElem.querySelector('#mensaje-error');
   const btnRegistrarse = divElem.querySelector('#btn-registrarse');
-
   btnRegistrarse.addEventListener('click', () => {
     const username = divElem.querySelector('#txt-username').value;
     const email = divElem.querySelector('#txt-email').value;
     const pass = divElem.querySelector('#txt-password1').value;
-    registerFunction(email, pass, mensajeError,username);
+    registerFunction(email, pass, mensajeError,username,foto);
   });
 
   return divElem;

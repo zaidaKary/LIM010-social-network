@@ -1,5 +1,4 @@
 import { db } from './../../main.js';
-import { guardarRegistro } from '../model/modelguardarRegistro.js';
 export const publicarPost = () => {
   const post = document.getElementById('#new-post').value;
   console.log(post);
@@ -31,8 +30,6 @@ const postCreado = document.getElementById('#listOfPost');
     });
   });
 };
-
-
 
 
 
