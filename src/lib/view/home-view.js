@@ -82,7 +82,8 @@ export default () => {
   btnCompartir.addEventListener('click', savePost);
 
 
-  const btnDeletePost = document.querySelectorAll('.delete');
+  const btnDeletePost = document.querySelectorAll('#delete-post');
+  console.log(btnDeletePost);
   for (const button of btnDeletePost) {
     button.addEventListener('click', deletePost);
   }
