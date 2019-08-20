@@ -8,6 +8,5 @@ export default () => {
     </div>`;
   const divElem = document.createElement('div');
   divElem.innerHTML = viewError;
-
   return divElem;
 };

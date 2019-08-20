@@ -16,7 +16,6 @@ export const savePost = (event) => {
             console.error('Error adding document: ', error);
             userCorreo.value = doc.data().Email;
         });
-
     const postCreados = document.getElementById('listOfPos');
     db.collection('post').onSnapshot((querySnapshot) => {
         postCreados.innerHTML = '';
