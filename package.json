@@ -14,7 +14,8 @@
     "eslint": "eslint --ext .js src/ test/",
     "stylelint": "stylelint --aei src/**/*.css",
     "lint": "npm run eslint && npm run htmlhint && npm run stylelint",
-    "test": "jest --coverage",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
     "pretest": "npm run lint"
   },
   "devDependencies": {
@@ -26,12 +27,24 @@
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jest": "^22.1.2",
+    "firebase-mock": "^2.2.10",
     "htmlhint": "^0.11.0",
     "jest": "^24.8.0",
+    "mock-cloud-firestore": "^0.9.3",
     "regenerator-runtime": "^0.13.1",
     "stylelint": "^10.1.0",
     "stylelint-config-recommended": "^2.2.0"
   },
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 32b2557d72c9e55b5a43ef0659bc0f6eee1b18be
+=======
+>>>>>>> 8d3b6dfe1bc6735d4e21af12a4f168e40dfb06d0
+>>>>>>> 53e0b6690ac1dbed982ff287c7c4d72bbe63081a
   "dependencies": {
     "firebase": "^6.2.4"
   }

@@ -51,7 +51,7 @@ body{
     position: relative;
     width: 100%;
 }
-.glyphicon {
+.imgojito {
     position: absolute;
     margin: 10% 0% 0 90%;
 }
@@ -224,6 +224,7 @@ header {
     color: #FFFFFF;
     text-decoration: none;
   }
+
   /*FIN de Barra de menu para web*/
   /*Barra de menu para movil*/
   @media (max-width:768px){
@@ -251,6 +252,9 @@ header {
     #btn-menu:checked ~ .menu {
         transform: translateX(0%);
     }
+    .menu-movil{
+        font-size: 35px;
+      }
   }
   /*estilos para desktop */
 @media all and (min-width: 768px) {
@@ -261,7 +265,7 @@ header {
     .ojo{
         margin-left: 50%;
     }
-    .glyphicon{
+    .imgojito{
         margin: 4% 0% 0 45%;
     }
     body{

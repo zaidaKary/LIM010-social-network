@@ -1,5 +1,8 @@
-import { signOff } from '../controller/signoff-controller.js';
+
+import { savePost,deletePost } from '../controller/postContr.js';
 import { obtenerInfo } from '../controller/obtenerInfo-controller.js';
+import { cerrarSesion } from '../model/modelLoginFirebase.js';
+
 export default () => {
   const viewHome = ` 
     <header class="barra-menu" id="barra-menu">
@@ -8,10 +11,10 @@ export default () => {
   </div>
   <div class="contenedor-menu">
     <input type="checkbox" id="btn-menu">
-    <label class="glyphicon glyphicon-align-justify" for="btn-menu"></label>
+    <label class="glyphicon glyphicon-align-justify menu-movil" for="btn-menu"></label>
     <nav class="menu">
       <ul>
-        <li id="btn-perfil"><a>VER PERFIL</a></li>
+        <li id="btn-perfil"><a> PERFIL </a></li>
         <li id="btn-cerrar"><a>CERRAR SESIÓN</a></li>
       </ul>
     </nav>
@@ -28,14 +31,29 @@ export default () => {
       </div>
     </div>
   
+
   <div class="postear">
     <div class="post">
-      <textarea  name="post" id="new-post" cols="30" rows="5" placeholder="¿Qué quieres compartir?"></textarea>
-      <div class="comparte">
-      <image class="glyphicon glyphicon-picture" src=""/>
-       <button  id="btn-compartir"class="compartir">Compartir</>
+    <form id="form-post">
+      <textarea   id= "publicacion" name="post" id="new-post" cols="30" rows="5" placeholder="¿Qué quieres compartir?"></textarea>
+      <div>
+      <button  id="btn-compartir"class="compartir">Compartir</>
       </div>
-    </div>
+   
+      <div  class="comparte">
+      </form>
+      <table class="table my-3">
+     
+      <tbody id="listOfPos">
+        
+      </tbody>
+    </table>
+  
+    <div>
+    <ul id="notes-list">
+    </ul>
+  </div>
+       </div>
     </div>
     </div>
   </div>
@@ -50,16 +68,24 @@ export default () => {
   const btnCompartir = divElem.querySelector('#btn-compartir');
   btnCerrar.addEventListener('click', (e) => {
     e.preventDefault();
-    signOff();
+    cerrarSesion();
+    window.location.hash = '#/';
   });
+
+
   btnPerfil.addEventListener('click', () => {
     window.location.hash = '#/perfil';
   });
-  obtenerInfo(userName, userCorreo,userImage); // pinta en el home esos datos de argumento
-  // publicando post
-  btnCompartir.addEventListener('click', () =>{
-    
-  });
+
+  obtenerInfo(userName, userCorreo, userImage); // pinta en el home esos datos de argumento
+
+  btnCompartir.addEventListener('click', savePost);
+
+
+  const btnDeletePost = document.querySelectorAll('.delete');
+  for (const button of btnDeletePost) {
+    button.addEventListener('click', deletePost);
+  }
 
   return divElem;
-};
+}

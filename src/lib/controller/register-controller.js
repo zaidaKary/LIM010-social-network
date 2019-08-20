@@ -3,38 +3,35 @@ import { db } from '../../main.js'
 // ---------------------------------------------------------------------//
 // REGISTRO DE UN NUEVO USUARIO
 // ---------------------------------------------------------------------//
-export const obtenerNombreEmail = () => {
-  const user = firebase.auth().currentUser.uid;// obtiene el uid de un usuario
-  // Obtención de un documento
-  db.collection('users').doc(user).get().then((doc) => {
-      if (doc.exists) {
-          console.log("Datos del documento:", doc.data());
-          console.log(user)// nos vota el id del usuario
-          console.log(doc.data().Nombre);// consoleamos el nombre que hay en el documento
-          console.log(doc.data().Email);// consoleamos el nombre que hay en el documento
-      } else {
-          console.log("No hay tal documento!", doc.data());
-      }
-  }).catch((error) => {
-      console.log("Error al obtener el documento", error);
-  });
-};
-
+export const obtenerNombreEmail = (email) => {
+  // Obtención de datos de un documento
+  db.collection('users').where("Email", "==", email).get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => { // forEach -> se repite por cada documento que este en users
+            // console.log(doc.id, " => ", doc.data());
+            console.log(doc.data().Nombre);// consoleamos el nombre que hay en el documento
+            console.log(doc.data().Email);// consoleamos el nombre que hay en el documento
+        });
+    })
+    .catch((error) => {
+        console.log("Error al obtener documentos: ", error);
+    });
+  };
 const crearUsuario = (id, name, email, foto) => {
-  db.collection('users').doc(id).set({ // Escribe/reemplaza datos en la colección
+  db.collection('users').add({ // agrega datos en la colección
+    ID: id,
     Nombre: name,
     Email: email,
     Foto: foto
   });
 };
-
+//el set -> doc(id)
 export const registerFunction = (email, pass, mensajeError,username, foto) => {
   // Validando datos del email y password
   // validar(email, pass);
   createUserWithEmailAndPassword(email, pass).then((result) => {
     const user = firebase.auth().currentUser;// obtiene el usuario que accedió
     console.log(user); 
-    obtenerNombreEmail(); // obtenemos nombre y email del usuario creado
+    obtenerNombreEmail(email); // obtenemos nombre y email del usuario creado
     crearUsuario(user.uid, username, email, foto);// creamos el usuario en firebase
     window.location.hash = '#/';
     console.log(result);
