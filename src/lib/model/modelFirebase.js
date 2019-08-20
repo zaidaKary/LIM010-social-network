@@ -13,3 +13,12 @@ export const createUserWithEmailAndPassword = (email, pass) => {
 export const cerrarSesion = () => {
   return firebase.auth().signOut();
 };
+export const userCurrent = () => firebase.auth().currentUser;
+
+export const signOutLogin = () => firebase.auth().signOut();
+
+export const createUser = (email, password,) => firebase.auth().createUserWithEmailAndPassword(email, password);
+
+export const cerrarSesion = () => {
+  return firebase.auth().signOut();
+};
