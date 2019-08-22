@@ -26,5 +26,6 @@ export default () => {
     const pass = divElem.querySelector('#txt-password1').value;
     registerFunction(email, pass, mensajeError,username,foto);
   });
+
   return divElem;
 };

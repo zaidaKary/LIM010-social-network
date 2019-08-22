@@ -1,4 +1,5 @@
 import { loginFunction, authAccountFacebook, authAccountGoogle, mostrarPassword } from '../controller/login-controller.js';
+
 export default () => {
   const viewLogin = `
     <div id="vista-login" class="login">
@@ -35,7 +36,6 @@ export default () => {
     const pass = divElem.querySelector('#txt-password').value;
     loginFunction(email,pass,mensajeError);
   });
-
   btnFacebook.addEventListener('click', () => {
     authAccountFacebook();
   });

@@ -10,8 +10,14 @@ export const guardandoDatosGF = (id, name, email, foto) => {
     Foto: foto
   });
 };
+export const mostrarPosts = () => {
+};
+
+// ---------------------------------------------------------------------//
 // AUTENTICACIÓN CON CUALQUIER OTRA CUENTA
+// ---------------------------------------------------------------------//
 export const loginFunction = (email, pass, mensajeError) => {
+  console.log(signInWithEmailAndPassword(email, pass))
   signInWithEmailAndPassword(email, pass).
     then(() => {
       console.log(email);

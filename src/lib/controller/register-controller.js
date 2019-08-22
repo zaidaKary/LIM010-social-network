@@ -1,6 +1,7 @@
 import { createUserWithEmailAndPassword } from '../model/modelFirebase.js';
 import { db } from '../../main.js';
 // REGISTRO DE UN NUEVO USUARIO
+// ---------------------------------------------------------------------//
 export const obtenerNombreEmail = (email) => {
   // Obtención de datos de un documento
   db.collection('users').where("Email", "==", email).get()
