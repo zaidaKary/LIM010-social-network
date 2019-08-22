@@ -1,4 +1,5 @@
 import {db} from '../../main.js';
+
 export const obtenerInfo = (userName, userCorreo,userImage) => { //pinta en el home el nombre, foto y correo
   const auth = firebase.auth();
   return auth.onAuthStateChanged((user) => {

@@ -6,6 +6,7 @@ import Home from '../view/home-view.js';
 import Register from '../view/register-view.js';
 import Profile from '../view/profile-view.js';
 import Different from '../view/404-view.js';
+
 // Creando un objeto de los componenetes
 const components = {
   login: Login,
@@ -32,6 +33,7 @@ export const changeView = (route) => {
 
     case '#/home':
     {
+
       return container.appendChild(components.home());
     }
     case '#/perfil':
