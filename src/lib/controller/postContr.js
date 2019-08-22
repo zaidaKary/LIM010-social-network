@@ -1,7 +1,6 @@
 import { userCurrent } from '../model/modelFirebase.js';
 import { addPostFirebase } from '../model/modelPost.js';
 import { db } from '../../main.js';
-import { deletePost } from '../model/modelPost.js';
 
 export const textPost = () => {
   event.preventDefault();
@@ -28,13 +27,6 @@ export const savePost = (callback) => {
       });
       callback(comment);
     });
-};
-
-// Eliminando comentarios
-export const deletePostSubmit = (textPost) => {
-  if (userCurrent().uid === textPost.idUser) {
-    deletePost(textPost.id)
-  };
 };
 
 

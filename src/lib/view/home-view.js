@@ -31,19 +31,13 @@ export default () => {
       </div>
 
       <div class="postear">
-
         <form id="form-post">
           <textarea id="publicacion" name="post" id="new-post" cols="30" rows="5"
             placeholder="¿Qué quieres compartir?"></textarea>
           <div class="action-sub2 mp">
-            <select class="compartir" id="options-privacy">
-              <option value="publico">publico</option>
-              <option value="privado">privado</option>
-            </select>
             <button id="btn-compartir" class="compartir">Compartir</button>
           </div>
       </div>
-
       </form>
 
     </div>
