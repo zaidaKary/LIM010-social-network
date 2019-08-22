@@ -1,4 +1,4 @@
-import { savePost, deletePost } from '../controller/postContr.js';
+import { savePost} from '../controller/postContr.js';
 import { obtenerInfo } from '../controller/obtenerInfo-controller.js';
 import { cerrarSesion } from '../model/modelFirebase.js'
 
@@ -36,19 +36,13 @@ export default () => {
       <div>
       <button  id="btn-compartir"class="compartir">Compartir</>
       </div>
-   
       <div  class="comparte">
       </form>
-      <table class="table my-3">
-     
-      <tbody id="listOfPos">
-        
-      </tbody>
-    </table>
-  
-    <div>
-    <ul id="notes-list">
-    </ul>
+      </div>
+    </div>
+     <div id="postPublicado"></div>
+  <div>
+    <ul id="notes-list"></ul>
   </div>
        </div>
     </div>
@@ -73,9 +67,5 @@ export default () => {
   });
   obtenerInfo(userName, userCorreo, userImage); // pinta en el home esos datos de argumento
   btnCompartir.addEventListener('click', savePost);
-  const btnDeletePost = document.querySelectorAll('.delete');
-  for (const button of btnDeletePost) {
-    button.addEventListener('click', deletePost);
-  }
   return divElem;
 }
