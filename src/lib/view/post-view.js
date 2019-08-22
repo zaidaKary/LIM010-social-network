@@ -1,20 +1,25 @@
-
-export default () =>{
-   const templatePost = `
-   <div>
-        <div>
-          <p>Publicado por: </p>
+import { userCurrent } from '../model/modelFirebase.js';
+//import { TextPost } from '../controller/postContr.js'
+export const itemPost = (data) => {
+    console.log(data);
+    const divElement = document.createElement('div');
+    divElement.classList.add('todos-post')
+    divElement.innerHTML += `  
+        <div class="user-post">
+            <p class="">${data.Email}</p>
+            ${userCurrent().uid === data.id ? `
+            <button id="btn-delete-${data.id}" class=""><i class=""></i></button>` : ``}
         </div>
-          <textarea   id= "publicacion" name="post" id="new-post" cols="30" rows="5" placeholder="¿Qué quieres compartir?"></textarea>
-          <div>
-          <button  id="btn-borrar"class="compartir">Eliminar</button>
-          </div>
-          <div  class="comparte">
-          </div>
-   </div>`;
-    const divTabla = document.createElement('table');
-    divTabla.innerHTML = templatePost;
-    const notePost = document.querySelector('#publicacion').value;
-    console.log(notePost);
-    return templatePost;
+        <div class="p2">
+            <textarea id="text-${data.id}" class="">${data.TextPost}</textarea>
+            <div class="">
+                <div class="">
+                    <select id="" class=" ">
+                        <option value="">PRIVADO</option>
+                        <option value="">PUBLICO</option>
+                    </select>
+                </div>
+            </div>
+    `;
+    return divElement;
 }

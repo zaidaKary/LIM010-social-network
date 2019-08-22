@@ -6,7 +6,7 @@ import Home from '../view/home-view.js';
 import Register from '../view/register-view.js';
 import Profile from '../view/profile-view.js';
 import Different from '../view/404-view.js';
-import Post from '../view/post-view.js';
+import { savePost } from '../controller/postContr.js'
 // Creando un objeto de los componenetes
 const components = {
   login: Login,
@@ -14,8 +14,13 @@ const components = {
   register: Register,
   profile: Profile,
   different: Different,
-  post: Post,
 };
+
+export const datapost = (data) => {
+    const container = document.getElementById('root');
+  container.innerHTML = '';
+  container.appendChild(components.home(data));
+}
 
 export const changeView = (route) => {
   // nos trae el window.location.hash del main.js cada vez que
@@ -33,8 +38,8 @@ export const changeView = (route) => {
     }
 
     case '#/home':
-    {
-      return container.appendChild(components.home());
+    {     
+      return  savePost(datapost);
     }
     case '#/perfil':
     {

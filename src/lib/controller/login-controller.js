@@ -15,7 +15,6 @@ export const loginFunction = (email, pass, mensajeError) => {
   signInWithEmailAndPassword(email, pass).
     then(() => {
       console.log(email);
-      // console.log(result);
       window.location.hash = '#/home';
     })
     .catch((error) => {

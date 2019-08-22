@@ -1,8 +1,7 @@
 import { db } from '../../main.js';
+export const addPostFirebase = (email, textPost) => db.collection('post').add({
+  email: email,
+  textPost: textPost
+});
 
-export const addPostFirebase = (email, post) => {
-    db.collection('post').add({
-     post: post,
-     email: email,
-  });
-};
+export const deletePost = (idPost) => db.collection('post').doc(idPost).delete();

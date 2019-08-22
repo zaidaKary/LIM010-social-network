@@ -1,4 +1,5 @@
 import { loginFunction, authAccountFacebook, authAccountGoogle, mostrarPassword } from '../controller/login-controller.js';
+import { savePost } from '../controller/postContr.js'
 
 export default () => {
   const viewLogin = `
@@ -32,10 +33,12 @@ export default () => {
   const mostrarPass = divElem.querySelector('#mostrar-pass');
 
   btnIngresar.addEventListener('click', () => {
+    event.preventDefault();
     const email = divElem.querySelector('#txt-email').value;
     const pass = divElem.querySelector('#txt-password').value;
     loginFunction(email,pass,mensajeError);
   });
+
   btnFacebook.addEventListener('click', () => {
     authAccountFacebook();
   });
