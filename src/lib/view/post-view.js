@@ -3,14 +3,14 @@ import { userCurrent } from '../model/modelFirebase.js';
 
 // import { TextPost } from '../controller/postContr.js';
 export const itemPost = (publication) => {
-    // console.log(data);
-    const divElement = document.createElement('div');
-    divElement.innerHTML += `  
+  // console.log(data);
+  const divElement = document.createElement('div');
+  divElement.innerHTML += `  
     <div class="post postear">
     <div class="user-post">
     <p class="">Publicado por:  ${publication.email} </p>
     ${userCurrent().uid === publication.id ? `
-    <button id="${publication.id}" class="like">eliminar</button>` : ``}
+    <button id="delete-${publication.id}" class="like">eliminar</button>` : ``}
     </div>
       <textarea id="${publication.id}" class="">${publication.textPost}</textarea>
       <div class="">
@@ -28,4 +28,3 @@ export const itemPost = (publication) => {
     
   return divElement;
 }
-
