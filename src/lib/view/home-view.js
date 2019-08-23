@@ -32,10 +32,11 @@ const viewHome = `
                 </div>
             </div>
             <div class="postear">
+            <div class="post">
                 <form id="form-post">
-                    <textarea id="publicacion" name="post" id="new-post" cols="30" rows="5"
-                        placeholder="¿Qué quieres compartir?"></textarea>
-                </form>
+                <textarea   id= "publicacion" name="post" id="new-post" cols="30" rows="5" placeholder="¿Qué quieres compartir?"></textarea>
+                        </div>
+                        </form>
             </div>
             <button id="btn-compartir" class="compartir">Compartir</button>
         </div>
