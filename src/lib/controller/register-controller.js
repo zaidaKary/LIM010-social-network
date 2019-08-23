@@ -33,6 +33,7 @@ export const registerFunction = (email, pass, mensajeError,username, foto) => {
     // obtenerNombreEmail(email); // obtenemos nombre y email del usuario creado
     crearUsuario(user.uid, username, email, foto);// creamos el usuario en firebase
     window.location.hash = '#/';
+    
     // guardarRegistro(username, foto, email);
     console.log(result);
     // alert('Usuario creado correctamente');

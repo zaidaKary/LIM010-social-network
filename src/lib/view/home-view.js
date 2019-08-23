@@ -1,11 +1,10 @@
-
-import { textPost, getPost } from '../controller/postContr.js';
 import { obtenerInfo } from '../controller/obtenerInfo-controller.js';
 import { cerrarSesion } from '../model/modelFirebase.js'
-import { itemPost } from '../view/post-view.js';
+import { itemPost } from '../view/post-view.js'
+import { textPost  } from '../controller/postContr.js';
 
-export default () => {
-  const viewHome = ` 
+export default (data) => { 
+const viewHome = `
   <header class="barra-menu" id="barra-menu">
   <div class="contenedor-logo">
     <img class="logo-menu" src="./img/logoMenu2.png" alt="Logo live & travel" />
@@ -23,31 +22,26 @@ export default () => {
 </header>
 
 <div id="vista-home" class="container-post">
-  <div class="profile-content">
-  <div class="content">
-    <div id="datos-user">
-      <img class="foto-user" id="foto" src="./img/profile.png" />
-      <div class="datos">
-        <label class="profile-name" id="name" for="name"></label>
-        <label id="correo" class="profile-name" for="name"></label>
-      </div>
+    <div class="profile-content">
+        <div class="content">
+            <div id="datos-user">
+                <img class="foto-user" id="foto" src="./img/profile.png" />
+                <div class="datos">
+                    <label class="profile-name" id="name" for="name"></label>
+                    <label id="correo" class="profile-name" for="name"></label>
+                </div>
+            </div>
+            <div class="postear">
+                <form id="form-post">
+                    <textarea id="publicacion" name="post" id="new-post" cols="30" rows="5"
+                        placeholder="¿Qué quieres compartir?"></textarea>
+                </form>
+            </div>
+            <button id="btn-compartir" class="compartir">Compartir</button>
+        </div>
+        <div class="public-posts" id="public-posts">
+        </div>
     </div>
-</div>
-</div>
-
-<div class="postear">
-    <div class="post">
-    <form id="form-post">
-      <textarea   id= "publicacion" name="post" id="new-post" cols="30" rows="5" placeholder="¿Qué quieres compartir?"></textarea>
-      <div>
-      <button  id="btn-compartir"class="compartir">Compartir</>
-      </div>
-    </form>
-    </div>
-</div>  
-
-<div id='todos-post'>
-
 </div>
 
 </div>`;
@@ -59,11 +53,11 @@ export default () => {
   const btnCerrar = divElem.querySelector('#btn-cerrar');
   const btnPerfil = divElem.querySelector('#btn-perfil');
   const btnCompartir = divElem.querySelector('#btn-compartir');
-  const postContainer = divElem.querySelector('#todos-post');
-  const mostrarPost = (posts) => {
-    console.log(posts);
-    postContainer.appendChild(itemPost(posts));
-  };
+  const contenedorPost =  divElem.querySelector('#public-posts');
+
+   data.forEach(element => {
+    contenedorPost.appendChild(itemPost(element));
+   });
 
   btnCerrar.addEventListener('click', (e) => {
     e.preventDefault();
@@ -76,15 +70,9 @@ export default () => {
   });
 
   obtenerInfo(userName, userCorreo, userImage); // pinta en el home esos datos de argumento
-
-  btnCompartir.addEventListener('click', (e) => {
-    e.preventDefault();
-    const txtpublicacion = document.getElementById('publicacion').value;
-    textPost(txtpublicacion) // Guarda en la bd
-    postContainer.innerHTML = '';
-  });
-
-  getPost(mostrarPost);
-
+  btnCompartir.addEventListener('click', () =>{
+    textPost() // Guarda en la bd
+  })
   return divElem;
-}
+};
+
