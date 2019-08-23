@@ -16,9 +16,9 @@ export const obtenerNombreEmail = (email) => {
         console.log("Error al obtener documentos: ", error);
     });
   };
-const crearUsuario = (id, name, email, foto) => {
-  db.collection('users').doc(id).set({ // agrega datos en la colección
-    ID: id,
+const crearUsuario = (uid, name, email, foto) => {
+  db.collection('users').doc(uid).set({ // agrega datos en la colección
+    ID: uid,
     Nombre: name,
     Email: email,
     Foto: foto

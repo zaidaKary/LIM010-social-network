@@ -1,11 +1,12 @@
 
-import { savePost, deletePost } from '../controller/postContr.js';
+import { textPost } from '../controller/postContr.js';
 import { obtenerInfo } from '../controller/obtenerInfo-controller.js';
-import { cerrarSesion } from '../model/modelFirebase.js'
+import { cerrarSesion } from '../model/modelFirebase.js';
+// import { itemPost } from '../view/post-view.js';
 
 export default () => {
   const viewHome = ` 
-    <header class="barra-menu" id="barra-menu">
+  <header class="barra-menu" id="barra-menu">
   <div class="contenedor-logo">
     <img class="logo-menu" src="./img/logoMenu2.png" alt="Logo live & travel" />
   </div>
@@ -20,6 +21,7 @@ export default () => {
     </nav>
   </div>
 </header>
+
 <div id="vista-home" class="container-post">
   <div class="profile-content">
   <div class="content">
@@ -30,33 +32,24 @@ export default () => {
         <label id="correo" class="profile-name" for="name"></label>
       </div>
     </div>
-  
+</div>
+</div>
 
-  <div class="postear">
+<div class="postear">
     <div class="post">
     <form id="form-post">
       <textarea   id= "publicacion" name="post" id="new-post" cols="30" rows="5" placeholder="¿Qué quieres compartir?"></textarea>
       <div>
       <button  id="btn-compartir"class="compartir">Compartir</>
       </div>
-   
-      <div  class="comparte">
-      </form>
-      <table class="table my-3">
-     
-      <tbody id="listOfPos">
-        
-      </tbody>
-    </table>
-  
-    <div>
-    <ul id="notes-list">
-    </ul>
-  </div>
-       </div>
+    </form>
     </div>
-    </div>
-  </div>
+</div>  
+
+<div id='todos-post'>
+
+</div>
+
 </div>`;
   const divElem = document.createElement('div');
   divElem.innerHTML = viewHome;
@@ -66,6 +59,9 @@ export default () => {
   const btnCerrar = divElem.querySelector('#btn-cerrar');
   const btnPerfil = divElem.querySelector('#btn-perfil');
   const btnCompartir = divElem.querySelector('#btn-compartir');
+  
+  const todosPost = divElem.querySelector('#todos-post'); 
+
   btnCerrar.addEventListener('click', (e) => {
     e.preventDefault();
     cerrarSesion();
@@ -78,13 +74,12 @@ export default () => {
 
   obtenerInfo(userName, userCorreo, userImage); // pinta en el home esos datos de argumento
 
-  btnCompartir.addEventListener('click', savePost);
+  btnCompartir.addEventListener('click', () => {
+  const txtpublicacion = document.getElementById('publicacion').value; 
+  textPost(txtpublicacion) // Guarda en la bd
+  });
+  // savePost(); // Obtiene todos los posts
 
-
-  const btnDeletePost = document.querySelectorAll('.delete');
-  for (const button of btnDeletePost) {
-    button.addEventListener('click', deletePost);
-  }
 
   return divElem;
 }
