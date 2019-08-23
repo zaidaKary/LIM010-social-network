@@ -4,7 +4,7 @@ export default () => {
   const viewLogin = `
     <div id="vista-login" class="login">
     <div class="logoIzquierda"></div>
-    <div class="sesion">
+    <div class="sesion orden">
     <img class="logo" src="./img/logo.png"  alt="logo">
     <p class="font">«Vive la aventura de viajar»</p>
     <input id="txt-email" class="sesion" type="email" placeholder="&#128100 Ingrese su email..."/>
