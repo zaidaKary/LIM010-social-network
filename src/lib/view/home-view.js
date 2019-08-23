@@ -3,6 +3,7 @@ import { cerrarSesion } from '../model/modelFirebase.js'
 import { itemPost } from '../view/post-view.js'
 import { textPost} from '../controller/postContr.js';
 
+
 export default (data) => { 
 const viewHome = `
 <header class="barra-menu" id="barra-menu">
@@ -39,11 +40,13 @@ const viewHome = `
                 <button id="btn-compartir" class="compartir">Compartir</button>
                 </div>
                 </form>
-            </div>          
+            </div>  
+            <div class="public-posts" id="public-posts">
+            </div>        
             </div>
+          
         </div>
-        <div class="public-posts" id="public-posts">
-        </div>
+        
     </div>
 </div>
 

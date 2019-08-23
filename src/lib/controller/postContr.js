@@ -28,13 +28,3 @@ export const getPost = (datapost) => {
     });
 };
 
-// export const deletePost = () => {
-//   deletePosts(id)
-//   .then(function () {
-//     console.log("Post eliminado");
-//   }).catch(function (error) {
-//     console.error("Error removing document: ", error);
-//   });
-// }
-
-
