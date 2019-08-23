@@ -8,7 +8,7 @@ const viewHome = `
   <header class="barra-menu" id="barra-menu">
   <div class="contenedor-logo">
     <img class="logo-menu" src="./img/logoMenu2.png" alt="Logo live & travel" />
-  </div>
+  </div>º
   <div class="contenedor-menu">
     <input type="checkbox" id="btn-menu">
     <label class="glyphicon glyphicon-align-justify menu-movil" for="btn-menu"></label>
@@ -20,6 +20,7 @@ const viewHome = `
     </nav>
   </div>
 </header>
+
 <div id="vista-home" class="container-post">
     <div class="profile-content">
         <div class="content">
@@ -31,10 +32,11 @@ const viewHome = `
                 </div>
             </div>
             <div class="postear">
+            <div class="post">
                 <form id="form-post">
-                    <textarea id="publicacion" name="post" id="new-post" cols="30" rows="5"
-                        placeholder="¿Qué quieres compartir?"></textarea>
-                </form>
+                <textarea   id= "publicacion" name="post" id="new-post" cols="30" rows="5" placeholder="¿Qué quieres compartir?"></textarea>
+                        </div>
+                        </form>
             </div>
             <button id="btn-compartir" class="compartir">Compartir</button>
         </div>
@@ -42,7 +44,8 @@ const viewHome = `
         </div>
     </div>
 </div>
- `;
+
+</div>`;
   const divElem = document.createElement('div');
   divElem.innerHTML = viewHome;
   const userName = divElem.querySelector('#name');
@@ -62,9 +65,11 @@ const viewHome = `
     cerrarSesion();
     window.location.hash = '#/';
   });
+
   btnPerfil.addEventListener('click', () => {
     window.location.hash = '#/perfil';
   });
+
   obtenerInfo(userName, userCorreo, userImage); // pinta en el home esos datos de argumento
   btnCompartir.addEventListener('click', () =>{
     textPost() // Guarda en la bd

@@ -4,7 +4,7 @@ export default () => {
   const viewRegister = `
   <div id="vista-registro" class="login">
   <div class="logoIzquierda"></div>
-  <div class="sesion">
+  <div class="sesion orden">
   <img class="logo" src="./img/logo.png"  alt="logo">
   <p class="font">«Vive la aventura de viajar»</p>
   <input id="txt-username" class="sesion" type="text" placeholder="&#128100 Nombre"/>
@@ -26,5 +26,6 @@ export default () => {
     const pass = divElem.querySelector('#txt-password1').value;
     registerFunction(email, pass, mensajeError,username,foto);
   });
+
   return divElem;
 };

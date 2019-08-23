@@ -4,7 +4,7 @@ export default () => {
   const viewLogin = `
     <div id="vista-login" class="login">
     <div class="logoIzquierda"></div>
-    <div class="sesion">
+    <div class="sesion orden">
     <img class="logo" src="./img/logo.png"  alt="logo">
     <p class="font">«Vive la aventura de viajar»</p>
     <input id="txt-email" class="sesion" type="email" placeholder="&#128100 Ingrese su email..."/>
@@ -35,9 +35,8 @@ export default () => {
     event.preventDefault();
     const email = divElem.querySelector('#txt-email').value;
     const pass = divElem.querySelector('#txt-password').value;
-    loginFunction(email,pass,mensajeError);
+    loginFunction(email, pass, mensajeError);
   });
-
   btnFacebook.addEventListener('click', () => {
     authAccountFacebook();
   });
