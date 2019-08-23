@@ -53,7 +53,7 @@ const viewHome = `
   const btnCompartir = divElem.querySelector('#btn-compartir');
   const contenedorPost =  divElem.querySelector('#public-posts');
 
-   data.forEach(element => {
+  data.forEach(element => {
     contenedorPost.appendChild(itemPost(element));
    });
 
