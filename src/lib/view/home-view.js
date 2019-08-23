@@ -1,7 +1,7 @@
 import { obtenerInfo } from '../controller/obtenerInfo-controller.js';
 import { cerrarSesion } from '../model/modelFirebase.js'
 import { itemPost } from '../view/post-view.js'
-import { textPost  } from '../controller/postContr.js';
+import { textPost} from '../controller/postContr.js';
 
 export default (data) => { 
 const viewHome = `
@@ -20,7 +20,6 @@ const viewHome = `
     </nav>
   </div>
 </header>
-
 <div id="vista-home" class="container-post">
     <div class="profile-content">
         <div class="content">
@@ -37,8 +36,8 @@ const viewHome = `
                 <textarea   id= "publicacion" name="post" id="new-post" cols="30" rows="5" placeholder="¿Qué quieres compartir?"></textarea>
                         </div>
                         </form>
+                <button id="btn-compartir" class="compartir">Compartir</button>
             </div>
-            <button id="btn-compartir" class="compartir">Compartir</button>
         </div>
         <div class="public-posts" id="public-posts">
         </div>
@@ -55,6 +54,7 @@ const viewHome = `
   const btnPerfil = divElem.querySelector('#btn-perfil');
   const btnCompartir = divElem.querySelector('#btn-compartir');
   const contenedorPost =  divElem.querySelector('#public-posts');
+ 
 
    data.forEach(element => {
     contenedorPost.appendChild(itemPost(element));
@@ -74,6 +74,7 @@ const viewHome = `
   btnCompartir.addEventListener('click', () =>{
     textPost() // Guarda en la bd
   })
+ 
   return divElem;
 };
 
