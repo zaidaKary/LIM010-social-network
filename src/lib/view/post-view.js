@@ -1,34 +1,31 @@
 import { userCurrent } from '../model/modelFirebase.js';
+// import { deletePost } from '../controller/postContr.js';
 
-export const itemPost = (data) => {
+// import { TextPost } from '../controller/postContr.js';
+export const itemPost = (publication) => {
+    // console.log(data);
     const divElement = document.createElement('div');
-    divElement.classList.add('todos-post')
-
-    divElement.innerHTML = `  
+    divElement.innerHTML += `  
+    <div class="post postear">
+    <div class="user-post">
+    <p class="">Publicado por:  ${publication.email} </p>
+    ${userCurrent().uid === publication.id ? `
+    <button id="${publication.id}" class="like">eliminar</button>` : ``}
+    </div>
+      <textarea id="${publication.id}" class="">${publication.textPost}</textarea>
+      <div class="">
+        <div class="">
+          <p>
+            <input id="btn-facebook" type=image src="https://img.icons8.com/flat_round/64/000000/hearts.png" class="icon">
+            <input id="btn-google" type=image src="https://img.icons8.com/ios/50/000000/edit-file.png" class="icon">
+          </p>
+        </div>
+        <div class="comment-sub1 mp">
+           <input id="" class="comentario" placeholder ="Escribe un comentario" type=text/>
+        </div>
+      </div>
+    `;
     
-<div class="user-post">
-<p class="">${data.email}</p>
-${userCurrent().uid === data.idUser ? `
-<button id="btn-delete-${data.id}" class=""><i class=""></i></button>` : ``}
-</div>
-<div class="p2">
-<p id="post-${data.id}" class="">${data.textPost}</p>
-<textarea id="text-${data.id}" class="">${data.textPost}</textarea>
-<div class="">
-  <div class="">
-    <button id="btn-like-${data.id}" class=""></i></button>
-    <button id="btn-dislike-${data.id}" class=""></i></button>
-    <label id="count-likes" class=""></label>
-  </div>
-  <div class="">
-    <select id="" class=" ">
-      <option value="">PRIVADO</option>
-      <option value="">PUBLICO</option>
-    </select>
-  </div>
-</div>`;
-return divElement;
+  return divElement;
 }
-
-
 

@@ -1,35 +1,29 @@
 import { userCurrent } from '../model/modelFirebase.js';
 import { addPostFirebase } from '../model/modelPost.js';
 import { db } from '../../main.js';
-import { itemPost } from '../view/post-view.js';
 
-// Guarda los datos en la bd
-export const textPost = (txtpublicacion) => {
-  const auth = firebase.auth();
-  return auth.onAuthStateChanged((user) => {
-    if(user){
-      addPostFirebase(userCurrent().email, txtpublicacion)
-        .then((res) => {
-          document.querySelector('#publicacion').value = "";// limpia publicacion
-          console.log('Document written with ID: ', res.id);
-        })
-        .catch(() => {
-          // console.error('Error adding document: ', error);
-        });
-    }
-  });
- };
-// Juntando todos los comentarios en un push
-// export const savePost = (callback) => {
-//   event.defaultPrevented();
-//   db.collection('posts')
-//     .onSnapshot((querySnapshot) => {
-//       const comment = [];
-//       querySnapshot.forEach((doc) => {
-//         comment.push(doc.data());
-//         itemPost(comment);
-//       });
-//     });
-// };
-
-
+export const textPost = () => {
+  event.preventDefault();
+  const txtpublicacion = document.getElementById('publicacion').value
+  // document.querySelector('#publicacion').value;
+  addPostFirebase(userCurrent().email, txtpublicacion) // pinta en el home
+    .then((res) => {
+      document.querySelector('#publicacion').value = "";
+      console.log('Document written with ID: ', res.id);
+    })
+    .catch(() => {
+      // console.error('Error adding document: ', error);
+    });
+}
+export const getPost = (datapost) => {
+  event.preventDefault();
+  db.collection('posts')
+    .onSnapshot((querySnapshot) => {
+      const array = [];
+      querySnapshot.forEach((doc) => {        
+        array.push({id: doc.id, ...doc.data()})
+        console.log({id: doc.id, ...doc.data()});
+      });
+      datapost(array);
+    });
+};
