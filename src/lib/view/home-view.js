@@ -1,8 +1,7 @@
 import { obtenerInfo } from '../controller/obtenerInfo-controller.js';
 import { cerrarSesion } from '../model/modelFirebase.js'
 import { itemPost } from '../view/post-view.js'
-import { savePost } from '../controller/postContr.js';
-import { datapost } from '../controller/ruta.js'
+import { textPost  } from '../controller/postContr.js';
 
 export default (data) => { 
 const viewHome = `
@@ -39,9 +38,9 @@ const viewHome = `
             </div>
             <button id="btn-compartir" class="compartir">Compartir</button>
         </div>
+        <div class="public-posts" id="public-posts">
+        </div>
     </div>
-</div>
-<div class="public-posts" id="public-posts">
 </div>
  `;
   const divElem = document.createElement('div');
@@ -53,7 +52,10 @@ const viewHome = `
   const btnPerfil = divElem.querySelector('#btn-perfil');
   const btnCompartir = divElem.querySelector('#btn-compartir');
   const contenedorPost =  divElem.querySelector('#public-posts');
-  contenedorPost.appendChild(itemPost(data));
+
+   data.forEach(element => {
+    contenedorPost.appendChild(itemPost(element));
+   });
 
   btnCerrar.addEventListener('click', (e) => {
     e.preventDefault();
@@ -65,10 +67,7 @@ const viewHome = `
   });
   obtenerInfo(userName, userCorreo, userImage); // pinta en el home esos datos de argumento
   btnCompartir.addEventListener('click', () =>{
-    //savePost(datapost);
-    // textPost();
-    const contenedorPost =  divElem.querySelector('#public-posts');
-    contenedorPost.innerHTML += itemPost(data);
+    textPost() // Guarda en la bd
   })
   return divElem;
 };

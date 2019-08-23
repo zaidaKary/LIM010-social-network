@@ -4,8 +4,9 @@ import { db } from '../../main.js';
 
 export const textPost = () => {
   event.preventDefault();
-  document.querySelector('#publicacion').value;
-  addPostFirebase(userCurrent().email, textPost) // pinta en el home
+  const txtpublicacion = document.getElementById('publicacion').value
+  // document.querySelector('#publicacion').value;
+  addPostFirebase(userCurrent().email, txtpublicacion) // pinta en el home
     .then((res) => {
       document.querySelector('#publicacion').value = "";
       console.log('Document written with ID: ', res.id);
@@ -14,13 +15,15 @@ export const textPost = () => {
       // console.error('Error adding document: ', error);
     });
 }
-  
-export const savePost = (datapost) => {
+export const getPost = (datapost) => {
   event.preventDefault();
   db.collection('posts')
     .onSnapshot((querySnapshot) => {
+      const array = [];
       querySnapshot.forEach((doc) => {        
-        datapost({id: doc.id, ...doc.data()})
+        array.push({id: doc.id, ...doc.data()})
+        console.log({id: doc.id, ...doc.data()});
       });
+      datapost(array);
     });
 };

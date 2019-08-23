@@ -1,5 +1,4 @@
 import { loginFunction, authAccountFacebook, authAccountGoogle, mostrarPassword } from '../controller/login-controller.js';
-import { savePost } from '../controller/postContr.js'
 
 export default () => {
   const viewLogin = `
