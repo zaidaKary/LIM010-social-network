@@ -31,4 +31,10 @@ export const getPost = (callback = () => { }) => {
     });
 };
 
+// const suma = (a = 4, b = 7) => a + b
+// suma(2,7) // 9
+
+// suma() // Nann> 11
+// suma(3) // 10
+
 
