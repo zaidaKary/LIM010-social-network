@@ -138,10 +138,15 @@ body{
     color: #fff;
     border: none;
     cursor:pointer;
+    border-radius: 14px;
 }
 footer{
     margin-top: 60px;
     font-size: 11px;
+}
+.btn-imagen-compartir {
+    display: flex;
+    justify-content: space-between;
 }
 /*Ocultando el boton cerrar*/
 .hide{

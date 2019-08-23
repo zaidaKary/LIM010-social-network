@@ -15,12 +15,14 @@ export const itemPost = (publication) => {
       <label id="${publication.id}" class="">${publication.textPost}</label>
       <div class="">
         <div class="">
-          <button class="like" >LIKE</i></button>
-          <button  class="like">CMP</button>
+          <p>
+            <input id="btn-facebook" type=image src="https://img.icons8.com/flat_round/64/000000/hearts.png" class="icon">
+            <input id="btn-google" type=image src="https://img.icons8.com/ios/50/000000/edit-file.png" class="icon">
+          </p>
         </div>
         <div class="comment-sub1 mp">
            <input id="" class="comentario" placeholder ="Escribe un comentario" type=text/>
-          </div>
+        </div>
       </div>
     `;
     if(userCurrent().uid === publication.idPost){

@@ -1,5 +1,5 @@
 import { userCurrent } from '../model/modelFirebase.js';
-import { addPostFirebase } from '../model/modelPost.js';
+import { addPostFirebase} from '../model/modelPost.js';
 import { db } from '../../main.js';
 
 export const textPost = () => {
