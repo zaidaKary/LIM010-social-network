@@ -1,5 +1,5 @@
 
-import { textPost, savePost } from '../controller/postContr.js';
+import { textPost, getPost } from '../controller/postContr.js';
 import { obtenerInfo } from '../controller/obtenerInfo-controller.js';
 import { cerrarSesion } from '../model/modelFirebase.js'
 import { itemPost } from '../view/post-view.js';
@@ -84,7 +84,7 @@ export default () => {
     postContainer.innerHTML = '';
   });
 
-  savePost(mostrarPost);
+  getPost(mostrarPost);
 
   return divElem;
 }

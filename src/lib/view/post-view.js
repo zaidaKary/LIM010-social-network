@@ -11,7 +11,7 @@ export const itemPost = (data) => {
   ${userCurrent().uid === data.id ? `
   <button id="${data.id}" class="like">eliminar</button>` : ``}
   </div>
-    <textarea id="text-${data.id}" class="">${data.textPost}</textarea>
+    <textarea id="${data.id}" class="">${data.textPost}</textarea>
     <div class="">
       <div class="">
         <button class="like" >LIKE</i></button>

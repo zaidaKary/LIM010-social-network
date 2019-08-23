@@ -20,7 +20,7 @@ export const textPost = (txtpublicacion) => {
   });
 };
 // Juntando todos los comentarios 
-export const savePost = (callback = () => { }) => {
+export const getPost = (callback = () => { }) => {
   db.collection('posts')
     .onSnapshot((querySnapshot) => {
       // const comments = [];
