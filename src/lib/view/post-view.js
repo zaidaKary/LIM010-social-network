@@ -1,5 +1,5 @@
 import { userCurrent } from '../model/modelFirebase.js';
-// import { deletePost } from '../controller/postContr.js';
+// import { deletePosts } from '../model/modelPost.js';
 
 // import { TextPost } from '../controller/postContr.js'
 export const itemPost = (publication) => {
@@ -23,14 +23,5 @@ export const itemPost = (publication) => {
           </div>
       </div>
     `;
-
-  // const divElem = document.createElement('div');
-  // divElem.innerHTML = itemPost;
-  // // const deletePostUser = divElem.querySelector('#delete');
-
-  // // deletePostUser.addEventListener('click', () => {
-  // //   deletePost(id);
-  // // });
   return divElement;
 }
-
