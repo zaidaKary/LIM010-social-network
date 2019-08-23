@@ -12,7 +12,7 @@ export const textPost = () => {
       console.log('Document written with ID: ', res.id);
     })
     .catch(() => {
-      // console.error('Error adding document: ', error);
+      // console.error('Error adding document: ', error);.
     });
 }
 export const getPost = (datapost) => {
@@ -20,9 +20,9 @@ export const getPost = (datapost) => {
   db.collection('posts')
     .onSnapshot((querySnapshot) => {
       const array = [];
-      querySnapshot.forEach((doc) => {
-        array.push({ id: doc.id, ...doc.data() })
-        console.log({ id: doc.id, ...doc.data() });
+      querySnapshot.forEach((doc) => {        
+        array.push({id: doc.id, ...doc.data()});
+        console.log(array);
       });
       datapost(array);
     });

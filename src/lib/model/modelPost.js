@@ -6,4 +6,4 @@ export const addPostFirebase = (email, textPost,idPost) => db.collection('posts'
   idPost
 });
 
-export const deletePost = (idPost) => db.collection('posts').doc(idPost).delete();
+export const deletePost = (iduser) => db.collection('posts').doc(iduser).delete();

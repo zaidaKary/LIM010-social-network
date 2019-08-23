@@ -1,18 +1,18 @@
 import { userCurrent } from '../model/modelFirebase.js';
-// import { deletePost } from '../controller/postContr.js';
+import { deletePost } from '../model/modelPost.js';
 
-// import { TextPost } from '../controller/postContr.js';
+// import { TextPost } from '../controller/postContr.js'
 export const itemPost = (publication) => {
-  // console.log(data);
-  const divElement = document.createElement('div');
-  divElement.innerHTML += `  
+    // console.log(data);
+    const divElement = document.createElement('div');
+    divElement.innerHTML = `  
     <div class="post postear">
     <div class="user-post">
     <p class="">Publicado por:  ${publication.email} </p>
-    ${userCurrent().uid === publication.id ? `
-    <button id="delete-${publication.id}" class="like">eliminar</button>` : ``}
+    ${userCurrent().uid === publication.idPost ? `
+    <button id="eliminar" class="like">eliminar</button>` : ``}
     </div>
-      <textarea id="${publication.id}" class="">${publication.textPost}</textarea>
+      <label id="${publication.id}" class="">${publication.textPost}</label>
       <div class="">
         <div class="">
           <p>
@@ -25,6 +25,12 @@ export const itemPost = (publication) => {
         </div>
       </div>
     `;
-    
+    if(userCurrent().uid === publication.idPost){
+      const btnEliminar = divElement.querySelector('#eliminar');
+      btnEliminar.addEventListener('click', () =>{
+       deletePost(publication.id);
+      })
+    }
+
   return divElement;
 }
