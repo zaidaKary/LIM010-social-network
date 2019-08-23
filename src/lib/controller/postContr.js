@@ -6,13 +6,13 @@ export const textPost = () => {
   event.preventDefault();
   const txtpublicacion = document.getElementById('publicacion').value
   // document.querySelector('#publicacion').value;
-  addPostFirebase(userCurrent().email, txtpublicacion) // pinta en el home
+  addPostFirebase(userCurrent().email, txtpublicacion, userCurrent().uid) // pinta en el home
     .then((res) => {
       document.querySelector('#publicacion').value = "";
       console.log('Document written with ID: ', res.id);
     })
     .catch(() => {
-      // console.error('Error adding document: ', error);
+      // console.error('Error adding document: ', error);.
     });
 }
 export const getPost = (datapost) => {
@@ -21,9 +21,10 @@ export const getPost = (datapost) => {
     .onSnapshot((querySnapshot) => {
       const array = [];
       querySnapshot.forEach((doc) => {        
-        array.push({id: doc.id, ...doc.data()})
-        console.log({id: doc.id, ...doc.data()});
+        array.push({id: doc.id, ...doc.data()});
+        console.log(array);
       });
       datapost(array);
     });
 };
+
