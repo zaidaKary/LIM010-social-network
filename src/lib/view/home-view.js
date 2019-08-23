@@ -61,9 +61,8 @@ export default () => {
   const btnCompartir = divElem.querySelector('#btn-compartir');
   const postContainer = divElem.querySelector('#todos-post');
   const mostrarPost = (posts) => {
-    posts.forEach((data) => {
-      postContainer.appendChild(itemPost(data));
-    });
+    console.log(posts);
+    postContainer.appendChild(itemPost(posts));
   };
 
   btnCerrar.addEventListener('click', (e) => {
@@ -82,6 +81,7 @@ export default () => {
     e.preventDefault();
     const txtpublicacion = document.getElementById('publicacion').value;
     textPost(txtpublicacion) // Guarda en la bd
+    postContainer.innerHTML = '';
   });
 
   savePost(mostrarPost);

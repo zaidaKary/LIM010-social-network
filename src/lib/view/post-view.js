@@ -1,12 +1,14 @@
 import { userCurrent } from '../model/modelFirebase.js';
 export const itemPost = (data) => {
+  console.log(userCurrent().uid);
+  console.log(data.id);
   const divElement = document.createElement('div');
   divElement.classList.add('todos-post')
   divElement.innerHTML = `
   <div class="post postear">
   <div class="user-post">
   <p class="">Publicado por:  ${data.email} </p>
-  ${userCurrent().uid === data.idUser ? `
+  ${userCurrent().uid === data.id ? `
   <button id="${data.id}" class="like">eliminar</button>` : ``}
   </div>
     <textarea id="text-${data.id}" class="">${data.textPost}</textarea>
