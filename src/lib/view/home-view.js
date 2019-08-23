@@ -83,7 +83,7 @@ export default () => {
     const txtpublicacion = document.getElementById('publicacion').value;
     textPost(txtpublicacion) // Guarda en la bd
   });
-  
+
   savePost(mostrarPost);
 
   return divElem;
