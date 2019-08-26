@@ -7,3 +7,7 @@ export const addPostFirebase = (email, textPost,idPost) => db.collection('posts'
 });
 
 export const deletePost = (iduser) => db.collection('posts').doc(iduser).delete();
+
+export const editPost = (idPost, publicacion) => db.collection('posts').doc(idPost).update({
+  textPost: publicacion,
+});

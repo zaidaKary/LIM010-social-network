@@ -10,8 +10,8 @@ export default () => {
             <input id="nombre" type="text" disabled/>
             <label><strong>Email:</strong></label>
             <input id="correo" type="text" disabled/>
-            <button class="sesion log espacio" id="editar-perfil">Editar</button>
-            <button class="sesion log espacio" id="guardar-perfil">Guardar</button>
+            <button class="sesion log espacio sin-ocultar" id="editar-perfil">Editar</button>
+            <button class="sesion log espacio ocultar" id="guardar-perfil">Guardar</button>
             <button class="sesion log espacio" id="inicio">Inicio</button>
         </div>       
     </div>`;
@@ -28,12 +28,17 @@ export default () => {
   // obteniendoDatosUsuario();
   btnEditar.addEventListener('click', () => {
     userNombre.disabled = false;
+    btnGuardar.style.display = 'block';
+    btnEditar.style.display = 'none';
   });
 
   btnGuardar.addEventListener('click', () => {
     const nuevoUserNombre = divElem.querySelector('#nombre').value;
     actualizandoPerfil(nuevoUserNombre);
     userNombre.disabled = true;
+    btnGuardar.style.display = 'none';
+    btnEditar.style.display = 'block';
+
   });
 
   btnInicio.addEventListener('click', () =>{

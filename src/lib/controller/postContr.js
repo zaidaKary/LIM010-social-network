@@ -1,5 +1,5 @@
 import { userCurrent } from '../model/modelFirebase.js';
-import { addPostFirebase} from '../model/modelPost.js';
+import { addPostFirebase, editPost} from '../model/modelPost.js';
 import { db } from '../../main.js';
 
 export const textPost = () => {
@@ -26,5 +26,9 @@ export const getPost = (datapost) => {
       });
       datapost(array);
     });
+};
+
+export const actualizandoPost = (id, publicacion) => {
+  editPost(id, publicacion);
 };
 

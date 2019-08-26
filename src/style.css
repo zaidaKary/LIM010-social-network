@@ -176,6 +176,22 @@ footer{
 .fondo-likes {
     background: antiquewhite;
 }
+.ocultar {
+    display: none;
+}
+.sin-ocultar {
+    display: block;
+}
+.alineando-iconos {
+    display: flex;
+}
+.text-area {
+    background: white;
+    border: none;
+    resize: none;
+    height: 6em;
+    width: 500px;
+}
 /*Ocultando el boton cerrar*/
 .hide{
   display: none;
