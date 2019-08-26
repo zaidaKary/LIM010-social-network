@@ -25,18 +25,23 @@ const viewHome = `
     <div class="profile-content">
         <div class="content">
             <div id="datos-user">
+            <div class="imagen-fondo-perfil">
+            </div>
+            <div class="usuario">
                 <img class="foto-user" id="foto" src="./img/profile.png" />
                 <div class="datos">
                     <label class="profile-name" id="name" for="name"></label>
                     <label id="correo" class="profile-name" for="name"></label>
+                    </div>
                 </div>
             </div>
+            
             <div class="postear">
             <div class="post">
                 <form id="form-post">
                 <textarea   id= "publicacion" name="post" id="new-post" cols="30" rows="5" placeholder="¿Qué quieres compartir?"></textarea>              
                 <div class="btn-imagen-compartir">
-                <input id="btn-google" type=image src="https://img.icons8.com/color/48/000000/image.png" class="icon">
+                <input id="btn-google" type=image src="https://img.icons8.com/color/48/000000/image.png" class="img-publicar">
                 <button id="btn-compartir" class="compartir">Compartir</button>
                 </div>
                 </form>

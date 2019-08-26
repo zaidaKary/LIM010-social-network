@@ -44,7 +44,9 @@ body{
     color: #282929;
 }
 .icon{
-    width: 40px;
+    width: 31px;
+    height: 32px;
+    margin-bottom: -4px;
 }
 .ojo{
     position: relative;
@@ -64,8 +66,9 @@ body{
    padding: 30% 0;
 }
 .post{
-    padding: 3px;
-    margin: 15px;
+    padding: 11px;
+    margin: 9px;
+    border: 1px solid #070707;
 }
 .comentario{
     width: 100%;
@@ -105,10 +108,9 @@ body{
 /* Post */
 .postear{
     width: 95%;
-    height: auto;
-    border: 1px solid #898d8a;
-    border-radius: 2px;
-    margin: 2%;
+    margin: 1%;
+    padding-bottom: 9px;
+    padding-top: 9px;
 }
 .post textarea{
         width: 100%;
@@ -129,6 +131,9 @@ body{
     color: #1b1116;
     font-weight: bold;
     padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 4px;
 }
 .compartir{
     background:#164e87;
@@ -147,6 +152,26 @@ footer{
     display: flex;
     justify-content: space-between;
 }
+.img-eliminar {
+    width: 22px;
+    height: 22px;
+}
+.img-corazon {
+    width: 28px;
+}
+.texto-publicacion {
+    border: 1px solid #070707;
+    display: flex;
+    padding-top: 6px;
+    padding-left: 3px;
+}
+.img-publicar{
+    width: 40px;
+    height: 40px;
+}
+.border-public {
+    padding: 14px;
+}
 /*Ocultando el boton cerrar*/
 .hide{
   display: none;
@@ -154,12 +179,7 @@ footer{
 
 /* Perfil User Inicio*/
 #datos-user{
-    flex-direction: row;
-    display: flex;
-    align-items: center;
-    border: 1px solid #7c817e;
-    margin: 2%;
-    height: 300px;
+    padding-top: 28px;
 }
 .datos{
     display: flex;
@@ -186,6 +206,16 @@ footer{
     font-weight: bold;
     color:#164e87;
     font-size: 95%;
+}
+.usuario {
+    border: 1px solid #d81010;
+}
+.imagen-fondo-perfil {
+    border: 1px solid #08d424;
+    padding: 50px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("https://lh6.googleusercontent.com/-a_9Yxlct8nE/Ud_A6PcsveI/AAAAAAAAARk/hsE39Mh6Ayk/w1435-h897-no/fondo+de+pantalla+de+paraiso+de+agua+12.jpg");
 }
 /* Perfil User*/
 .perfil {
