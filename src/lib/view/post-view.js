@@ -15,14 +15,14 @@ export const itemPost = (publication) => {
     <div class="texto-publicacion border-public">
       <label id="${publication.id}" class="">${publication.textPost}</label>
     </div>
-      <div class="texto-publicacion">
+      <div class="texto-publicacion fondo-likes">
           <p>
             <input id="btn-like" type=image src="https://img.icons8.com/flat_round/64/000000/hearts.png" class="img-corazon">
             <input id="btn-editar" type=image src="https://img.icons8.com/color/48/000000/edit-property.png"" class="icon">
           </p>
       </div>
         <div class="comment-sub1 mp">
-           <input id="" class="comentario" placeholder ="Escribe un comentario" type=text/>
+           <input id="" class="comentario" placeholder ="Escribe un comentario..." type=text/>
         </div>
       </div>
     `;

@@ -32,7 +32,7 @@ const viewHome = `
                 <div class="datos">
                     <label class="profile-name" id="name" for="name"></label>
                     <label id="correo" class="profile-name" for="name"></label>
-                    </div>
+                </div>
                 </div>
             </div>
             

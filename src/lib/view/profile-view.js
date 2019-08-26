@@ -13,7 +13,7 @@ export default () => {
             <button class="sesion log espacio" id="editar-perfil">Editar</button>
             <button class="sesion log espacio" id="guardar-perfil">Guardar</button>
             <button class="sesion log espacio" id="inicio">Inicio</button>
-        <div>        
+        </div>       
     </div>`;
   const divElem = document.createElement('div');
   divElem.innerHTML = viewProfile;
