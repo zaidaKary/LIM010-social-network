@@ -306,9 +306,9 @@ header {
         background-image: url(../src/img/travel.gif);
         height: -webkit-fill-available;
         background-repeat: no-repeat;
+        background-size: cover;
     }
     .content{
        display: flex;
     }
-   
 }

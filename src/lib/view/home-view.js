@@ -38,6 +38,10 @@ const viewHome = `
                 <div class="btn-imagen-compartir">
                 <input id="btn-google" type=image src="https://img.icons8.com/color/48/000000/image.png" class="icon">
                 <button id="btn-compartir" class="compartir">Compartir</button>
+                   <select>
+                     <option value="0">Privado</option>
+                     <option value="1">Publico</option>
+                   </select>
                 </div>
                 </form>
             </div>  

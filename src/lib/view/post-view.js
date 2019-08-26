@@ -10,7 +10,9 @@ export const itemPost = (publication) => {
     <div class="user-post">
     <p class="">Publicado por:  ${publication.email} </p>
     ${userCurrent().uid === publication.idPost ? `
-    <button id="eliminar" class="like">eliminar</button>` : ``}
+    <button id="eliminar" class="like">eliminar</button>
+    <button id="editar" class="like">editar</button>` : ``
+  }
     </div>
       <label id="${publication.id}" class="">${publication.textPost}</label>
       <div class="">
@@ -29,6 +31,7 @@ export const itemPost = (publication) => {
       const btnEliminar = divElement.querySelector('#eliminar');
       btnEliminar.addEventListener('click', () =>{
        deletePost(publication.id);
+      //  editarPost(publication.id, publication.textPost);
       })
     }
 
