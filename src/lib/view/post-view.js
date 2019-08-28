@@ -6,10 +6,12 @@ import { actualizandoPost, deleteLikePost, addLike } from '../controller/postCon
 export const itemPost = (publication) => {
     // console.log(data);
     const divElement = document.createElement('div');
-    divElement.innerHTML = `  
+    if(publication.typePost === "publico" || userCurrent().uid === publication.idPost){
+      divElement.innerHTML = `
     <div class="postear">
     <div class="user-post">
     <p>Publicado por:  ${publication.email} </p>
+    <p>${publication.typePost}<p/>
     ${userCurrent().uid === publication.idPost ? `     
     <input id="eliminar" type=image src="https://img.icons8.com/offices/16/000000/delete-sign.png" class="img-eliminar">` : ``}
     </div>
@@ -38,7 +40,7 @@ export const itemPost = (publication) => {
            <input id="" class="comentario" placeholder ="Escribe un comentario..." type=text/>
         </div>
       </div>
-    `;
+    `
     if(userCurrent().uid === publication.idPost){
       const btnEliminar = divElement.querySelector('#eliminar');
       btnEliminar.addEventListener('click', () =>{
@@ -60,20 +62,10 @@ export const itemPost = (publication) => {
         divElement.querySelector('#editar').style.display = 'block';
       });
     }
-
-  
-  if (userCurrent().uid === publication.idPost) {
-    const btnEliminar = divElement.querySelector('#eliminar');
-    btnEliminar.addEventListener('click', () => {
-      deletePost(publication.id);
-    })
-  }
-
   const btnDislike = divElement.querySelector(`#dislike-${publication.id}`);
   const btnLike = divElement.querySelector(`#like-${publication.id}`);
 
     //  Agregando Likes
-
   btnLike.addEventListener('click', () => {
     btnDislike.classList.remove('hide');
     btnLike.classList.add('hide'); 
@@ -86,7 +78,8 @@ export const itemPost = (publication) => {
       btnDislike.classList.add('hide');
       btnLike.classList.remove('hide');
       deleteLikePost(publication.id)
-    });
+    }); 
+  }
   return divElement;
 }
 
