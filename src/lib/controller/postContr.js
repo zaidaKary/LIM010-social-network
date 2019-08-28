@@ -1,13 +1,12 @@
 import { userCurrent } from '../model/modelFirebase.js';
-import { addPostFirebase, deleteLikeDb, addLikeDb } from '../model/modelPost.js';
+import { addPostFirebase, deleteLikeDb, addLikeDb ,editPost} from '../model/modelPost.js';
 import { db } from '../../main.js';
 
 export const textPost = () => {
   event.preventDefault();
   const txtpublicacion = document.getElementById('publicacion').value
-  const imgPost = document.getElementById('image-file').value
-  console.log(imgPost);
-  addPostFirebase(userCurrent().email, txtpublicacion, userCurrent().uid, imgPost) // pinta en el home
+  // const imgPost = document.getElementById('image-file').value
+  addPostFirebase(userCurrent().email, txtpublicacion, userCurrent().uid) // pinta en el home
     .then((res) => {
       document.querySelector('#publicacion').value = "";
       console.log('Document written with ID: ', res.id);
@@ -64,3 +63,7 @@ export const getImagePost = (file, uploader, callback) => {
     }
   );
 }
+export const actualizandoPost = (id, publicacion) => {
+  editPost(id, publicacion);
+};
+

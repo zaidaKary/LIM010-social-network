@@ -1,7 +1,7 @@
 import { obtenerInfo } from '../controller/obtenerInfo-controller.js';
 import { cerrarSesion } from '../model/modelFirebase.js'
 import { itemPost } from '../view/post-view.js'
-import { textPost, getImagePost } from '../controller/postContr.js';
+import { textPost } from '../controller/postContr.js';
 
 
 export default (data) => {
@@ -22,36 +22,37 @@ export default (data) => {
   </div>
 </header>
 <div id="vista-home" class="container-post">
-  <div class="profile-content">
-      <div class="content">
-          <div id="datos-user">
-              <img class="foto-user" id="foto" src="./img/profile.png" />
-              <div class="datos">
-                  <label class="profile-name" id="name" for="name"></label>
-                  <label id="correo" class="profile-name" for="name"></label>
-              </div>
-          </div>
-          <div class="postear">
-              <div class="post">
-                  <form id="form-post">
-                      <textarea id="publicacion" name="post" id="new-post" cols="30" rows="5"
-                          placeholder="¿Qué quieres compartir?"></textarea>
-                      <div class="btn-imagen-compartir">
-                          <div class="action-sub1 mp">
-                              <label class="btn-label">
-                                  <input type="file" id="image-file" class="circle">
-                              </label>
-                              <progress value="0" max="100"  id="uploader">0%</progress>
-                          </div>
-                          <button id="btn-compartir" class="compartir">Compartir</button>
-                      </div>
-                  </form>
-              </div>
-              <div class="public-posts" id="public-posts">
-              </div>
-          </div>
-      </div>
-  </div>
+    <div class="profile-content">
+        <div class="content">
+            <div id="datos-user">
+            <div class="imagen-fondo-perfil">
+            </div>
+            <div class="usuario">
+                <img class="foto-user" id="foto" src="./img/profile.png" />
+                <div class="datos">
+                    <label class="profile-name" id="name" for="name"></label>
+                    <label id="correo" class="profile-name" for="name"></label>
+                </div>
+                </div>
+            </div>
+            
+            <div class="postear">
+            <div class="post">
+                <form id="form-post">
+                <textarea   id= "publicacion" name="post" id="new-post" cols="30" rows="5" placeholder="¿Qué quieres compartir?"></textarea>              
+                <div class="btn-imagen-compartir">
+                <input id="btn-google" type=image src="https://img.icons8.com/color/48/000000/image.png" class="img-publicar">
+                <button id="btn-compartir" class="compartir">Compartir</button>
+                </div>
+                </form>
+            </div>  
+            <div class="public-posts" id="public-posts">
+            </div>        
+            </div>
+          
+        </div>
+        
+    </div>
 </div>
 </div>`;
   const divElem = document.createElement('div');
@@ -84,11 +85,11 @@ export default (data) => {
     textPost() // Guarda en la bd
   })
 
-  //  subiendo imagen
-  btnfile.addEventListener('change', (event) => {
-    const file = event.target.files[0]; // accediendo  al 1er elemento del objeto files.
-    getImagePost(file, uploader);
-  });
+//   //  subiendo imagen
+//   btnfile.addEventListener('change', (event) => {
+//     const file = event.target.files[0]; // accediendo  al 1er elemento del objeto files.
+//     getImagePost(file, uploader);
+//   });
 
   return divElem;
 };

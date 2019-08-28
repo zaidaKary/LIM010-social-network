@@ -1,10 +1,10 @@
 import { db } from '../../main.js';
 
-export const addPostFirebase = (email, textPost, idPost, imgPost) => db.collection('posts').add({ // agregamos datos en la colección
+export const addPostFirebase = (email, textPost, idPost) => db.collection('posts').add({ // agregamos datos en la colección
   email,
   textPost,
   idPost,
-  imgPost
+
 });
 
 export const deletePost = (iduser) => db.collection('posts').doc(iduser).delete();
@@ -18,3 +18,7 @@ export const deleteLikeDb = (iduser, idPost) => db.collection('posts').doc(idPos
   .delete();
 export const showLikeDb = (idPost) => db.collection('post').doc(idPost).collection('likes');
 
+
+export const editPost = (idPost, publicacion) => db.collection('posts').doc(idPost).update({
+  textPost: publicacion,
+});
