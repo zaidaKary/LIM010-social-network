@@ -1,7 +1,7 @@
 import { obtenerInfo } from '../controller/obtenerInfo-controller.js';
-import { cerrarSesion } from '../model/modelFirebase.js'
+import { cerrarSesion, userCurrent } from '../model/modelFirebase.js'
 import { itemPost } from '../view/post-view.js'
-import { textPost} from '../controller/postContr.js';
+import { textPost, getPrivatePosts} from '../controller/postContr.js';
 
 export default (data) => { 
 const viewHome = `
@@ -41,10 +41,10 @@ const viewHome = `
                 <div class="btn-imagen-compartir">
                 <input id="btn-google" type=image src="https://img.icons8.com/color/48/000000/image.png" class="img-publicar">
                 <button id="btn-compartir" class="compartir">Compartir</button>
-                   <select>
-                     <option value="0">Privado</option>
-                     <option value="1">Publico</option>
-                   </select>
+                  <select id="options">
+                        <option value="publico">Publico</option>
+                        <option value="privado">Privado</option>
+                  </select>
                 </div>
                 </form>
             </div>  
@@ -64,6 +64,7 @@ const viewHome = `
   const btnPerfil = divElem.querySelector('#btn-perfil');
   const btnCompartir = divElem.querySelector('#btn-compartir');
   const contenedorPost =  divElem.querySelector('#public-posts');
+  const optionsPost = divElem.querySelector('#options');
   data.forEach(element => {
     contenedorPost.appendChild(itemPost(element));
    });
@@ -78,7 +79,16 @@ const viewHome = `
   obtenerInfo(userName, userCorreo, userImage); // pinta en el home esos datos de argumento
   btnCompartir.addEventListener('click', () =>{
     textPost() // Guarda en la bd
+    // const valueOptions = optionsPost.value;
+    // getPrivatePosts(userCurrent().uid, valueOptions);
   })
+  // if(userCurrent().uid === publication.idPost){
+  // const publicationPost = divElement.querySelector('#options-posts');
+  // publicationPost.addEventListener('change',()=>{
+  //   const postPrivacy = publicationPost.value;    
+  //   updatePrivacy(data,postPrivacy)
+  //  });  
+  // }
   return divElem;
 };
 

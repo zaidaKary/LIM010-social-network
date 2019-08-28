@@ -11,16 +11,17 @@ export const itemPost = (publication) => {
     <div class="user-post">
     <p>Publicado por:  ${publication.email} </p>
     ${userCurrent().uid === publication.idPost ? `
-    <input id="eliminar" type=image src="https://img.icons8.com/offices/16/000000/delete-sign.png" class="img-eliminar">` : ``}
+    <input id="eliminar" type=image src="https://img.icons8.com/offices/16/000000/delete-sign.png" class="img-eliminar">
+    <input id="editar" type=image src="https://img.icons8.com/color/48/000000/edit-property.png" class="icon sin-ocultar">
+    <input id="guardar" type=image src="https://img.icons8.com/color/48/000000/save.png" class="icon ocultar">`: ``}
     </div>
     <div class="texto-publicacion border-public">
       <textarea id="idpublicacion-${publication.id}" class="text-area" disabled>${publication.textPost}</textarea>
+      <p> Publicado el :${publication.date}</p>
     </div>
       <div class="texto-publicacion fondo-likes">
           <p class="alineando-iconos">
             <input id="like" type=image src="https://img.icons8.com/flat_round/64/000000/hearts.png" class="img-corazon">
-            <input id="editar" type=image src="https://img.icons8.com/color/48/000000/edit-property.png" class="icon sin-ocultar">
-            <input id="guardar" type=image src="https://img.icons8.com/color/48/000000/save.png" class="icon ocultar">
           </p>
       </div>
         <div class="comment-sub1 mp">
