@@ -1,5 +1,5 @@
 import { userCurrent } from '../model/modelFirebase.js';
-import { addPostFirebase, editPost} from '../model/modelPost.js';
+import { addPostFirebase, deleteLikeDb, addLikeDb ,editPost} from '../model/modelPost.js';
 import { db } from '../../main.js';
 
 const allDatePost= (fullDate)=>{
@@ -9,11 +9,11 @@ const allDatePost= (fullDate)=>{
   
   const minutes =  fullDate.getMinutes();
   const seconds = fullDate.getSeconds();
-  let  hours = fullDate.getHours()-12;
+  let  hours = fullDate.getHours();
   
   const day = `${getDate}/${getMonth}/${getFullYear}`;
   const myClock = `A las: ${hours}:${minutes}:${seconds}`;
-  const date = `${day} - ${myClock}`
+  const date = `${day} ${myClock}`
   console.log(date);
   return date;  
 }
@@ -45,6 +45,42 @@ export const getPost = (datapost) => {
       datapost(array);
     });
 };
+
+
+/*likes*/
+export const deleteLikePost = (idPost) => {
+  deleteLikeDb(userCurrent().uid, idPost)
+    .then(() => {
+    });
+};
+
+export const addLike = (idPost) => {
+  addLikeDb(userCurrent().uid, idPost, userCurrent().email)
+    .then(() => {
+    });
+};
+
+
+export const getImagePost = (file, uploader, callback) => {
+  // Crear un storage ref
+  const storageRef = firebase.storage().ref();    //
+  const imageRef = storageRef.child(`img/${file.name}`)
+
+  // Subir archivo
+  const task = imageRef.put(file); //.put mètodo de firebase.
+  return task.on('state_changed', //actualizamos la barra de progreso.
+    (snapshot) => {  // notifica el proceso de subir archivo.
+      const percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      uploader.value = percentage;
+    },
+    (error) => (error),
+    () => {
+      const downloadImg = task.snapshot.ref.getDownloadURL()//archivo subido.
+      downloadImg
+        .then(callback)
+    }
+  );
+}
 export const actualizandoPost = (id, publicacion) => {
   editPost(id, publicacion);
 };

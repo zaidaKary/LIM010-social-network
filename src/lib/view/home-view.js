@@ -3,22 +3,22 @@ import { cerrarSesion, userCurrent } from '../model/modelFirebase.js'
 import { itemPost } from '../view/post-view.js'
 import { textPost, getPrivatePosts} from '../controller/postContr.js';
 
-export default (data) => { 
-const viewHome = `
-<header class="barra-menu" id="barra-menu">
-<div class="contenedor-logo">
-  <img class="logo-menu" src="./img/logoMenu2.png" alt="Logo live & travel" />
-</div>
-<div class="contenedor-menu">
-  <input type="checkbox" id="btn-menu">
-  <label class="glyphicon glyphicon-align-justify menu-movil" for="btn-menu"></label>
-  <nav class="menu">
-    <ul>
-      <li id="btn-perfil"><a> PERFIL </a></li>
-      <li id="btn-cerrar"><a>CERRAR SESIÓN</a></li>
-    </ul>
-  </nav>
-</div>
+export default (data) => {
+  const viewHome = `
+  <header class="barra-menu" id="barra-menu">
+  <div class="contenedor-logo">
+      <img class="logo-menu" src="./img/logoMenu2.png" alt="Logo live & travel" />
+  </div>
+  <div class="contenedor-menu">
+      <input type="checkbox" id="btn-menu">
+      <label class="glyphicon glyphicon-align-justify menu-movil" for="btn-menu"></label>
+      <nav class="menu">
+          <ul>
+              <li id="btn-perfil"><a> PERFIL </a></li>
+              <li id="btn-cerrar"><a>CERRAR SESIÓN</a></li>
+          </ul>
+      </nav>
+  </div>
 </header>
 <div id="vista-home" class="container-post">
     <div class="profile-content">
@@ -77,7 +77,7 @@ const viewHome = `
     window.location.hash = '#/perfil';
   });
   obtenerInfo(userName, userCorreo, userImage); // pinta en el home esos datos de argumento
-  btnCompartir.addEventListener('click', () =>{
+  btnCompartir.addEventListener('click', () => {
     textPost() // Guarda en la bd
     // const valueOptions = optionsPost.value;
     // getPrivatePosts(userCurrent().uid, valueOptions);
@@ -89,6 +89,13 @@ const viewHome = `
   //   updatePrivacy(data,postPrivacy)
   //  });  
   // }
+
+//   //  subiendo imagen
+//   btnfile.addEventListener('change', (event) => {
+//     const file = event.target.files[0]; // accediendo  al 1er elemento del objeto files.
+//     getImagePost(file, uploader);
+//   });
+
   return divElem;
 };
 
