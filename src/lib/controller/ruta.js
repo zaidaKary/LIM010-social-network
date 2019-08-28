@@ -30,7 +30,7 @@ export const changeView = (route) => {
       break;
 
     case '#/home':
-      const comentario = (objetData) => {    
+      const comentario = (objetData) => {  
         container.innerHTML='';
         container.appendChild(components.home(objetData));
       }

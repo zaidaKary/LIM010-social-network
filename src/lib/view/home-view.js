@@ -1,8 +1,7 @@
 import { obtenerInfo } from '../controller/obtenerInfo-controller.js';
-import { cerrarSesion } from '../model/modelFirebase.js'
+import { cerrarSesion, userCurrent } from '../model/modelFirebase.js'
 import { itemPost } from '../view/post-view.js'
-import { textPost } from '../controller/postContr.js';
-
+import { textPost} from '../controller/postContr.js';
 
 export default (data) => {
   const viewHome = `
@@ -35,7 +34,6 @@ export default (data) => {
                 </div>
                 </div>
             </div>
-            
             <div class="postear">
             <div class="post">
                 <form id="form-post">
@@ -43,15 +41,17 @@ export default (data) => {
                 <div class="btn-imagen-compartir">
                 <input id="btn-google" type=image src="https://img.icons8.com/color/48/000000/image.png" class="img-publicar">
                 <button id="btn-compartir" class="compartir">Compartir</button>
+                  <select id="options">
+                        <option value="publico">Publico</option>
+                        <option value="privado">Privado</option>
+                  </select>
                 </div>
                 </form>
             </div>  
             <div class="public-posts" id="public-posts">
             </div>        
             </div>
-          
         </div>
-        
     </div>
 </div>
 </div>`;
@@ -63,33 +63,24 @@ export default (data) => {
   const btnCerrar = divElem.querySelector('#btn-cerrar');
   const btnPerfil = divElem.querySelector('#btn-perfil');
   const btnCompartir = divElem.querySelector('#btn-compartir');
-  const contenedorPost = divElem.querySelector('#public-posts');
-  const btnfile = divElem.querySelector(`#image-file`);
- 
+  const contenedorPost =  divElem.querySelector('#public-posts');
   data.forEach(element => {
     contenedorPost.appendChild(itemPost(element));
-  });
-
+   });
   btnCerrar.addEventListener('click', (e) => {
     e.preventDefault();
     cerrarSesion();
     window.location.hash = '#/';
   });
-
   btnPerfil.addEventListener('click', () => {
     window.location.hash = '#/perfil';
   });
-
   obtenerInfo(userName, userCorreo, userImage); // pinta en el home esos datos de argumento
   btnCompartir.addEventListener('click', () => {
     textPost() // Guarda en la bd
-  })
 
-//   //  subiendo imagen
-//   btnfile.addEventListener('change', (event) => {
-//     const file = event.target.files[0]; // accediendo  al 1er elemento del objeto files.
-//     getImagePost(file, uploader);
-//   });
+  })
+     
 
   return divElem;
 };
