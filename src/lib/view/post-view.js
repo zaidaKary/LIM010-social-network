@@ -48,18 +48,24 @@ export const itemPost = (publication) => {
     })
   }
 
-  //  Agregando Likes
+  const btnDislike = divElement.querySelector(`#dislike-${publication.id}`);
   const btnLike = divElement.querySelector(`#like-${publication.id}`);
+
+    //  Agregando Likes
+
   btnLike.addEventListener('click', () => {
+    btnDislike.classList.remove('hide');
+    btnLike.classList.add('hide'); 
     addLike(publication.id); // guardando en la base de datos
   });
 
   // Quitando like
   divElement.querySelector(`#dislike-${publication.id}`)
     .addEventListener('click', () => {
+      btnDislike.classList.add('hide');
+      btnLike.classList.remove('hide');
       deleteLikePost(publication.id)
     });
-
   return divElement;
 }
 

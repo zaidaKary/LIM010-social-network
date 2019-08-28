@@ -32,25 +32,14 @@ export const getPost = (datapost) => {
 
 /*likes*/
 export const deleteLikePost = (idPost) => {
-  const btnLike = document.getElementById(`like-${idPost}`);
-  const btnDislike = document.getElementById(`dislike-${idPost}`);
   deleteLikeDb(userCurrent().uid, idPost)
     .then(() => {
-      btnDislike.classList.add('hide');
-      btnLike.classList.remove('hide');
     });
 };
 
 export const addLike = (idPost) => {
-  const btnLike = document.getElementById(`like-${idPost}`);
-  const btnDislike = document.getElementById(`dislike-${idPost}`);
   addLikeDb(userCurrent().uid, idPost, userCurrent().email)
     .then(() => {
-      console.log(userCurrent().uid);
-      console.log(idPost);
-      console.log(userCurrent().email);
-      btnDislike.classList.remove('hide');
-      btnLike.classList.add('hide');
     });
 };
 

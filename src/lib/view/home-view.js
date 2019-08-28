@@ -41,7 +41,7 @@ export default (data) => {
                               <label class="btn-label">
                                   <input type="file" id="image-file" class="circle">
                               </label>
-                              <progress value="0" max="100" class="hide" id="uploader">0%</progress>
+                              <progress value="0" max="100"  id="uploader">0%</progress>
                           </div>
                           <button id="btn-compartir" class="compartir">Compartir</button>
                       </div>
