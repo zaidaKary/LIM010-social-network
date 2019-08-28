@@ -74,6 +74,9 @@ body{
     border: 1px solid #10316b;
     padding: 7px 20px 7px 20px;
 }
+.counter {
+    cursor:pointer;
+}
 .like{
     width: 40px;
     height: 40px;
@@ -111,11 +114,11 @@ body{
     margin: 2%;
 }
 .post textarea{
-        width: 100%;
-        height: 100px;
-        resize: none;
-        border: 1px solid #5AC39B;
-        padding: 7px 20px 7px 20px;
+    width: 100%;
+    height: 100px;
+    resize: none;
+    border: 1px solid #5AC39B;
+    padding: 7px 20px 7px 20px;
 }
 .comparte{
     display: flex;
@@ -250,6 +253,16 @@ header {
    top: 0%;
    color: #FFFFFF;
    text-decoration: none;
+ }
+
+ /*botones*/
+ .circle{
+    width: 40px;
+    height: 40px;
+    padding: 6px 2px;
+    border-radius: 50%;
+    background: #fff;
+    border: 1px solid  rgb(154, 187, 245);;
  }
  /*FIN de Barra de menu para web*/
  /*Barra de menu para movil*/
