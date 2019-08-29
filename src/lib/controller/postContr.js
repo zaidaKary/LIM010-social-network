@@ -60,26 +60,7 @@ export const addLike = (idPost) => {
 };
 
 
-export const getImagePost = (file, uploader, callback) => {
-  // Crear un storage ref
-  const storageRef = firebase.storage().ref();    //
-  const imageRef = storageRef.child(`img/${file.name}`)
 
-  // Subir archivo
-  const task = imageRef.put(file); //.put mètodo de firebase.
-  return task.on('state_changed', //actualizamos la barra de progreso.
-    (snapshot) => {  // notifica el proceso de subir archivo.
-      const percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      uploader.value = percentage;
-    },
-    (error) => (error),
-    () => {
-      const downloadImg = task.snapshot.ref.getDownloadURL()//archivo subido.
-      downloadImg
-        .then(callback)
-    }
-  );
-}
 export const actualizandoPost = (id, publicacion) => {
   editPost(id, publicacion);
 };
