@@ -59,11 +59,10 @@ export const addLike = (idPost) => {
     });
 };
 
-
-
 export const actualizandoPost = (id, publicacion) => {
   editPost(id, publicacion);
 };
+
 // export const getPrivatePosts = (idUser, callback)=>{
 //   db.collection('posts').where("idPost","==",idUser).where("typePost","==","privado")
 //   .orderBy("date","desc").onSnapshot(querySnapshot=>{

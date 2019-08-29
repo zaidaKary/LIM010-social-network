@@ -1,5 +1,5 @@
 import { obtenerInfo } from '../controller/obtenerInfo-controller.js';
-import { cerrarSesion, userCurrent } from '../model/modelFirebase.js'
+import { cerrarSesion} from '../model/modelFirebase.js'
 import { itemPost } from '../view/post-view.js'
 import { textPost} from '../controller/postContr.js';
 
@@ -42,8 +42,8 @@ export default (data) => {
                 <input id="btn-imagen" type=image src="https://img.icons8.com/color/48/000000/image.png" class="img-publicar">
                 <button id="btn-compartir" class="compartir">Compartir</button>
                   <select id="options">
-                        <option value="publico">Publico</option>
-                        <option value="privado">Privado</option>
+                        <option value="Público">Público</option>
+                        <option value="Privado">Privado</option>
                   </select>
                 </div>
                 </form>
@@ -64,7 +64,6 @@ export default (data) => {
   const btnPerfil = divElem.querySelector('#btn-perfil');
   const btnCompartir = divElem.querySelector('#btn-compartir');
   const contenedorPost =  divElem.querySelector('#public-posts');
-  const btnImagen = divElem.querySelector('btn-imagen');
   data.forEach(element => {
     contenedorPost.appendChild(itemPost(element));
    });
