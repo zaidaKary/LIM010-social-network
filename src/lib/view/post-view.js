@@ -58,7 +58,6 @@ export const itemPost = (publication) => {
         divElement.querySelector('#editar').style.display = 'block';
       });
     }
-  // const btnDislike = divElement.querySelector(`#dislike-${publication.id}`);
   const btnLike = divElement.querySelector(`#liked-${publication.id}`);
       //  Agregando Likes
   btnLike.addEventListener('click', (event) => {
