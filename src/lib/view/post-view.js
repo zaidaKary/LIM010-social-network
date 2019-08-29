@@ -22,12 +22,7 @@ export const itemPost = (publication) => {
       <div class="texto-publicacion fondo-likes">
           <p class="alineando-iconos">
           <p >
-            <a id="like-${publication.id}">
-            <img src="https://img.icons8.com/ios/50/000000/like.png" class="icon " >
-            </a>
-            <a  class="hide" id="dislike-${publication.id}">
-            <img src="https://img.icons8.com/bubbles/50/000000/like.png" >
-            </a>
+            <img id="liked-${publication.id}" data-like="0" src="https://img.icons8.com/ios/50/000000/like.png" class="icon" >
             <p id="container-like"><a> A :<a/>
             <a id="counter-${publication.id}"></a>  
             <a> personas le gusta tu publicación.</a>
@@ -62,23 +57,23 @@ export const itemPost = (publication) => {
         divElement.querySelector('#editar').style.display = 'block';
       });
     }
-  const btnDislike = divElement.querySelector(`#dislike-${publication.id}`);
-  const btnLike = divElement.querySelector(`#like-${publication.id}`);
-
-    //  Agregando Likes
-  btnLike.addEventListener('click', () => {
-    btnDislike.classList.remove('hide');
-    btnLike.classList.add('hide'); 
+  // const btnDislike = divElement.querySelector(`#dislike-${publication.id}`);
+  const btnLike = divElement.querySelector(`#liked-${publication.id}`);
+      //  Agregando Likes
+  btnLike.addEventListener('click', (event) => {
+    if(event.target.dataset.like === '0'){
+      event.target.dataset.like = '1';
+      btnLike.classList.remove('not-like');
+      btnLike.classList.add('liked');
+      console.log('te gusto');
+  } else {
+      event.target.dataset.like = '0'
+      console.log('no te gusto');
+      btnLike.classList.remove('liked');
+      btnLike.classList.add('not-like');
+    }
     addLike(publication.id); // guardando en la base de datos
   });
-
-  // Quitando like
-  divElement.querySelector(`#dislike-${publication.id}`)
-    .addEventListener('click', () => {
-      btnDislike.classList.add('hide');
-      btnLike.classList.remove('hide');
-      deleteLikePost(publication.id)
-    }); 
   }
   return divElement;
 }
