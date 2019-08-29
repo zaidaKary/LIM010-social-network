@@ -1,11 +1,10 @@
 import { db } from '../../main.js';
 
-export const addPostFirebase = (email, textPost, idPost, date, typePost) => db.collection('posts').add({
+export const addPostFirebase = (email, textPost, idPost, date) => db.collection('posts').add({
   email,
   textPost,
   idPost,
   date,
-  typePost,
 });
 export const deletePost = (iduser) => db.collection('posts').doc(iduser).delete();
 export const editPost = (idPost, publicacion) => db.collection('posts').doc(idPost).update({
