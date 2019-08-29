@@ -14,7 +14,6 @@ const allDatePost= (fullDate)=>{
   const day = `${getDate}/${getMonth}/${getFullYear}`;
   const myClock = `A las: ${hours}:${minutes}:${seconds}`;
   const date = `${day} ${myClock}`
-  console.log(date);
   return date;  
 }
 
@@ -22,11 +21,12 @@ export const textPost = () => {
   event.preventDefault();
   const allDate = new Date();
   const date = allDatePost(allDate);
-  const txtpublicacion = document.getElementById('publicacion').value
-  addPostFirebase(userCurrent().email, txtpublicacion, userCurrent().uid, date) // pinta en el home
+  const txtpublicacion = document.getElementById('publicacion').value;
+  const optionsPost = document.getElementById('options').value;
+  addPostFirebase(userCurrent().email, txtpublicacion, userCurrent().uid, date, optionsPost) // pinta en el home
     .then((res) => {
       document.querySelector('#publicacion').value = "";
-      console.log('Document written with ID: ', res.id);
+      // console.log('Document written with ID: ', res.id);
     })
     .catch(() => {
       // console.error('Error adding document: ', error);.
@@ -40,12 +40,11 @@ export const getPost = (datapost) => {
       const array = [];
       querySnapshot.forEach((doc) => {               
         array.push({id: doc.id, ...doc.data()});
-        console.log(array);
       });
       datapost(array);
+      console.log(array)
     });
 };
-
 
 /*likes*/
 export const deleteLikePost = (idPost) => {
@@ -61,41 +60,17 @@ export const addLike = (idPost) => {
 };
 
 
-export const getImagePost = (file, uploader, callback) => {
-  // Crear un storage ref
-  const storageRef = firebase.storage().ref();    //
-  const imageRef = storageRef.child(`img/${file.name}`)
 
-  // Subir archivo
-  const task = imageRef.put(file); //.put mètodo de firebase.
-  return task.on('state_changed', //actualizamos la barra de progreso.
-    (snapshot) => {  // notifica el proceso de subir archivo.
-      const percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      uploader.value = percentage;
-    },
-    (error) => (error),
-    () => {
-      const downloadImg = task.snapshot.ref.getDownloadURL()//archivo subido.
-      downloadImg
-        .then(callback)
-    }
-  );
-}
 export const actualizandoPost = (id, publicacion) => {
   editPost(id, publicacion);
 };
-// export const set_Publication = (post, state) => {
-//   firebase.auth().onAuthStateChanged(function(user) {
-//       getUsername(user, post, user.uid, state);
-//   });
+// export const getPrivatePosts = (idUser, callback)=>{
+//   db.collection('posts').where("idPost","==",idUser).where("typePost","==","privado")
+//   .orderBy("date","desc").onSnapshot(querySnapshot=>{
+//     let posts =[];
+//     querySnapshot.forEach((doc) => {
+//         posts.push({id: doc.id,...doc.data()});                
+//       });   
+//       callback(posts);
+//     })
 // }
-export const getPrivatePosts = (idUser, callback)=>{
-  db.collection('posts').where("idPost","==",idUser).where("typePost","==","privado")
-  .orderBy("date","desc").onSnapshot(querySnapshot=>{
-    let posts =[];
-    querySnapshot.forEach((doc) => {
-        posts.push({id: doc.id,...doc.data()});                
-      });   
-      callback(posts);
-    })
-}

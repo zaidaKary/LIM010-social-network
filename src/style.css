@@ -44,9 +44,15 @@ body{
     color: #282929;
 }
 .icon{
-    width: 31px;
-    height: 32px;
+    width: 25px;
+    height: 26px;
     margin-bottom: -4px;
+}
+.liked {
+    background-image:url('https://img.icons8.com/ios/50/000000/like.png');
+}
+.not-like {
+    background-image: url('https://img.icons8.com/bubbles/50/000000/like.png') ;
 }
 .ojo{
     position: relative;
@@ -157,8 +163,8 @@ footer{
     justify-content: space-between;
 }
 .img-eliminar {
-    width: 35px;
-    height: 31px;
+    width: 22px;
+    height: 22px;
 }
 .img-corazon {
     width: 28px;
