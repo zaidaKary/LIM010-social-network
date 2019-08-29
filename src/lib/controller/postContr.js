@@ -1,5 +1,5 @@
 import { userCurrent } from '../model/modelFirebase.js';
-import { addPostFirebase, deleteLikeDb, addLikeDb ,editPost} from '../model/modelPost.js';
+import { addPostFirebase, deleteLikeDb, addLikeDb, editPost } from '../model/modelPost.js';
 import { db } from '../../main.js';
 
 const allDatePost= (fullDate)=>{
@@ -13,11 +13,11 @@ const allDatePost= (fullDate)=>{
   
   const day = `${getDate}/${getMonth}/${getFullYear}`;
   const myClock = `A las: ${hours}:${minutes}:${seconds}`;
-  const date = `${day} ${myClock}`
+  const date = `${day} ${myClock}`;
   return date;  
 }
 
-export const textPost = () => {
+export const textPost = (event) => {
   event.preventDefault();
   const allDate = new Date();
   const date = allDatePost(allDate);
@@ -26,7 +26,7 @@ export const textPost = () => {
   addPostFirebase(userCurrent().email, txtpublicacion, userCurrent().uid, date, optionsPost) // pinta en el home
     .then((res) => {
       document.querySelector('#publicacion').value = "";
-      // console.log('Document written with ID: ', res.id);
+      console.log('Document written with ID: ', res.id);
     })
     .catch(() => {
       // console.error('Error adding document: ', error);.
@@ -46,7 +46,7 @@ export const getPost = (datapost) => {
     });
 };
 
-/*likes*/
+/* likes */
 export const deleteLikePost = (idPost) => {
   deleteLikeDb(userCurrent().uid, idPost)
     .then(() => {
@@ -59,18 +59,6 @@ export const addLike = (idPost) => {
     });
 };
 
-
-
 export const actualizandoPost = (id, publicacion) => {
   editPost(id, publicacion);
 };
-// export const getPrivatePosts = (idUser, callback)=>{
-//   db.collection('posts').where("idPost","==",idUser).where("typePost","==","privado")
-//   .orderBy("date","desc").onSnapshot(querySnapshot=>{
-//     let posts =[];
-//     querySnapshot.forEach((doc) => {
-//         posts.push({id: doc.id,...doc.data()});                
-//       });   
-//       callback(posts);
-//     })
-// }
