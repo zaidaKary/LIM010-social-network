@@ -45,10 +45,6 @@ body{
 }
 .icon{
     width: 25px;
-<<<<<<< HEAD
-    height: 26px;
-=======
->>>>>>> cd2fe02b81c907a6ae3910a699cee7e09ade4f36
     margin-bottom: -4px;
     border-radius: 20px;
 }
@@ -59,12 +55,6 @@ body{
 .liked{
     background-image: url('https://img.icons8.com/officel/16/000000/hearts.png');
     background-size: cover;
-}
-.liked {
-    background-image:url('https://img.icons8.com/ios/50/000000/like.png');
-}
-.not-like {
-    background-image: url('https://img.icons8.com/bubbles/50/000000/like.png') ;
 }
 .ojo{
     position: relative;
