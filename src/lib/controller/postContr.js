@@ -1,5 +1,5 @@
 import { userCurrent } from '../model/modelFirebase.js';
-import { addPostFirebase, deleteLikeDb, addLikeDb ,editPost} from '../model/modelPost.js';
+import { addPostFirebase, deleteLikeDb, addLikeDb, editPost } from '../model/modelPost.js';
 import { db } from '../../main.js';
 
 const allDatePost= (fullDate)=>{
@@ -13,11 +13,11 @@ const allDatePost= (fullDate)=>{
   
   const day = `${getDate}/${getMonth}/${getFullYear}`;
   const myClock = `A las: ${hours}:${minutes}:${seconds}`;
-  const date = `${day} ${myClock}`
+  const date = `${day} ${myClock}`;
   return date;  
 }
 
-export const textPost = () => {
+export const textPost = (event) => {
   event.preventDefault();
   const allDate = new Date();
   const date = allDatePost(allDate);
@@ -26,7 +26,7 @@ export const textPost = () => {
   addPostFirebase(userCurrent().email, txtpublicacion, userCurrent().uid, date, optionsPost) // pinta en el home
     .then((res) => {
       document.querySelector('#publicacion').value = "";
-      // console.log('Document written with ID: ', res.id);
+      console.log('Document written with ID: ', res.id);
     })
     .catch(() => {
       // console.error('Error adding document: ', error);.
@@ -46,7 +46,7 @@ export const getPost = (datapost) => {
     });
 };
 
-/*likes*/
+/* likes */
 export const deleteLikePost = (idPost) => {
   deleteLikeDb(userCurrent().uid, idPost)
     .then(() => {
@@ -59,27 +59,6 @@ export const addLike = (idPost) => {
     });
 };
 
-
-export const getImagePost = (file, uploader, callback) => {
-  // Crear un storage ref
-  const storageRef = firebase.storage().ref();    //
-  const imageRef = storageRef.child(`img/${file.name}`)
-
-  // Subir archivo
-  const task = imageRef.put(file); //.put mètodo de firebase.
-  return task.on('state_changed', //actualizamos la barra de progreso.
-    (snapshot) => {  // notifica el proceso de subir archivo.
-      const percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      uploader.value = percentage;
-    },
-    (error) => (error),
-    () => {
-      const downloadImg = task.snapshot.ref.getDownloadURL()//archivo subido.
-      downloadImg
-        .then(callback)
-    }
-  );
-}
 export const actualizandoPost = (id, publicacion) => {
   editPost(id, publicacion);
 };

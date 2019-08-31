@@ -31,16 +31,13 @@ export default () => {
     btnGuardar.style.display = 'block';
     btnEditar.style.display = 'none';
   });
-
   btnGuardar.addEventListener('click', () => {
     const nuevoUserNombre = divElem.querySelector('#nombre').value;
     actualizandoPerfil(nuevoUserNombre);
     userNombre.disabled = true;
     btnGuardar.style.display = 'none';
     btnEditar.style.display = 'block';
-
   });
-
   btnInicio.addEventListener('click', () =>{
     window.location.hash = '#/home';
   });

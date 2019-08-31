@@ -23,3 +23,9 @@ export const addLikeDb = (iduser, idPost, email) => db.collection('posts').doc(i
 export const deleteLikeDb = (iduser, idPost) => db.collection('posts').doc(idPost).collection('likes').doc(iduser)
   .delete();
 export const showLikeDb = (idPost) => db.collection('post').doc(idPost).collection('likes');
+
+export const addComents = (textComents, idUser) => db.collection('posts').doc(idPost).collection('coments').doc(iduser)
+.add({
+  textComents,
+  idUser,
+})

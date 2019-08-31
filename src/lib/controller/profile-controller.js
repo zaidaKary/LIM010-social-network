@@ -1,5 +1,4 @@
 import {db} from '../../main.js';
-
 //Pintando nombre y correo en la vista perfil
 export const pintarInfoPerfil = (userName, userCorreo,userfoto) => {
   const auth = firebase.auth();
@@ -40,4 +39,3 @@ export const actualizandoPerfil = (nuevoUserNombre) => {
     // console.error('Error updating document: ', error);
   });
 };
-

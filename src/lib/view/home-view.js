@@ -78,10 +78,7 @@ export default (data) => {
   obtenerInfo(userName, userCorreo, userImage); // pinta en el home esos datos de argumento
   btnCompartir.addEventListener('click', () => {
     textPost() // Guarda en la bd
-
   })
-     
-
   return divElem;
 };
 
