@@ -1,4 +1,4 @@
-// import { db } from '../../main.js';
+
 
 export const addPostFirebase = (email, textPost, idPost, date, typePost) => firebase.firestore().collection('posts').add({
   email,
