@@ -18,7 +18,7 @@ const allDatePost= (fullDate)=>{
 }
 
 export const textPost = (event) => {
-  event.preventDefault();
+
   const allDate = new Date();
   const date = allDatePost(allDate);
   const txtpublicacion = document.getElementById('publicacion').value;

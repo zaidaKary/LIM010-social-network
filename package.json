@@ -35,16 +35,6 @@
     "stylelint": "^10.1.0",
     "stylelint-config-recommended": "^2.2.0"
   },
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 32b2557d72c9e55b5a43ef0659bc0f6eee1b18be
-=======
->>>>>>> 8d3b6dfe1bc6735d4e21af12a4f168e40dfb06d0
->>>>>>> 53e0b6690ac1dbed982ff287c7c4d72bbe63081a
   "dependencies": {
     "firebase": "^6.2.4"
   }
