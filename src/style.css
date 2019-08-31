@@ -184,8 +184,9 @@ footer{
 .border-public {
     padding: 14px;
 }
+
 .fondo-likes {
-    background: antiquewhite;
+    background-color: #f2f2ef;
 }
 .ocultar {
     display: none;
@@ -259,8 +260,7 @@ footer{
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
-    align-content: center;
-    background: #eac100bd;;
+    margin-top: 107px;
     width: 331px;
     height: 507px;
 }

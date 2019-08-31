@@ -1,8 +1,7 @@
 import { createUserWithEmailAndPassword } from '../model/modelFirebase.js';
-import { db } from '../../main.js';
 
 const crearUsuario = (id, name, email, foto) => {
-  db.collection('users').doc(id).set({ // agrega datos en la colección
+  firebase.firestore().collection('users').doc(id).set({ // agrega datos en la colección
     ID: id,
     Nombre: name,
     Email: email,

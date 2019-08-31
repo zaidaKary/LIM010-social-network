@@ -1,6 +1,6 @@
 import { userCurrent } from '../model/modelFirebase.js';
-import { addPostFirebase, deleteLikeDb, addLikeDb, editPost } from '../model/modelPost.js';
-import { db } from '../../main.js';
+import { addPostFirebase, deleteLikeDb, addLikeDb ,editPost} from '../model/modelPost.js';
+// import { db } from '../../main.js';
 
 const allDatePost= (fullDate)=>{
   const getDate = fullDate.getDate();
@@ -13,12 +13,12 @@ const allDatePost= (fullDate)=>{
   
   const day = `${getDate}/${getMonth}/${getFullYear}`;
   const myClock = `A las: ${hours}:${minutes}:${seconds}`;
-  const date = `${day} ${myClock}`;
+  const date = `${day} ${myClock}`
   return date;  
 }
 
-export const textPost = (event) => {
-
+export const textPost = () => {
+  event.preventDefault();
   const allDate = new Date();
   const date = allDatePost(allDate);
   const txtpublicacion = document.getElementById('publicacion').value;
@@ -26,7 +26,7 @@ export const textPost = (event) => {
   addPostFirebase(userCurrent().email, txtpublicacion, userCurrent().uid, date, optionsPost) // pinta en el home
     .then((res) => {
       document.querySelector('#publicacion').value = "";
-      console.log('Document written with ID: ', res.id);
+      // console.log('Document written with ID: ', res.id);
     })
     .catch(() => {
       // console.error('Error adding document: ', error);.
@@ -35,7 +35,7 @@ export const textPost = (event) => {
 // muestra todos los post
 export const getPost = (datapost) => {
   event.preventDefault();
-  db.collection('posts').orderBy("date", "desc")
+  firebase.firestore().collection('posts').orderBy("date", "desc")
     .onSnapshot((querySnapshot) => {
       const array = [];
       querySnapshot.forEach((doc) => {               
