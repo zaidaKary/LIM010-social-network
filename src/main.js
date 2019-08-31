@@ -20,5 +20,3 @@ const init = () => { // sirve para cambiar la url
   window.addEventListener('hashchange', () => changeView(window.location.hash));// hash -> para que nos traiga despues del #
 };
 window.addEventListener('load', init);// cada vez que haya una recarga (load) se ejecuta esta funcion
-// export const db = firebase.firestore();
-

@@ -1,5 +1,5 @@
 import { userCurrent } from '../model/modelFirebase.js';
-import { addPostFirebase, deleteLikeDb, addLikeDb ,editPost} from '../model/modelPost.js';
+import { addPostFirebase, deleteLikeDb, addLikeDb ,editPost } from '../model/modelPost.js';
 // import { db } from '../../main.js';
 
 const allDatePost= (fullDate)=>{
@@ -33,18 +33,6 @@ export const textPost = () => {
     });
 }
 // muestra todos los post
-export const getPost = (datapost) => {
-  event.preventDefault();
-  firebase.firestore().collection('posts').orderBy("date", "desc")
-    .onSnapshot((querySnapshot) => {
-      const array = [];
-      querySnapshot.forEach((doc) => {               
-        array.push({id: doc.id, ...doc.data()});
-      });
-      datapost(array);
-      console.log(array)
-    });
-};
 
 /* likes */
 export const deleteLikePost = (idPost) => {

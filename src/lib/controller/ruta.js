@@ -6,7 +6,7 @@ import Home from '../view/home-view.js';
 import Register from '../view/register-view.js';
 import Profile from '../view/profile-view.js';
 import Different from '../view/404-view.js';
-import { getPost } from '../controller/postContr.js'
+import { getPost } from '../model/modelPost.js';
 // Creando un objeto de los componenetes
 const components = {
   login: Login,
