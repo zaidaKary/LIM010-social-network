@@ -1,8 +1,23 @@
 import { createUserWithEmailAndPassword } from '../model/modelFirebase.js';
-import { db } from '../../main.js';
-
+// import { db } from '../../main.js';
+// REGISTRO DE UN NUEVO USUARIO
+// ---------------------------------------------------------------------//
+// export const obtenerNombreEmail = (email) => {
+//   // Obtención de datos de un documento
+//   firebase.firestore().collection('users').where("Email", "==", email).get()
+//     .then((querySnapshot) => {
+//         querySnapshot.forEach((doc) => { // forEach -> se repite por cada documento que este en users
+//             // console.log(doc.id, " => ", doc.data());
+//             console.log(doc.data().Nombre);// consoleamos el nombre que hay en el documento
+//             console.log(doc.data().Email);// consoleamos el nombre que hay en el documento
+//         });
+//     })
+//     .catch((error) => {
+//         console.log("Error al obtener documentos: ", error);
+//     });
+//   };
 const crearUsuario = (id, name, email, foto) => {
-  db.collection('users').doc(id).set({ // agrega datos en la colección
+  firebase.firestore().collection('users').doc(id).set({ // agrega datos en la colección
     ID: id,
     Nombre: name,
     Email: email,
