@@ -42,6 +42,6 @@ export const getLike = (idPost, contadorLikes) => {
         likes.push({ id: doc.id, ...doc.data() });
       });
       contadorLikes(likes);
-      console.log(likes);
+      // console.log(likes);
     });
 };
