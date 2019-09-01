@@ -12,19 +12,19 @@ export const itemPost = (publication) => {
     <div class="user-post">
     <div>
     <p>Publicado por:  ${publication.email} </p>
-    <p> Publicado el :${publication.date}</p>
     </div>
     <p>${publication.typePost}<p/>
     ${userCurrent().uid === publication.idPost ? `     
     <input id="eliminar" type=image src="https://img.icons8.com/offices/16/000000/delete-sign.png" class="img-eliminar">` : ''}
     </div>
+    <div> <p>${publication.date}</p></div>
     <div class="texto-publicacion border-public">
       <textarea id="idpublicacion-${publication.id}" class="text-area" disabled>${publication.textPost}</textarea>
     </div>
       <div class="texto-publicacion fondo-likes">
           <p class="alineando-iconos">
             <img id="liked-${publication.id}" data-like="0" src="https://img.icons8.com/ios/50/000000/like.png" class="icon" >
-            <p id="container-like"><a> A :<a/>
+            <p id="container-like"> 
             <a id="counter-${publication.id}"></a>  
             <a> personas le gusta tu publicación.</a>
             </p>
@@ -60,15 +60,15 @@ export const itemPost = (publication) => {
     }
     // const btnDislike = divElement.querySelector(`#dislike-${publication.id}`);
     const btnLike = divElement.querySelector(`#liked-${publication.id}`);
+    const counterLike = divElement.querySelector(`#counter-${publication.id}`);
     //  Agregando Likes
 
     getLike(publication.id, (likes) => {
       const countLike = likes.length;
-      divElement.querySelector(`#counter-${publication.id}`).innerHTML = countLike;
+      counterLike.innerHTML = countLike;
       console.log(countLike);
-
-
       btnLike.addEventListener('click', (event) => {
+        event.preventDefault();
         if (event.target.dataset.like === '0') {
           event.target.dataset.like = '1';
           btnLike.classList.remove('not-like');
