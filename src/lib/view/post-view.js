@@ -1,12 +1,12 @@
 import { userCurrent } from '../model/modelFirebase.js';
-import { deletePost } from '../model/modelPost.js';
+import { deletePost, getLike } from '../model/modelPost.js';
 import { actualizandoPost, deleteLikePost, addLike } from '../controller/postContr.js';
 
 // import { TextPost } from '../controller/postContr.js'
 export const itemPost = (publication) => {
   // console.log(data);
   const divElement = document.createElement('div');
-  if (publication.typePost === "publico" || userCurrent().uid === publication.idPost) {
+  if (publication.typePost === 'publico' || userCurrent().uid === publication.idPost) {
     divElement.innerHTML = `
     <div class="postear">
     <div class="user-post">
@@ -16,7 +16,7 @@ export const itemPost = (publication) => {
     </div>
     <p>${publication.typePost}<p/>
     ${userCurrent().uid === publication.idPost ? `     
-    <input id="eliminar" type=image src="https://img.icons8.com/offices/16/000000/delete-sign.png" class="img-eliminar">` : ``}
+    <input id="eliminar" type=image src="https://img.icons8.com/offices/16/000000/delete-sign.png" class="img-eliminar">` : ''}
     </div>
     <div class="texto-publicacion border-public">
       <textarea id="idpublicacion-${publication.id}" class="text-area" disabled>${publication.textPost}</textarea>
@@ -36,7 +36,7 @@ export const itemPost = (publication) => {
            <input id="" class="comentario" placeholder ="Escribe un comentario..." type=text/>
         </div>
       </div>
-    `
+    `;
     if (userCurrent().uid === publication.idPost) {
       const btnEliminar = divElement.querySelector('#eliminar');
       btnEliminar.addEventListener('click', () => {
@@ -61,6 +61,13 @@ export const itemPost = (publication) => {
     // const btnDislike = divElement.querySelector(`#dislike-${publication.id}`);
     const btnLike = divElement.querySelector(`#liked-${publication.id}`);
     //  Agregando Likes
+
+    getLike(publication.id, (likes) => {
+      const countLike = likes.length;
+      divElement.querySelector(`#counter-${publication.id}`).innerHTML = countLike;
+      console.log(countLike);
+    });
+
     btnLike.addEventListener('click', (event) => {
       if (event.target.dataset.like === '0') {
         event.target.dataset.like = '1';
@@ -69,7 +76,7 @@ export const itemPost = (publication) => {
         console.log('te gusto');
         addLike(publication.id); // guardando en la base de datos
       } else {
-        event.target.dataset.like = '0'
+        event.target.dataset.like = '0';
         console.log('no te gusto');
         btnLike.classList.remove('liked');
         btnLike.classList.add('not-like');
@@ -78,4 +85,4 @@ export const itemPost = (publication) => {
     });
   }
   return divElement;
-}
+};

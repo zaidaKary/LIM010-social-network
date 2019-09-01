@@ -1,20 +1,20 @@
 import { userCurrent } from '../model/modelFirebase.js';
-import { addPostFirebase, deleteLikeDb, addLikeDb ,editPost} from '../model/modelPost.js';
+import { addPostFirebase, deleteLikeDb, addLikeDb, editPost } from '../model/modelPost.js';
 // import { db } from '../../main.js';
 
-const allDatePost= (fullDate)=>{
+const allDatePost = (fullDate) => {
   const getDate = fullDate.getDate();
-  const getMonth = fullDate.getMonth()+1;
+  const getMonth = fullDate.getMonth() + 1;
   const getFullYear = fullDate.getFullYear()
-  
-  const minutes =  fullDate.getMinutes();
+
+  const minutes = fullDate.getMinutes();
   const seconds = fullDate.getSeconds();
-  let  hours = fullDate.getHours();
-  
+  let hours = fullDate.getHours();
+
   const day = `${getDate}/${getMonth}/${getFullYear}`;
   const myClock = `A las: ${hours}:${minutes}:${seconds}`;
   const date = `${day} ${myClock}`
-  return date;  
+  return date;
 }
 
 export const textPost = () => {
@@ -24,8 +24,8 @@ export const textPost = () => {
   const txtpublicacion = document.getElementById('publicacion').value;
   const optionsPost = document.getElementById('options').value;
   addPostFirebase(userCurrent().email, txtpublicacion, userCurrent().uid, date, optionsPost) // pinta en el home
-    .then((res) => {
-      document.querySelector('#publicacion').value = "";
+    .then(() => {
+      document.querySelector('#publicacion').value = '';
       // console.log('Document written with ID: ', res.id);
     })
     .catch(() => {
@@ -38,11 +38,11 @@ export const getPost = (datapost) => {
   firebase.firestore().collection('posts').orderBy("date", "desc")
     .onSnapshot((querySnapshot) => {
       const array = [];
-      querySnapshot.forEach((doc) => {               
-        array.push({id: doc.id, ...doc.data()});
+      querySnapshot.forEach((doc) => {
+        array.push({ id: doc.id, ...doc.data() });
       });
       datapost(array);
-      console.log(array)
+      console.log(array);
     });
 };
 
