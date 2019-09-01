@@ -66,22 +66,23 @@ export const itemPost = (publication) => {
       const countLike = likes.length;
       divElement.querySelector(`#counter-${publication.id}`).innerHTML = countLike;
       console.log(countLike);
-    });
 
-    btnLike.addEventListener('click', (event) => {
-      if (event.target.dataset.like === '0') {
-        event.target.dataset.like = '1';
-        btnLike.classList.remove('not-like');
-        btnLike.classList.add('liked');
-        console.log('te gusto');
-        addLike(publication.id); // guardando en la base de datos
-      } else {
-        event.target.dataset.like = '0';
-        console.log('no te gusto');
-        btnLike.classList.remove('liked');
-        btnLike.classList.add('not-like');
-        deleteLikePost(publication.id);
-      }
+
+      btnLike.addEventListener('click', (event) => {
+        if (event.target.dataset.like === '0') {
+          event.target.dataset.like = '1';
+          btnLike.classList.remove('not-like');
+          btnLike.classList.add('liked');
+          console.log('te gusto');
+          addLike(publication.id); // guardando en la base de datos
+        } else {
+          event.target.dataset.like = '0';
+          console.log('no te gusto');
+          btnLike.classList.remove('liked');
+          btnLike.classList.add('not-like');
+          deleteLikePost(publication.id);
+        }
+      });
     });
   }
   return divElement;
