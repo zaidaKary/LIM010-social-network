@@ -179,7 +179,11 @@ footer{
 }
 .img-publicar{
     width: 40px;
-    height: 40px;
+    height: 42px;
+    padding: 8px 0px;
+    border-radius: 60%;
+    background:rgb(153, 168, 189);
+    border: 2px solidrgb(58, 108, 182);
 }
 .border-public {
     padding: 14px;

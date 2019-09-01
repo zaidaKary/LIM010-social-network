@@ -34,14 +34,14 @@ export const addLikeDb = (iduser, idPost, email) => firebase.firestore().collect
 export const deleteLikeDb = (iduser, idPost) => firebase.firestore().collection('posts').doc(idPost).collection('likes')
   .doc(iduser)
   .delete();
-export const getLike = (idPost, callback) => {
+export const getLike = (idPost, contadorLikes) => {
   firebase.firestore().collection('posts').doc(idPost).collection('likes')
     .onSnapshot((querySnapshot) => {
       const likes = [];
       querySnapshot.forEach((doc) => {
         likes.push({ id: doc.id, ...doc.data() });
       });
-      callback(likes);
+      contadorLikes(likes);
       console.log(likes);
     });
 };

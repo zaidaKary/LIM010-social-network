@@ -1,4 +1,4 @@
-import { loginFunction, authAccountFacebook, authAccountGoogle, mostrarPassword } from '../controller/login-controller.js';
+import { loginFunction, authAccountFacebook, authAccountGoogle } from '../controller/login-controller.js';
 
 export default () => {
   const viewLogin = `
@@ -30,6 +30,15 @@ export default () => {
   const btnFacebook = divElem.querySelector('#btn-facebook');
   const btnGoogle = divElem.querySelector('#btn-google');
   const mostrarPass = divElem.querySelector('#mostrar-pass');
+  // Mostrar constraseña ojo
+  const mostrarPassword = () => {
+    const pass = document.querySelector('#txt-password');
+    if (pass.type === 'password') {
+      pass.type = 'text';
+    } else {
+      pass.type = 'password';
+    }
+  };
 
   btnIngresar.addEventListener('click', () => {
     event.preventDefault();
