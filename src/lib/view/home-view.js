@@ -1,7 +1,7 @@
 import { obtenerInfo } from '../controller/obtenerInfo-controller.js';
-import { cerrarSesion} from '../model/modelFirebase.js'
-import { itemPost } from '../view/post-view.js'
-import { textPost} from '../controller/postContr.js';
+import { cerrarSesion } from '../model/modelFirebase.js';
+import { itemPost } from '../view/post-view.js';
+import { textPost } from '../controller/postContr.js';
 
 export default (data) => {
   const viewHome = `
@@ -39,7 +39,6 @@ export default (data) => {
                 <form id="form-post">
                 <textarea   id= "publicacion" name="post" id="new-post" cols="30" rows="5" placeholder="¿Qué quieres compartir?"></textarea>              
                 <div class="btn-imagen-compartir">
-                <input id="btn-imagen" type=image src="https://img.icons8.com/color/48/000000/image.png" class="img-publicar">
                 <button id="btn-compartir" class="compartir">Compartir</button>
                   <select id="options">
                         <option value="Público">Público</option>
@@ -63,10 +62,10 @@ export default (data) => {
   const btnCerrar = divElem.querySelector('#btn-cerrar');
   const btnPerfil = divElem.querySelector('#btn-perfil');
   const btnCompartir = divElem.querySelector('#btn-compartir');
-  const contenedorPost =  divElem.querySelector('#public-posts');
-  data.forEach(element => {
+  const contenedorPost = divElem.querySelector('#public-posts');
+  data.forEach((element) => {
     contenedorPost.appendChild(itemPost(element));
-   });
+  });
   btnCerrar.addEventListener('click', (e) => {
     e.preventDefault();
     cerrarSesion();
@@ -77,10 +76,8 @@ export default (data) => {
   });
   obtenerInfo(userName, userCorreo, userImage); // pinta en el home esos datos de argumento
   btnCompartir.addEventListener('click', () => {
-    textPost() // Guarda en la bd
-
+    textPost(); // Guarda en la bd
   });
 
   return divElem;
 };
-

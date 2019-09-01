@@ -178,13 +178,18 @@ footer{
 }
 .img-publicar{
     width: 40px;
-    height: 40px;
+    height: 42px;
+    padding: 8px 0px;
+    border-radius: 60%;
+    background:rgb(153, 168, 189);
+    border: 2px solidrgb(58, 108, 182);
 }
 .border-public {
     padding: 14px;
 }
+
 .fondo-likes {
-    background: antiquewhite;
+    background-color: #f2f2ef;
 }
 .ocultar {
     display: none;
@@ -261,17 +266,22 @@ footer{
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
-    align-content: center;
-    background: #eac100bd;;
+    margin-top: 107px;
     width: 331px;
     height: 507px;
 }
 .nombre-perfil {
     text-align: center;
-    font-size: x-large;
+    font-size: xx-large;
     color:#10316b;
     font-weight: bold;
     font-family: cursive;
+}
+.margen-btn {
+    margin-top: 25px;
+}
+.margen-input {
+    margin-bottom: 12px;
 }
   /*Barra de menu para web*/
 header {

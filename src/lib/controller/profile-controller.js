@@ -1,4 +1,4 @@
-import {db} from '../../main.js';
+// import {db} from '../../main.js';
 //Pintando nombre y correo en la vista perfil
 export const pintarInfoPerfil = (userName, userCorreo,userfoto) => {
   const auth = firebase.auth();
@@ -7,7 +7,7 @@ export const pintarInfoPerfil = (userName, userCorreo,userfoto) => {
       // El usuario ha iniciado sesión.
       const id = firebase.auth().currentUser.uid;
       // Obtención de datos de un documento
-      db.collection('users').where("ID", "==", id).get().then((querySnapshot) => {
+      firebase.firestore().collection('users').where("ID", "==", id).get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => { // forEach -> se repite por cada documento que este en users
         // console.log(doc.id, " => ", doc.data());
         console.log("Datos del documento:", doc.data());
@@ -28,7 +28,7 @@ export const pintarInfoPerfil = (userName, userCorreo,userfoto) => {
 // Actualizando perfil en la base de datos
 export const actualizandoPerfil = (nuevoUserNombre) => {
   const id = firebase.auth().currentUser.uid; // obteniendo id de usuario
-  return db.collection('users').doc(id).update({
+  return firebase.firestore().collection('users').doc(id).update({
     Nombre: nuevoUserNombre,
   }).then(() => {
     // console.log('Document successfully updated!');

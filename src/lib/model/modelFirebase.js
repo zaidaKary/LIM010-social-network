@@ -16,6 +16,6 @@ export const cerrarSesion = () => {
 export const userCurrent = () => {
   return firebase.auth().currentUser;
 };
-export const createUser = (email, password,) => {
- return firebase.auth().createUserWithEmailAndPassword(email, password);
+export const createUser = (email, password) => {
+  return firebase.auth().createUserWithEmailAndPassword(email, password);
 };
