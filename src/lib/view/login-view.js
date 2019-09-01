@@ -39,7 +39,6 @@ export default () => {
       pass.type = 'password';
     }
   };
-
   btnIngresar.addEventListener('click', () => {
     event.preventDefault();
     const email = divElem.querySelector('#txt-email').value;

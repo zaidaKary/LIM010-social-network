@@ -1,5 +1,4 @@
-import { pintarInfoPerfil ,actualizandoPerfil} from '../controller/profile-controller.js';
-
+import { pintarInfoPerfil, actualizandoPerfil } from '../controller/profile-controller.js';
 export default () => {
   const viewProfile = `
     <div id="vista-profile" class="perfil">
@@ -24,7 +23,7 @@ export default () => {
   const btnGuardar = divElem.querySelector('#guardar-perfil');
   const btnEditar = divElem.querySelector('#editar-perfil');
   const btnInicio = divElem.querySelector('#inicio');
-  pintarInfoPerfil(userNombre,userCorreo, userFoto);
+  pintarInfoPerfil(userNombre, userCorreo, userFoto);
   // obteniendoDatosUsuario();
   btnEditar.addEventListener('click', () => {
     userNombre.disabled = false;
@@ -38,7 +37,7 @@ export default () => {
     btnGuardar.style.display = 'none';
     btnEditar.style.display = 'block';
   });
-  btnInicio.addEventListener('click', () =>{
+  btnInicio.addEventListener('click', () => {
     window.location.hash = '#/home';
   });
   return divElem;

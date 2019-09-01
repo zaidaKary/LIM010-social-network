@@ -51,7 +51,6 @@ export const itemPost = (publication) => {
       });
       const btnGuardar = divElement.querySelector('#guardar');
       btnGuardar.addEventListener('click', () => {
-        const idPublicacion = divElement.querySelector(`#idpublicacion-${publication.id}`);
         actualizandoPost(publication.id, idPublicacion.value);
         idPublicacion.disabled = true;
         divElement.querySelector('#guardar').style.display = 'none';
