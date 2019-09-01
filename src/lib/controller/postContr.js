@@ -5,17 +5,17 @@ import { addPostFirebase, deleteLikeDb, addLikeDb, editPost } from '../model/mod
 const allDatePost = (fullDate) => {
   const getDate = fullDate.getDate();
   const getMonth = fullDate.getMonth() + 1;
-  const getFullYear = fullDate.getFullYear()
+  const getFullYear = fullDate.getFullYear();
 
   const minutes = fullDate.getMinutes();
   const seconds = fullDate.getSeconds();
-  let hours = fullDate.getHours();
+  const hours = fullDate.getHours();
 
   const day = `${getDate}/${getMonth}/${getFullYear}`;
   const myClock = `A las: ${hours}:${minutes}:${seconds}`;
-  const date = `${day} ${myClock}`
+  const date = `${day} ${myClock}`;
   return date;
-}
+};
 
 export const textPost = () => {
   event.preventDefault();
@@ -31,20 +31,8 @@ export const textPost = () => {
     .catch(() => {
       // console.error('Error adding document: ', error);.
     });
-}
-// muestra todos los post
-export const getPost = (datapost) => {
-  event.preventDefault();
-  firebase.firestore().collection('posts').orderBy("date", "desc")
-    .onSnapshot((querySnapshot) => {
-      const array = [];
-      querySnapshot.forEach((doc) => {
-        array.push({ id: doc.id, ...doc.data() });
-      });
-      datapost(array);
-      console.log(array);
-    });
 };
+// muestra todos los post
 
 /* likes */
 export const deleteLikePost = (idPost) => {

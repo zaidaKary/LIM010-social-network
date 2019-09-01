@@ -5,7 +5,19 @@ export const addPostFirebase = (email, textPost, idPost, date, typePost) => fire
   date,
   typePost,
 });
-export const deletePost = iduser => firebase.firestore().collection('posts').doc(iduser).delete();
+
+export const getPost = (datapost) => {
+  // event.preventDefault();
+  firebase.firestore().collection('posts').orderBy('date', 'desc')
+    .onSnapshot((querySnapshot) => {
+      const array = [];
+      querySnapshot.forEach((doc) => {
+        array.push({ id: doc.id, ...doc.data() });
+      });
+      datapost(array);
+    });
+};
+export const deletePost = (iduser) => firebase.firestore().collection('posts').doc(iduser).delete();
 export const editPost = (idPost, publicacion) => firebase.firestore().collection('posts').doc(idPost).update({
   textPost: publicacion,
 });
