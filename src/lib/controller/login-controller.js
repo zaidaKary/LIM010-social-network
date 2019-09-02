@@ -1,9 +1,9 @@
 // NOTA: Instalar el LIVE SERVER para usar puerto
 import { signInWithEmailAndPassword, signInGoogle, signInFacebook } from '../model/modelFirebase.js';
-// import { db } from '../../main.js'
+import { db } from '../../main.js'
 //creando una funcion que guarde los datos del google y facebook en la bd
 export const guardandoDatosGF = (id, name, email, foto) => {
-  firebase.firestore().collection('users').doc(id).set({ // agrega datos en la colección
+  db.collection('users').doc(id).set({ // agrega datos en la colección
     ID: id,
     Nombre: name,
     Email: email,

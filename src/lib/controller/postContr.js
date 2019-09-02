@@ -1,6 +1,6 @@
 import { userCurrent } from '../model/modelFirebase.js';
-import { addPostFirebase, deleteLikeDb, addLikeDb ,editPost } from '../model/modelPost.js';
-// import { db } from '../../main.js';
+import { addPostFirebase, deleteLikeDb, addLikeDb ,editPost} from '../model/modelPost.js';
+import { db } from '../../main.js';
 
 const allDatePost= (fullDate)=>{
   const getDate = fullDate.getDate();
@@ -33,8 +33,20 @@ export const textPost = () => {
     });
 }
 // muestra todos los post
+export const getPost = (datapost) => {
+  event.preventDefault();
+  db.collection('posts').orderBy("date", "desc")
+    .onSnapshot((querySnapshot) => {
+      const array = [];
+      querySnapshot.forEach((doc) => {               
+        array.push({id: doc.id, ...doc.data()});
+      });
+      datapost(array);
+      console.log(array)
+    });
+};
 
-/* likes */
+/*likes*/
 export const deleteLikePost = (idPost) => {
   deleteLikeDb(userCurrent().uid, idPost)
     .then(() => {
@@ -47,6 +59,18 @@ export const addLike = (idPost) => {
     });
 };
 
+
+
 export const actualizandoPost = (id, publicacion) => {
   editPost(id, publicacion);
 };
+// export const getPrivatePosts = (idUser, callback)=>{
+//   db.collection('posts').where("idPost","==",idUser).where("typePost","==","privado")
+//   .orderBy("date","desc").onSnapshot(querySnapshot=>{
+//     let posts =[];
+//     querySnapshot.forEach((doc) => {
+//         posts.push({id: doc.id,...doc.data()});                
+//       });   
+//       callback(posts);
+//     })
+// }

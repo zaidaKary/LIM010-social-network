@@ -4,10 +4,10 @@ import { actualizandoPost, deleteLikePost, addLike } from '../controller/postCon
 
 // import { TextPost } from '../controller/postContr.js'
 export const itemPost = (publication) => {
-  // console.log(data);
-  const divElement = document.createElement('div');
-  if (publication.typePost === "publico" || userCurrent().uid === publication.idPost) {
-    divElement.innerHTML = `
+    // console.log(data);
+    const divElement = document.createElement('div');
+    if(publication.typePost === "publico" || userCurrent().uid === publication.idPost){
+      divElement.innerHTML = `
     <div class="postear">
     <div class="user-post">
     <div>
@@ -37,10 +37,10 @@ export const itemPost = (publication) => {
         </div>
       </div>
     `
-    if (userCurrent().uid === publication.idPost) {
+    if(userCurrent().uid === publication.idPost){
       const btnEliminar = divElement.querySelector('#eliminar');
-      btnEliminar.addEventListener('click', () => {
-        deletePost(publication.id);
+      btnEliminar.addEventListener('click', () =>{
+       deletePost(publication.id);
       });
       const btnEditar = divElement.querySelector('#editar');
       const idPublicacion = divElement.querySelector(`#idpublicacion-${publication.id}`);
@@ -58,24 +58,24 @@ export const itemPost = (publication) => {
         divElement.querySelector('#editar').style.display = 'block';
       });
     }
-    // const btnDislike = divElement.querySelector(`#dislike-${publication.id}`);
-    const btnLike = divElement.querySelector(`#liked-${publication.id}`);
-    //  Agregando Likes
-    btnLike.addEventListener('click', (event) => {
-      if (event.target.dataset.like === '0') {
-        event.target.dataset.like = '1';
-        btnLike.classList.remove('not-like');
-        btnLike.classList.add('liked');
-        console.log('te gusto');
-        addLike(publication.id); // guardando en la base de datos
-      } else {
-        event.target.dataset.like = '0'
-        console.log('no te gusto');
-        btnLike.classList.remove('liked');
-        btnLike.classList.add('not-like');
-        deleteLikePost(publication.id);
-      }
-    });
+  // const btnDislike = divElement.querySelector(`#dislike-${publication.id}`);
+  const btnLike = divElement.querySelector(`#liked-${publication.id}`);
+      //  Agregando Likes
+  btnLike.addEventListener('click', (event) => {
+    if(event.target.dataset.like === '0'){
+      event.target.dataset.like = '1';
+      btnLike.classList.remove('not-like');
+      btnLike.classList.add('liked');
+      console.log('te gusto');
+  } else {
+      event.target.dataset.like = '0'
+      console.log('no te gusto');
+      btnLike.classList.remove('liked');
+      btnLike.classList.add('not-like');
+    }
+    addLike(publication.id); // guardando en la base de datos
+  });
   }
   return divElement;
 }
+
