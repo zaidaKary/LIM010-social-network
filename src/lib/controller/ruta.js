@@ -30,11 +30,11 @@ export const changeView = (route) => {
       break;
 
     case '#/home':
-      const comentario = (objetData) => {
+      const pintarDataPost = (objetData) => {
         container.innerHTML = '';
         container.appendChild(components.home(objetData));
-      }
-      getPost(comentario);
+      };
+      getPost(pintarDataPost);
       break;
     case '#/perfil':
       container.appendChild(components.profile());

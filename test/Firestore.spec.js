@@ -9,19 +9,25 @@ const fixtureData = {
           email: 'platanito@gmail.com',
           textPost: 'post de viajes',
           idPost: '12345',
-          date: '31/18/19',
-          typePost: 'privado'
+          date: '31/08/19',
+          typePost: 'privado',
         },
-      }
-    }
-  }
-}
+        abc554: {
+          email: 'betsy@gmail.com',
+          textPost: 'viajemos a Cuzco',
+          idPost: '123456',
+          date: '20/10/19',
+          typePost: 'privado',
+        },
+      },
+    },
+  },
+};
 
 global.firebase = new MockFirebase(fixtureData, { isNaiveSnapshotListenerEnabled: true });
 
 describe('addPostFirebase', () => {
-  it('Deberia agregar un post', (done) => {
-    return addPostFirebase('platanito@gmail.com', 'post de viajes', '12345', '31/18/19', 'privado')
+  it('Deberia agregar un post', (done) => addPostFirebase('platanito@gmail.com', 'post de viajes', '12345', '31/08/19', 'privado')
       .then(() => {
         const callback = (notes) => {
           const result = notes.find((element) => {
@@ -31,8 +37,7 @@ describe('addPostFirebase', () => {
           done();
         }
         getPost(callback);
-      });
-  });
+      }));
 });
 
 describe('deletePost', () => {
