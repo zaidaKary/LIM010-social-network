@@ -6,11 +6,11 @@ export default () => {
             <label class="nombre-perfil">Perfil de Usuario</label>
             <img id="foto"/>
             <label><strong>Nombre:</strong></label>
-            <input id="nombre" type="text" disabled/>
+            <input id="nombre" type="text" disabled class="margen-input"/>
             <label><strong>Email:</strong></label>
             <input id="correo" type="text" disabled/>
-            <button class="sesion log espacio sin-ocultar" id="editar-perfil">Editar</button>
-            <button class="sesion log espacio ocultar" id="guardar-perfil">Guardar</button>
+            <button class="sesion log espacio sin-ocultar margen-btn" id="editar-perfil">Editar</button>
+            <button class="sesion log espacio ocultar margen-btn" id="guardar-perfil">Guardar</button>
             <button class="sesion log espacio" id="inicio">Inicio</button>
         </div>       
     </div>`;
@@ -27,6 +27,8 @@ export default () => {
   // obteniendoDatosUsuario();
   btnEditar.addEventListener('click', () => {
     userNombre.disabled = false;
+    userNombre.focus();
+    userNombre.setSelectionRange (0, userNombre.value.length);
     btnGuardar.style.display = 'block';
     btnEditar.style.display = 'none';
   });

@@ -44,8 +44,7 @@ body{
     color: #282929;
 }
 .icon{
-    width: 25px;
-    margin-bottom: -4px;
+    width: 27px;
     border-radius: 20px;
 }
 .not-like{
@@ -139,7 +138,7 @@ body{
 }
 .user-post{
     border-radius: 3px 3px 0px 0px;
-    background: rgb(58, 108, 182);
+    background: rgb(94, 152, 238);
     color: #1b1116;
     font-weight: bold;
     padding: 1rem;
@@ -174,8 +173,8 @@ footer{
 .texto-publicacion {
     border: 1px solid #070707;
     display: flex;
-    padding-top: 6px;
-    padding-left: 3px;
+    justify-content: space-between;
+    padding: 9px;
 }
 .img-publicar{
     width: 40px;
@@ -198,15 +197,18 @@ footer{
 .sin-ocultar {
     display: block;
 }
-.alineando-iconos {
-    display: flex;
-}
 .text-area {
     background: white;
     border: none;
     resize: none;
     height: 6em;
     width: 500px;
+}
+.fecha {
+    font-size: 11px;
+}
+.conteo-likes{
+    display: flex;
 }
 /*Ocultando el boton cerrar*/
 .hide{
@@ -270,10 +272,16 @@ footer{
 }
 .nombre-perfil {
     text-align: center;
-    font-size: x-large;
+    font-size: xx-large;
     color:#10316b;
     font-weight: bold;
     font-family: cursive;
+}
+.margen-btn {
+    margin-top: 25px;
+}
+.margen-input {
+    margin-bottom: 12px;
 }
   /*Barra de menu para web*/
 header {

@@ -39,11 +39,10 @@ export default (data) => {
                 <form id="form-post">
                 <textarea   id= "publicacion" name="post" id="new-post" cols="30" rows="5" placeholder="¿Qué quieres compartir?"></textarea>              
                 <div class="btn-imagen-compartir">
-                <input id="btn-imagen" type=image src="https://img.icons8.com/color/48/000000/image.png" class="img-publicar">
                 <button id="btn-compartir" class="compartir">Compartir</button>
                   <select id="options">
-                        <option value="publico">Publico</option>
-                        <option value="privado">Privado</option>
+                        <option value="Público">Público</option>
+                        <option value="Privado">Privado</option>
                   </select>
                 </div>
                 </form>

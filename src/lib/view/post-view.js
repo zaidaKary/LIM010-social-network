@@ -28,9 +28,9 @@ export const itemPost = (publication) => {
             <a id="counter-${publication.id}"></a>  
             <a> personas le gusta tu publicación.</a>
             </p>
-            <input id="editar" type=image src="https://img.icons8.com/color/48/000000/edit-property.png" class="icon sin-ocultar">
+            ${userCurrent().uid === publication.idPost ? `
+            <input id="editar" type=image src="https://img.icons8.com/color/48/000000/edit-property.png" class="icon sin-ocultar">` : ''}
             <input id="guardar" type=image src="https://img.icons8.com/color/48/000000/save.png" class="icon ocultar">
-          </p>
       </div>
         <div class="comment-sub1 mp">
            <input id="" class="comentario" placeholder ="Escribe un comentario..." type=text/>
@@ -46,6 +46,8 @@ export const itemPost = (publication) => {
       const idPublicacion = divElement.querySelector(`#idpublicacion-${publication.id}`);
       btnEditar.addEventListener('click', () => {
         idPublicacion.disabled = false;
+        idPublicacion.focus();
+        idPublicacion.setSelectionRange (0, idPublicacion.value.length);
         divElement.querySelector('#guardar').style.display = 'block';
         divElement.querySelector('#editar').style.display = 'none';
       });

@@ -29,7 +29,7 @@ global.firebase = new MockFirebase(fixtureData, { isNaiveSnapshotListenerEnabled
 describe('addPostFirebase', () => {
   it('Deberia agregar un post', (done) => addPostFirebase('platanito@gmail.com', 'post de viajes', '12345', '31/08/19', 'privado')
       .then(() => {
-        const callback = (notes) => {
+          const callback = (notes) =>{
           const result = notes.find((element) => {
             return element.textPost === 'post de viajes';
           });
