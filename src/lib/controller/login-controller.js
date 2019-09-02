@@ -50,13 +50,13 @@ export const authAccountGoogle = () => {
       const token = resultado.credential.accessToken;
       guardandoDatosGF(user.uid, user.displayName, user.email, user.photoURL);
       window.location.hash = '#/home';
-      console.log('autenticado usuario ', resultado.user, user, token);
+      // console.log('autenticado usuario ', resultado.user, user, token);
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       alert(`Error detectado: ${errorMessage}, Tipo:${errorCode}`);
-      console.log('Detectado un error:', error);
+      // console.log('Detectado un error:', error);
     });
 };
 // ---------------------------------------------------------------------//
