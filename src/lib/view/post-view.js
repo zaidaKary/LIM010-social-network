@@ -1,6 +1,6 @@
 import { userCurrent } from '../model/modelLoginRegistro.js';
 import {
-  deletePost, getLike, addCommentPost, getCommentPost,
+  deletePost, getLike, addCommentPost, getCommentPost, privacyPost
 } from '../model/modelPost.js';
 import { actualizandoPost, deleteLikePost, addLike } from '../controller/postContr.js';
 import { itemComment } from './commentsPost-view.js';
@@ -33,8 +33,15 @@ export const itemPost = (publication) => {
             <a> personas le gusta tu publicación.</a>
             </p>
             ${userCurrent().uid === publication.idPost ? `
-            <input id="editar" type=image src="https://img.icons8.com/color/48/000000/edit-property.png" class="icon sin-ocultar">` : ''}
-            <input id="guardar" type=image src="https://img.icons8.com/color/48/000000/save.png" class="icon ocultar">
+              <select id="options-privacy-${publication.id}">
+                ${publication.typePost === 'Público' ? `
+                <option value="Público">${publication.typePost}</option>
+                <option value="Privado">Privado</option>`:
+          `<option value="Privado">${publication.typePost}</option>
+                    <option value="Público">Público</option>`}      
+              </select>   
+            <input id="editar" type=image src="https://img.icons8.com/color/48/000000/edit-property.png" class="icon sin-ocultar">
+            <input id="guardar" type=image src="https://img.icons8.com/color/48/000000/save.png" class="icon ocultar">`: ``}
       </div>
         <div class="texto-publicacion border-public">
         <textarea id="idcomentario-${publication.id}" class="text-area"></textarea>
@@ -65,6 +72,11 @@ export const itemPost = (publication) => {
         divElement.querySelector('#guardar').style.display = 'none';
         divElement.querySelector('#editar').style.display = 'block';
       });
+      const tipoPost = divElement.querySelector(`#options-privacy-${publication.id}`)
+      tipoPost.addEventListener('change', () => {
+        const nuevoTipoPost = tipoPost.value;
+        privacyPost(publication.id, nuevoTipoPost)
+      });
     }
     const btnLike = divElement.querySelector(`#liked-${publication.id}`);
     const counterLike = divElement.querySelector(`#counter-${publication.id}`);
@@ -77,24 +89,25 @@ export const itemPost = (publication) => {
       console.log(countLike);
     };
 
-    const retornar = (likes) => {
+    const likesPintadosPost = (likes) => {
       for (let i = 0; i < likes.length; i++) {
-        console.log(likes[i]);
         if (userCurrent().uid === likes[i].id) {
           btnLike.classList.remove('not-like');
           btnLike.classList.add('liked');
         }
       }
     };
-    getLike(publication.id, contadorLikes, retornar);
+
+    getLike(publication.id, contadorLikes, likesPintadosPost);
+
     btnLike.addEventListener('click', (event) => {
       event.preventDefault();
       if (event.target.dataset.like === '0') {
         event.target.dataset.like = '1';
         addLike(publication.id);
+        getLike(publication.id, contadorLikes, likesPintadosPost);
         btnLike.classList.remove('not-like');
         btnLike.classList.add('liked');
-        // getLike(publication.id, contadorLikes, retornar);
         // console.log('te gusto');
       } else {
         event.target.dataset.like = '0';
@@ -121,6 +134,10 @@ export const itemPost = (publication) => {
       if (nuevoComentario !== '') {
         containerCommentPost.innerHTML = '';
         addCommentPost(userCurrent().uid, publication.id, publication.email, nuevoComentario);
+        getLike(publication.id, contadorLikes, likesPintadosPost);
+        btnLike.classList.add('not-like');
+        btnLike.classList.remove('liked');
+        // console.log('no te gusto');
       }
     });
   }
