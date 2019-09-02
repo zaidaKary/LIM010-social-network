@@ -1,6 +1,5 @@
 import MockFirebase from 'mock-cloud-firestore';
 import { addPostFirebase, getPost, deletePost } from '../src/lib/model/modelPost.js';
-
 const fixtureData = {
   __colección__: {
     posts: {
@@ -25,7 +24,6 @@ const fixtureData = {
 };
 
 global.firebase = new MockFirebase(fixtureData, { isNaiveSnapshotListenerEnabled: true });
-
 describe('addPostFirebase', () => {
   it('Deberia agregar un post', (done) => addPostFirebase('platanito@gmail.com', 'post de viajes', '12345', '31/08/19', 'privado')
     .then(() => {

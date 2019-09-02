@@ -32,7 +32,7 @@ export const itemPost = (publication) => {
             <input id="editar" type=image src="https://img.icons8.com/color/48/000000/edit-property.png" class="icon sin-ocultar">` : ''}
             <input id="guardar" type=image src="https://img.icons8.com/color/48/000000/save.png" class="icon ocultar">
       </div>
-        <div class="comment-sub1 mp">
+        <div class="">
            <input id="" class="comentario" placeholder ="Escribe un comentario..." type=text/>
         </div>
       </div>
@@ -47,7 +47,7 @@ export const itemPost = (publication) => {
       btnEditar.addEventListener('click', () => {
         idPublicacion.disabled = false;
         idPublicacion.focus();
-        idPublicacion.setSelectionRange (0, idPublicacion.value.length);
+        idPublicacion.setSelectionRange(0, idPublicacion.value.length);
         divElement.querySelector('#guardar').style.display = 'block';
         divElement.querySelector('#editar').style.display = 'none';
       });
