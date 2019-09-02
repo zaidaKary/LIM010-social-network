@@ -34,7 +34,7 @@ export const addLikeDb = (iduser, idPost, email) => firebase.firestore().collect
 export const deleteLikeDb = (iduser, idPost) => firebase.firestore().collection('posts').doc(idPost).collection('likes')
   .doc(iduser)
   .delete();
-export const getLike = (idPost, contadorLikes) => {
+export const getLike = (idPost, contadorLikes, likesPintadosPost) => {
   firebase.firestore().collection('posts').doc(idPost).collection('likes')
     .onSnapshot((querySnapshot) => {
       const likes = [];
@@ -42,6 +42,7 @@ export const getLike = (idPost, contadorLikes) => {
         likes.push({ id: doc.id, ...doc.data() });
       });
       contadorLikes(likes);
+      likesPintadosPost(likes);
       // console.log(likes);
     });
 };

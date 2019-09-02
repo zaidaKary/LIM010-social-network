@@ -1,5 +1,5 @@
 import { userCurrent } from '../model/modelLoginRegistro.js';
-import { deletePost, getLike } from '../model/modelPost.js';
+import { deletePost, getLike, privacyPost } from '../model/modelPost.js';
 import { actualizandoPost, deleteLikePost, addLike } from '../controller/postContr.js';
 
 // import { TextPost } from '../controller/postContr.js'
@@ -29,8 +29,15 @@ export const itemPost = (publication) => {
             <a> personas le gusta tu publicación.</a>
             </p>
             ${userCurrent().uid === publication.idPost ? `
-            <input id="editar" type=image src="https://img.icons8.com/color/48/000000/edit-property.png" class="icon sin-ocultar">` : ''}
-            <input id="guardar" type=image src="https://img.icons8.com/color/48/000000/save.png" class="icon ocultar">
+              <select id="options-privacy-${publication.id}">
+                ${publication.typePost === 'Público'?`
+                <option value="Público">${publication.typePost}</option>
+                <option value="Privado">Privado</option>`: 
+                `<option value="Privado">${publication.typePost}</option>
+                    <option value="Público">Público</option>`}      
+              </select>   
+            <input id="editar" type=image src="https://img.icons8.com/color/48/000000/edit-property.png" class="icon sin-ocultar">
+            <input id="guardar" type=image src="https://img.icons8.com/color/48/000000/save.png" class="icon ocultar">`:``}
       </div>
         <div class="">
            <input id="" class="comentario" placeholder ="Escribe un comentario..." type=text/>
@@ -49,7 +56,7 @@ export const itemPost = (publication) => {
         idPublicacion.focus();
         idPublicacion.setSelectionRange(0, idPublicacion.value.length);
         divElement.querySelector('#guardar').style.display = 'block';
-        divElement.querySelector('#editar').style.display = 'none';
+        divElement.querySelector('#editar').style.display = 'none';        
       });
       const btnGuardar = divElement.querySelector('#guardar');
       btnGuardar.addEventListener('click', () => {
@@ -58,6 +65,11 @@ export const itemPost = (publication) => {
         divElement.querySelector('#guardar').style.display = 'none';
         divElement.querySelector('#editar').style.display = 'block';
       });
+      const tipoPost = divElement.querySelector(`#options-privacy-${publication.id}`)
+      tipoPost.addEventListener('change',()=>{
+      const nuevoTipoPost = tipoPost.value;    
+      privacyPost(publication.id, nuevoTipoPost)
+    });
     }
     // const btnDislike = divElement.querySelector(`#dislike-${publication.id}`);
     const btnLike = divElement.querySelector(`#liked-${publication.id}`);
@@ -78,23 +90,33 @@ export const itemPost = (publication) => {
     //   });
     // };
 
-    getLike(publication.id, contadorLikes);
+      const likesPintadosPost = (likes) => {
+        for (let i = 0; i < likes.length; i++) {
+          if (userCurrent().uid === likes[i].id) {
+            btnLike.classList.remove('not-like');
+            btnLike.classList.add('liked');
+          }
+        }
+      };
+
+    getLike(publication.id, contadorLikes, likesPintadosPost);
+
     btnLike.addEventListener('click', (event) => {
       event.preventDefault();
       if (event.target.dataset.like === '0') {
         event.target.dataset.like = '1';
+        addLike(publication.id);
+        getLike(publication.id, contadorLikes, likesPintadosPost);
         btnLike.classList.remove('not-like');
         btnLike.classList.add('liked');
-        getLike(publication.id, contadorLikes);
         // console.log('te gusto');
-        addLike(publication.id);
       } else {
         event.target.dataset.like = '0';
-        // console.log('no te gusto');
-        btnLike.classList.remove('liked');
-        btnLike.classList.add('not-like');
-        getLike(publication.id, contadorLikes);
         deleteLikePost(publication.id);
+        getLike(publication.id, contadorLikes, likesPintadosPost);
+        btnLike.classList.add('not-like');
+        btnLike.classList.remove('liked');
+        // console.log('no te gusto');
       }
     });
   }
