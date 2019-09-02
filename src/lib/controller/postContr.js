@@ -1,4 +1,4 @@
-import { userCurrent } from '../model/modelFirebase.js';
+import { userCurrent } from '../model/modelLoginRegistro.js';
 import { addPostFirebase, deleteLikeDb, addLikeDb, editPost } from '../model/modelPost.js';
 // import { db } from '../../main.js';
 

@@ -1,5 +1,5 @@
 import { obtenerInfo } from '../controller/obtenerInfo-controller.js';
-import { cerrarSesion } from '../model/modelFirebase.js';
+import { cerrarSesion } from '../model/modelLoginRegistro.js';
 import { itemPost } from '../view/post-view.js';
 import { textPost } from '../controller/postContr.js';
 
