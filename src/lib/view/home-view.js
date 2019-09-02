@@ -63,6 +63,7 @@ export default (data) => {
   const btnPerfil = divElem.querySelector('#btn-perfil');
   const btnCompartir = divElem.querySelector('#btn-compartir');
   const contenedorPost = divElem.querySelector('#public-posts');
+
   data.forEach((element) => {
     contenedorPost.appendChild(itemPost(element));
   });

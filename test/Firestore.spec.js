@@ -1,5 +1,5 @@
 import MockFirebase from 'mock-cloud-firestore';
-import { addPostFirebase, getPost, deletePost, editPost, addLikeDb, getLike } from '../src/lib/model/modelPost.js';
+import { addPostFirebase, getPost, deletePost, editPost, privacyPost, addLikeDb, getLike } from '../src/lib/model/modelPost.js';
 
 const fixtureData = {
   __colección__: {
@@ -95,31 +95,31 @@ describe('editPost', () => {
   });
 });
 
-// describe('privacyPost', () => {
-//   it('deberia leer los post tipo privado', (done) => {
-//     return privacyPost('abcd123456', 'privado')
-//       .then(() => getPost(
-//         (posts) => {
-//           const result = posts.find((post) => post.typePost === 'privado')
-//           expect(result.typePost).toBe('privado');
-//           done();
-//         }
-//       ))
-//   })
-// })
+describe('privacyPost', () => {
+  it('deberia leer los post tipo privado', (done) => {
+    return privacyPost('abcd123456', 'privado')
+      .then(() => getPost(
+        (posts) => {
+          const result = posts.find((post) => post.typePost === 'privado')
+          expect(result.typePost).toBe('privado');
+          done();
+        }
+      ))
+  })
+})
 
 describe('addLikeDb', () => {
   it('deberia agregar like a un post', (done) => {
     return addLikeDb('xyz012', 'abcd123456', 'prueba@gmail.com')
       .then(() => {
-        const callback = (notes) => {
-          const result = notes.find((element) => {
-            return element.textPost === 'post de viajes';
+        const callback = (likes) => {
+          const result = likes.find((element) => {
+            return element.iduser === 'xyz012';
           });
-          expect(result.textPost).toBe('post de viajes');
+          expect(result.iduser).toBe('xyz012');
           done();
         }
-        getPost(callback);
+        getLike(callback);
       });
   });
 })

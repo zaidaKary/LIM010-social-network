@@ -21,9 +21,9 @@ export const deletePost = iduser => firebase.firestore().collection('posts').doc
 export const editPost = (idPost, publicacion) => firebase.firestore().collection('posts').doc(idPost).update({
   textPost: publicacion,
 });
-// export const privacyPost = (idPost, typePost) => firebase.firestore().collection('posts').doc(idPost).update({
-//   typePost,
-// });
+export const privacyPost = (idPost, typePost) => firebase.firestore().collection('posts').doc(idPost).update({
+  typePost,
+});
 export const addLikeDb = (iduser, idPost, email) => firebase.firestore().collection('posts').doc(idPost).collection('likes')
   .doc(iduser)
   .set({
@@ -34,7 +34,7 @@ export const addLikeDb = (iduser, idPost, email) => firebase.firestore().collect
 export const deleteLikeDb = (iduser, idPost) => firebase.firestore().collection('posts').doc(idPost).collection('likes')
   .doc(iduser)
   .delete();
-export const getLike = (idPost, contadorLikes, retornar) => {
+export const getLike = (idPost, contadorLikes, likesPintadosPost) => {
   firebase.firestore().collection('posts').doc(idPost).collection('likes')
     .onSnapshot((querySnapshot) => {
       const likes = [];
@@ -42,6 +42,29 @@ export const getLike = (idPost, contadorLikes, retornar) => {
         likes.push({ id: doc.id, ...doc.data() });
       });
       contadorLikes(likes);
-      retornar(likes);
+      likesPintadosPost(likes);
+      // console.log(likes);
+    });
+};
+
+
+export const addCommentPost = (iduser, idPost, email, comment) => {
+  firebase.firestore().collection('posts').doc(idPost).collection('comments')
+    .add({
+      iduser,
+      idPost,
+      email,
+      comment,
+    });
+};
+
+export const getCommentPost = (idPost, pintarComentario) => {
+  firebase.firestore().collection('posts').doc(idPost).collection('comments')
+    .onSnapshot((querySnapshot) => {
+      const comment = [];
+      querySnapshot.forEach((doc) => {
+        comment.push({ idPost, id: doc.id, ...doc.data() });
+      });
+      pintarComentario(comment);
     });
 };

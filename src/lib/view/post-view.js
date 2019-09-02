@@ -1,10 +1,14 @@
 import { userCurrent } from '../model/modelLoginRegistro.js';
-import { deletePost, getLike } from '../model/modelPost.js';
+import {
+  deletePost, getLike, addCommentPost, getCommentPost, privacyPost
+} from '../model/modelPost.js';
 import { actualizandoPost, deleteLikePost, addLike } from '../controller/postContr.js';
+import { itemComment } from './commentsPost-view.js';
 
 // import { TextPost } from '../controller/postContr.js'
 export const itemPost = (publication) => {
   // console.log(data);
+  console.log(publication);
   const divElement = document.createElement('div');
   if (publication.typePost === 'Público' || userCurrent().uid === publication.idPost) {
     divElement.innerHTML = `
@@ -29,11 +33,21 @@ export const itemPost = (publication) => {
             <a> personas le gusta tu publicación.</a>
             </p>
             ${userCurrent().uid === publication.idPost ? `
-            <input id="editar" type=image src="https://img.icons8.com/color/48/000000/edit-property.png" class="icon sin-ocultar">` : ''}
-            <input id="guardar" type=image src="https://img.icons8.com/color/48/000000/save.png" class="icon ocultar">
+              <select id="options-privacy-${publication.id}">
+                ${publication.typePost === 'Público' ? `
+                <option value="Público">${publication.typePost}</option>
+                <option value="Privado">Privado</option>`:
+          `<option value="Privado">${publication.typePost}</option>
+                    <option value="Público">Público</option>`}      
+              </select>   
+            <input id="editar" type=image src="https://img.icons8.com/color/48/000000/edit-property.png" class="icon sin-ocultar">
+            <input id="guardar" type=image src="https://img.icons8.com/color/48/000000/save.png" class="icon ocultar">`: ``}
       </div>
-        <div class="">
-           <input id="" class="comentario" placeholder ="Escribe un comentario..." type=text/>
+        <div class="texto-publicacion border-public">
+        <textarea id="idcomentario-${publication.id}" class="text-area"></textarea>
+        </div>
+        <div><button  class="compartir"id="btncomment-${publication.id}">COMPARTIR</button></div>
+        <div id="todoscomments-${publication.id}">        
         </div>
       </div>
     `;
@@ -58,29 +72,39 @@ export const itemPost = (publication) => {
         divElement.querySelector('#guardar').style.display = 'none';
         divElement.querySelector('#editar').style.display = 'block';
       });
+      const tipoPost = divElement.querySelector(`#options-privacy-${publication.id}`)
+      tipoPost.addEventListener('change', () => {
+        const nuevoTipoPost = tipoPost.value;
+        privacyPost(publication.id, nuevoTipoPost)
+      });
     }
     const btnLike = divElement.querySelector(`#liked-${publication.id}`);
     const counterLike = divElement.querySelector(`#counter-${publication.id}`);
-
+    const btnComentarioPost = divElement.querySelector(`#btncomment-${publication.id}`);
+    const containerCommentPost = divElement.querySelector(`#todoscomments-${publication.id}`);
     //  Agregando Likes
-    const retornar = (likes) => {
-      for (let i = 0; i < likes.length; i++ ){
+    const contadorLikes = (likes) => {
+      const countLike = likes.length;
+      counterLike.innerHTML = countLike;
+    };
+
+    const likesPintadosPost = (likes) => {
+      for (let i = 0; i < likes.length; i++) {
         if (userCurrent().uid === likes[i].id) {
           btnLike.classList.remove('not-like');
           btnLike.classList.add('liked');
         }
       }
     };
-    const contadorLikes = (likes) => {
-      const countLike = likes.length;
-      counterLike.innerHTML = countLike;
-    };
-    getLike(publication.id, contadorLikes, retornar);
+
+    getLike(publication.id, contadorLikes, likesPintadosPost);
+
     btnLike.addEventListener('click', (event) => {
       event.preventDefault();
       if (event.target.dataset.like === '0') {
         event.target.dataset.like = '1';
         addLike(publication.id);
+        getLike(publication.id, contadorLikes, likesPintadosPost);
         btnLike.classList.remove('not-like');
         btnLike.classList.add('liked');
       } else {
@@ -88,6 +112,25 @@ export const itemPost = (publication) => {
         deleteLikePost(publication.id);
         btnLike.classList.remove('liked');
         btnLike.classList.add('not-like');
+      }
+    });
+    const pintarComentario = (comment) => {
+      comment.forEach((element) => {
+        containerCommentPost.appendChild(itemComment(element));
+      });
+    };
+
+    getCommentPost(publication.id, pintarComentario);
+    btnComentarioPost.addEventListener('click', (e) => {
+      e.preventDefault();
+      const nuevoComentario = divElement.querySelector(`#idcomentario-${publication.id}`).value;
+      console.log(nuevoComentario);
+      if (nuevoComentario !== '') {
+        containerCommentPost.innerHTML = '';
+        addCommentPost(userCurrent().uid, publication.id, publication.email, nuevoComentario);
+        getLike(publication.id, contadorLikes, likesPintadosPost);
+        btnLike.classList.add('not-like');
+        btnLike.classList.remove('liked');
       }
     });
   }
