@@ -8,44 +8,50 @@ const fixtureData = {
           email: 'platanito@gmail.com',
           textPost: 'post de viajes',
           idPost: '12345',
-          date: '31/08/19',
-          typePost: 'privado',
+          date: '31/18/19',
+          typePost: 'privado'
         },
-        abc554: {
-          email: 'betsy@gmail.com',
-          textPost: 'viajemos a Cuzco',
-          idPost: '123456',
-          date: '20/10/19',
-          typePost: 'privado',
+        efgh123456: {
+          email: 'platanito@gmail.com',
+          textPost: 'post de viajes',
+          idPost: '12345',
+          date: '31/18/19',
+          typePost: 'privado'
         },
-      },
-    },
-  },
-};
+      }
+    }
+  }
+}
 
 global.firebase = new MockFirebase(fixtureData, { isNaiveSnapshotListenerEnabled: true });
 describe('addPostFirebase', () => {
-  it('Deberia agregar un post', (done) => addPostFirebase('platanito@gmail.com', 'post de viajes', '12345', '31/08/19', 'privado')
-    .then(() => {
-      const callback = (notes) => {
-        const result = notes.find((element) => {
-          return element.textPost === 'post de viajes';
-        });
-        expect(result.textPost).toBe('post de viajes');
-        done();
-      }
-      getPost(callback);
-    }));
+  it('Deberia agregar un post', (done) => {
+    return addPostFirebase('platanito@gmail.com', 'post de viajes', '12345', '31/18/19', 'privado')
+      .then(() => {
+        const callback = (notes) => {
+          const result = notes.find((element) => {
+            return element.textPost === 'post de viajes';
+          });
+          expect(result.textPost).toBe('post de viajes');
+          done();
+        }
+        getPost(callback);
+      });
+  });
 });
 
 describe('deletePost', () => {
-  it('debería de eliminar un post', done => deletePost('abc554')
-    .then(() => {
-      const callback = (posts) => {
-        const resultado = posts.find(elemento => elemento.id === 'abc554');
-        expect(resultado).toBe(undefined);
-        done();
-      };
-      getPost(callback);
-    }));
+  it('deberia eliminar el post con el id: efgh123456', (done) => {
+    return deletePost('efgh123456')
+      .then(() => {
+        const callback = (post) => {
+          const result = post.find((elemento) => {
+            return elemento.id === 'efgh123456';
+          })
+          expect(result).toBe(undefined);
+          done();
+        }
+        getPost(callback)
+      });
+  });
 });
