@@ -98,7 +98,8 @@ export const itemPost = (publication) => {
       }
     };
 
-    console.log(publication.id);
+    console.log(publication.id); .
+    
     getLike(publication.id, contadorLikes, likesPintadosPost);
 
     btnLike.addEventListener('click', (event) => {
