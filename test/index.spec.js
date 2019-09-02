@@ -1,4 +1,5 @@
-import { signInWithEmailAndPassword, signInGoogle, signInFacebook, createUserWithEmailAndPassword, cerrarSesion } from '../src/lib/model/modelFirebase.js';
+import { signInWithEmailAndPassword, signInGoogle, signInFacebook, createUserWithEmailAndPassword,
+cerrarSesion, userCurrent } from '../src/lib/model/modelLoginRegistro.js';
 
 // configuracion de firebase mock
 const firebasemock = require('firebase-mock');
@@ -46,3 +47,14 @@ describe('cerrar sesion', () => {
       expect(firebase.auth().currentUser).toBe(null);
     }));
 });
+
+describe('userCurrent', () => {
+  it('deberia tener usuario activo', (done) => {
+    signInWithEmailAndPassword('laboratoria@lab.com', '123456789')
+      .then(() => {
+        const user = userCurrent();
+        expect(user.email).toEqual('laboratoria@lab.com');
+        done();
+      })
+  })
+})

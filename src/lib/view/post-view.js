@@ -59,42 +59,35 @@ export const itemPost = (publication) => {
         divElement.querySelector('#editar').style.display = 'block';
       });
     }
-    // const btnDislike = divElement.querySelector(`#dislike-${publication.id}`);
     const btnLike = divElement.querySelector(`#liked-${publication.id}`);
     const counterLike = divElement.querySelector(`#counter-${publication.id}`);
 
     //  Agregando Likes
+    const retornar = (likes) => {
+      for (let i = 0; i < likes.length; i++ ){
+        if (userCurrent().uid === likes[i].id) {
+          btnLike.classList.remove('not-like');
+          btnLike.classList.add('liked');
+        }
+      }
+    };
     const contadorLikes = (likes) => {
       const countLike = likes.length;
       counterLike.innerHTML = countLike;
-      console.log(countLike);
     };
-
-    // const pintarLikes = () => {
-    //   const auth = firebase.auth();
-    //   return auth.onAuthStateChanged((user) => {
-    //     if (user) {
-    //     }
-    //   });
-    // };
-
-    getLike(publication.id, contadorLikes);
+    getLike(publication.id, contadorLikes, retornar);
     btnLike.addEventListener('click', (event) => {
       event.preventDefault();
       if (event.target.dataset.like === '0') {
         event.target.dataset.like = '1';
+        addLike(publication.id);
         btnLike.classList.remove('not-like');
         btnLike.classList.add('liked');
-        getLike(publication.id, contadorLikes);
-        // console.log('te gusto');
-        addLike(publication.id);
       } else {
         event.target.dataset.like = '0';
-        // console.log('no te gusto');
+        deleteLikePost(publication.id);
         btnLike.classList.remove('liked');
         btnLike.classList.add('not-like');
-        getLike(publication.id, contadorLikes);
-        deleteLikePost(publication.id);
       }
     });
   }
