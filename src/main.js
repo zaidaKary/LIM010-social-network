@@ -4,7 +4,7 @@ se haga una recarga de nuestra página */
 import { changeView } from './lib/controller/ruta.js';
 
 const init = () => { // sirve para cambiar la url
-  // Inicia la configuracion de Firebase
+  // Inicia la configuracion de Firebase.
   const firebaseConfig = {
     apiKey: 'AIzaSyAw54jrErsVrWC2Em_kzD3ydeTogwQblVY',
     authDomain: 'pruebaredsocial-7ac42.firebaseapp.com',

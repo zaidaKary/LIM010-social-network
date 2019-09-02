@@ -24,7 +24,7 @@ export default () => {
     const username = divElem.querySelector('#txt-username').value;
     const email = divElem.querySelector('#txt-email').value;
     const pass = divElem.querySelector('#txt-password1').value;
-    registerFunction(email, pass, mensajeError,username,foto);
+    registerFunction(email, pass, mensajeError, username, foto);
   });
   return divElem;
 };
