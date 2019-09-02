@@ -1,33 +1,15 @@
-// NOTA: Instalar el LIVE SERVER para usar puerto
-import { signInWithEmailAndPassword, signInGoogle, signInFacebook } from '../model/modelFirebase.js';
-import { db } from '../../main.js'
-//creando una funcion que guarde los datos del google y facebook en la bd
-export const guardandoDatosGF = (id, name, email, foto) => {
-  db.collection('users').doc(id).set({ // agrega datos en la colección
-    ID: id,
-    Nombre: name,
-    Email: email,
-    Foto: foto
-  });
-};
-export const mostrarPosts = () => {
-};
-
+import { signInWithEmailAndPassword, signInGoogle, signInFacebook, saveDataGF } from '../model/modelLoginRegistro.js';
 // ---------------------------------------------------------------------//
 // AUTENTICACIÓN CON CUALQUIER OTRA CUENTA
 // ---------------------------------------------------------------------//
 export const loginFunction = (email, pass, mensajeError) => {
-  console.log(signInWithEmailAndPassword(email, pass))
-  signInWithEmailAndPassword(email, pass).
-    then(() => {
-      console.log(email);
+  signInWithEmailAndPassword(email, pass)
+    .then(() => {
       window.location.hash = '#/home';
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      // alert(`Error detectado: ${errorMessage}, Tipo:${errorCode}`);
-      console.log('Detectado un error:', error, errorMessage);
       switch (errorCode) {
         case 'auth/user-not-found':
           mensajeError.innerHTML = '*Usuario no registrado. Por favor, registrarse.';
@@ -41,7 +23,6 @@ export const loginFunction = (email, pass, mensajeError) => {
         default:
           mensajeError.innerHTML = 'Se ha producido un error';
       }
-
     });
 };
 // ---------------------------------------------------------------------//
@@ -52,15 +33,15 @@ export const authAccountGoogle = () => {
     .then((resultado) => {
       const user = resultado.user;
       const token = resultado.credential.accessToken;
-      guardandoDatosGF(user.uid,user.displayName,user.email,user.photoURL);
+      saveDataGF(user.uid, user.displayName, user.email, user.photoURL);
       window.location.hash = '#/home';
-      console.log('autenticado usuario ', resultado.user, user, token);
+      // console.log('autenticado usuario ', resultado.user, user, token);
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       alert(`Error detectado: ${errorMessage}, Tipo:${errorCode}`);
-      console.log('Detectado un error:', error);
+      // console.log('Detectado un error:', error);
     });
 };
 // ---------------------------------------------------------------------//
@@ -71,7 +52,7 @@ export const authAccountFacebook = () => {
     .then((result) => {
       const user = result.user;
       const token = result.credential.accessToken;
-      guardandoDatosGF(user.uid,user.displayName,user.email,user.photoURL);
+      guardandoDatosGF(user.uid, user.displayName, user.email, user.photoURL);
       window.location.hash = '#/home';
       console.log('autenticado usuario ', result.user, user, token);
     })
@@ -81,13 +62,4 @@ export const authAccountFacebook = () => {
       alert(`Error detectado: ${errorMessage}, Tipo:${errorCode}`);
       console.log('Detectado un error:', error);
     });
-};
-// Mostrar constraseña ojo
-export const mostrarPassword = () => {
-  const pass = document.querySelector('#txt-password');
-  if (pass.type === 'password') {
-    pass.type = 'text';
-  } else {
-    pass.type = 'password';
-  }
 };

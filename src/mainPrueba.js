@@ -36,3 +36,4 @@
 //       <progress value="0" max="100" id="uploader">0%</progress>
 //       <input type="file" value="upload" id="btn-file" />
 //     </div>
+/* <input id="btn-imagen" type=image src="https://img.icons8.com/color/48/000000/image.png" class="img-publicar"></input> */

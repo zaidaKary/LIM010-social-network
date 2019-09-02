@@ -1,5 +1,4 @@
-import { pintarInfoPerfil ,actualizandoPerfil} from '../controller/profile-controller.js';
-
+import { pintarInfoPerfil, actualizandoPerfil } from '../controller/profile-controller.js';
 export default () => {
   const viewProfile = `
     <div id="vista-profile" class="perfil">
@@ -7,11 +6,11 @@ export default () => {
             <label class="nombre-perfil">Perfil de Usuario</label>
             <img id="foto"/>
             <label><strong>Nombre:</strong></label>
-            <input id="nombre" type="text" disabled/>
+            <input id="nombre" type="text" disabled class="margen-input"/>
             <label><strong>Email:</strong></label>
             <input id="correo" type="text" disabled/>
-            <button class="sesion log espacio sin-ocultar" id="editar-perfil">Editar</button>
-            <button class="sesion log espacio ocultar" id="guardar-perfil">Guardar</button>
+            <button class="sesion log espacio sin-ocultar margen-btn" id="editar-perfil">Editar</button>
+            <button class="sesion log espacio ocultar margen-btn" id="guardar-perfil">Guardar</button>
             <button class="sesion log espacio" id="inicio">Inicio</button>
         </div>       
     </div>`;
@@ -24,10 +23,12 @@ export default () => {
   const btnGuardar = divElem.querySelector('#guardar-perfil');
   const btnEditar = divElem.querySelector('#editar-perfil');
   const btnInicio = divElem.querySelector('#inicio');
-  pintarInfoPerfil(userNombre,userCorreo, userFoto);
+  pintarInfoPerfil(userNombre, userCorreo, userFoto);
   // obteniendoDatosUsuario();
   btnEditar.addEventListener('click', () => {
     userNombre.disabled = false;
+    userNombre.focus();
+    userNombre.setSelectionRange (0, userNombre.value.length);
     btnGuardar.style.display = 'block';
     btnEditar.style.display = 'none';
   });
@@ -38,7 +39,7 @@ export default () => {
     btnGuardar.style.display = 'none';
     btnEditar.style.display = 'block';
   });
-  btnInicio.addEventListener('click', () =>{
+  btnInicio.addEventListener('click', () => {
     window.location.hash = '#/home';
   });
   return divElem;

@@ -1,4 +1,6 @@
-import {db} from '../../main.js';
+import { updateProfile } from "../model/modelProfile.js";
+import { userCurrent } from "../model/modelLoginRegistro.js";
+
 //Pintando nombre y correo en la vista perfil
 export const pintarInfoPerfil = (userName, userCorreo,userfoto) => {
   const auth = firebase.auth();
@@ -7,12 +9,10 @@ export const pintarInfoPerfil = (userName, userCorreo,userfoto) => {
       // El usuario ha iniciado sesión.
       const id = firebase.auth().currentUser.uid;
       // Obtención de datos de un documento
-      db.collection('users').where("ID", "==", id).get().then((querySnapshot) => {
+      firebase.firestore().collection('users').where("ID", "==", id).get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => { // forEach -> se repite por cada documento que este en users
         // console.log(doc.id, " => ", doc.data());
         console.log("Datos del documento:", doc.data());
-        console.log(doc.data().Nombre);
-        console.log(doc.data().Email);
         userName.value = doc.data().Nombre;// consoleamos el nombre que hay en el documento
         userCorreo.value = doc.data().Email;// consoleamos el nombre que hay en el documento
         userfoto.src = doc.data().Foto;
@@ -25,17 +25,11 @@ export const pintarInfoPerfil = (userName, userCorreo,userfoto) => {
   }
 });
 };
-// Actualizando perfil en la base de datos
 export const actualizandoPerfil = (nuevoUserNombre) => {
-  const id = firebase.auth().currentUser.uid; // obteniendo id de usuario
-  return db.collection('users').doc(id).update({
-    Nombre: nuevoUserNombre,
-  }).then(() => {
-    // console.log('Document successfully updated!');
-    // actualizarNombre(nuevoUserNombre);
+  const id = userCurrent();
+  updateProfile(nuevoUserNombre, id)
+  .then(() => {
     console.log(firebase.auth().currentUser);
   }).catch(() => {
-    // The document probably doesn't exist.
-    // console.error('Error updating document: ', error);
   });
 };

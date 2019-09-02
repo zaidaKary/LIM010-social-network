@@ -6,7 +6,7 @@ import Home from '../view/home-view.js';
 import Register from '../view/register-view.js';
 import Profile from '../view/profile-view.js';
 import Different from '../view/404-view.js';
-import { getPost } from '../controller/postContr.js'
+import { getPost } from '../model/modelPost.js';
 // Creando un objeto de los componenetes
 const components = {
   login: Login,
@@ -30,11 +30,11 @@ export const changeView = (route) => {
       break;
 
     case '#/home':
-      const comentario = (objetData) => {    
-        container.innerHTML='';
+      const pintarDataPost = (objetData) => {
+        container.innerHTML = '';
         container.appendChild(components.home(objetData));
-      }
-      getPost(comentario);
+      };
+      getPost(pintarDataPost);
       break;
     case '#/perfil':
       container.appendChild(components.profile());

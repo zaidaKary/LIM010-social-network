@@ -16,6 +16,21 @@ export const cerrarSesion = () => {
 export const userCurrent = () => {
   return firebase.auth().currentUser;
 };
-export const createUser = (email, password,) => {
- return firebase.auth().createUserWithEmailAndPassword(email, password);
+// creando una función que guarde los datos del google y facebook en la bd
+export const saveDataGF = (id, name, email, foto) => {
+  firebase.firestore().collection('users').doc(id).set({
+    ID: id,
+    Nombre: name,
+    Email: email,
+    Foto: foto,
+  });
+};
+// creando una función que agregue datos de registro en la colección users
+export const createUser = (id, name, email, foto) => {
+  firebase.firestore().collection('users').doc(id).set({
+    ID: id,
+    Nombre: name,
+    Email: email,
+    Foto: foto
+  });
 };
