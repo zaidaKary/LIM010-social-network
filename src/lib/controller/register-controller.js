@@ -1,14 +1,14 @@
-import { createUserWithEmailAndPassword, userCurrent, createUser} from '../model/modelLoginRegistro.js';
+import { createUserWithEmailAndPassword, userCurrent, createUser } from '../model/modelLoginRegistro.js';
 
-export const registerFunction = (email, pass, mensajeError,username, foto) => {
+export const registerFunction = (email, pass, mensajeError, username, foto) => {
   createUserWithEmailAndPassword(email, pass)
     .then((result) => {
-    const user = userCurrent();// obtiene el usuario que accedió
-    createUser(user.uid, username, email, foto);// creamos el usuario en firebase
-    window.location.hash = '#/';
-    console.log(result);
-  })
-  .catch((error) => {
+      const user = userCurrent();// obtiene el usuario que accedió
+      createUser(user.uid, username, email, foto);// creamos el usuario en firebase
+      window.location.hash = '#/';
+      console.log(result);
+    })
+    .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log('Detectado un error:', error, errorMessage);

@@ -1,3 +1,4 @@
+    
 export const signInWithEmailAndPassword = (email, pass) => {
   return firebase.auth().signInWithEmailAndPassword(email, pass);
 };
@@ -31,6 +32,6 @@ export const createUser = (id, name, email, foto) => {
     ID: id,
     Nombre: name,
     Email: email,
-    Foto: foto
+    Foto: foto,
   });
 };

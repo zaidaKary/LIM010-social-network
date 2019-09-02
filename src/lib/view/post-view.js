@@ -44,9 +44,9 @@ export const itemPost = (publication) => {
             <input id="guardar" type=image src="https://img.icons8.com/color/48/000000/save.png" class="icon ocultar">`: ``}
       </div>
         <div class="texto-publicacion border-public">
-        <textarea id="idcomentario-${publication.id}" class="text-area"></textarea>
+        <textarea  class= "agregar-comentarios"id="idcomentario-${publication.id}" class="text-area-coment"></textarea>
         </div>
-        <div><button  class="compartir"id="btncomment-${publication.id}">COMPARTIR</button></div>
+        <div><button  class="compartir"id="btncomment-${publication.id}">Comentar</button></div>
         <div id="todoscomments-${publication.id}">        
         </div>
       </div>
@@ -98,6 +98,7 @@ export const itemPost = (publication) => {
       }
     };
 
+    console.log(publication.id);
     getLike(publication.id, contadorLikes, likesPintadosPost);
 
     btnLike.addEventListener('click', (event) => {
