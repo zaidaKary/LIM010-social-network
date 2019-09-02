@@ -43,7 +43,6 @@ export const getLike = (idPost, contadorLikes, likesPintadosPost) => {
       });
       contadorLikes(likes);
       likesPintadosPost(likes);
-      // console.log(likes);
     });
 };
 

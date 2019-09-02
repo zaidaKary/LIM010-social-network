@@ -2,7 +2,7 @@ import MockFirebase from 'mock-cloud-firestore';
 import { addPostFirebase, getPost, deletePost, editPost, privacyPost, addLikeDb, getLike } from '../src/lib/model/modelPost.js';
 
 const fixtureData = {
-  __colección__: {
+  __collection__: {
     posts: {
       __doc__: {
         abcd123456: {
@@ -21,7 +21,7 @@ const fixtureData = {
                 },
               },
             },
-          }
+          },
         },
         efgh123456: {
           email: 'prueba@gmail.com',
@@ -36,15 +36,15 @@ const fixtureData = {
                   iduser: 'xyz007',
                   idPost: 'efgh123456',
                   email: 'usuario@gmail.com',
-                }
-              }
+                },
+              },
             },
-          }
+          },
         },
       },
     },
   },
-}
+};
 
 global.firebase = new MockFirebase(fixtureData, { isNaiveSnapshotListenerEnabled: true });
 describe('addPostFirebase', () => {
@@ -80,19 +80,15 @@ describe('deletePost', () => {
 });
 
 describe('editPost', () => {
-  it('Debería editar un post', (done) => {
-    return editPost('abcd123456', 'post de viajes')
-      .then(() => {
-        const callback = (post) => {
-          const result = post.find((elemento) => {
-            return elemento.textPost === 'post de viajes';
-          });
-          expect(result).toBe('post de viajes 2');
-          done();
-        }
-        getPost(callback);
-      });
-  });
+  it('Debería editar un post', done => editPost('abcd123456', 'post de viajes 2')
+    .then(() => {
+      const callback = (post) => {
+        const result = post.find(elemento => elemento.textPost === 'post de viajes 2');
+        expect(result.textPost).toBe('post de viajes 2');
+        done();
+      };
+      getPost(callback);
+    }));
 });
 
 describe('privacyPost', () => {
@@ -110,16 +106,14 @@ describe('privacyPost', () => {
 
 describe('addLikeDb', () => {
   it('deberia agregar like a un post', (done) => {
-    return addLikeDb('xyz012', 'abcd123456', 'prueba@gmail.com')
+    addLikeDb('xyz012', 'abcd123456', 'prueba@gmail.com')
       .then(() => {
-        const callback = (likes) => {
-          const result = likes.find((element) => {
-            return element.iduser === 'xyz012';
-          });
+        const callback1 = (likes) => {
+          const result = likes.find(element => element.iduser === 'xyz012');
           expect(result.iduser).toBe('xyz012');
           done();
-        }
-        getLike(callback);
+        };
+        getLike('abcd123456', callback1, '1');
       });
   });
-})
+});
