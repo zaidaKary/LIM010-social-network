@@ -1,30 +1,15 @@
-// NOTA: Instalar el LIVE SERVER para usar puerto
-import { signInWithEmailAndPassword, signInGoogle, signInFacebook } from '../model/modelFirebase.js';
-// import { db } from '../../main.js'
-// creando una funcion que guarde los datos del google y facebook en la bd
-export const guardandoDatosGF = (id, name, email, foto) => {
-  firebase.firestore().collection('users').doc(id).set({ // agrega datos en la colección
-    ID: id,
-    Nombre: name,
-    Email: email,
-    Foto: foto,
-  });
-};
+import { signInWithEmailAndPassword, signInGoogle, signInFacebook, saveDataGF } from '../model/modelLoginRegistro.js';
 // ---------------------------------------------------------------------//
 // AUTENTICACIÓN CON CUALQUIER OTRA CUENTA
 // ---------------------------------------------------------------------//
 export const loginFunction = (email, pass, mensajeError) => {
-  console.log(signInWithEmailAndPassword(email, pass));
   signInWithEmailAndPassword(email, pass)
     .then(() => {
-      console.log(email);
       window.location.hash = '#/home';
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      // alert(`Error detectado: ${errorMessage}, Tipo:${errorCode}`);
-      console.log('Detectado un error:', error, errorMessage);
       switch (errorCode) {
         case 'auth/user-not-found':
           mensajeError.innerHTML = '*Usuario no registrado. Por favor, registrarse.';
@@ -48,7 +33,7 @@ export const authAccountGoogle = () => {
     .then((resultado) => {
       const user = resultado.user;
       const token = resultado.credential.accessToken;
-      guardandoDatosGF(user.uid, user.displayName, user.email, user.photoURL);
+      saveDataGF(user.uid, user.displayName, user.email, user.photoURL);
       window.location.hash = '#/home';
       // console.log('autenticado usuario ', resultado.user, user, token);
     })

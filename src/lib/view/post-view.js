@@ -1,4 +1,4 @@
-import { userCurrent } from '../model/modelFirebase.js';
+import { userCurrent } from '../model/modelLoginRegistro.js';
 import { deletePost, getLike } from '../model/modelPost.js';
 import { actualizandoPost, deleteLikePost, addLike } from '../controller/postContr.js';
 
@@ -6,7 +6,7 @@ import { actualizandoPost, deleteLikePost, addLike } from '../controller/postCon
 export const itemPost = (publication) => {
   // console.log(data);
   const divElement = document.createElement('div');
-  if (publication.typePost === 'publico' || userCurrent().uid === publication.idPost) {
+  if (publication.typePost === 'Público' || userCurrent().uid === publication.idPost) {
     divElement.innerHTML = `
     <div class="postear">
     <div class="user-post">
