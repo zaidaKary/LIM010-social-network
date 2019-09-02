@@ -11,7 +11,6 @@ global.firebase = firebasemock.MockFirebaseSdk(
   () => mockauth,
 );
 
-
 // iniciar sesion
 describe('iniciar Sesion', () => {
   it('Deberia iniciar sesion', () => signInWithEmailAndPassword('laboratoria@lab.com', '123456789')
