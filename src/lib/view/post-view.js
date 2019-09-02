@@ -1,10 +1,14 @@
 import { userCurrent } from '../model/modelLoginRegistro.js';
-import { deletePost, getLike } from '../model/modelPost.js';
+import {
+  deletePost, getLike, addCommentPost, getCommentPost,
+} from '../model/modelPost.js';
 import { actualizandoPost, deleteLikePost, addLike } from '../controller/postContr.js';
+import { itemComment } from './commentsPost-view.js';
 
 // import { TextPost } from '../controller/postContr.js'
 export const itemPost = (publication) => {
   // console.log(data);
+  console.log(publication);
   const divElement = document.createElement('div');
   if (publication.typePost === 'Público' || userCurrent().uid === publication.idPost) {
     divElement.innerHTML = `
@@ -32,8 +36,11 @@ export const itemPost = (publication) => {
             <input id="editar" type=image src="https://img.icons8.com/color/48/000000/edit-property.png" class="icon sin-ocultar">` : ''}
             <input id="guardar" type=image src="https://img.icons8.com/color/48/000000/save.png" class="icon ocultar">
       </div>
-        <div class="">
-           <input id="" class="comentario" placeholder ="Escribe un comentario..." type=text/>
+        <div class="texto-publicacion border-public">
+        <textarea id="idcomentario-${publication.id}" class="text-area"></textarea>
+        </div>
+        <div><button  class="compartir"id="btncomment-${publication.id}">COMPARTIR</button></div>
+        <div id="todoscomments-${publication.id}">        
         </div>
       </div>
     `;
@@ -59,10 +66,10 @@ export const itemPost = (publication) => {
         divElement.querySelector('#editar').style.display = 'block';
       });
     }
-    // const btnDislike = divElement.querySelector(`#dislike-${publication.id}`);
     const btnLike = divElement.querySelector(`#liked-${publication.id}`);
     const counterLike = divElement.querySelector(`#counter-${publication.id}`);
-
+    const btnComentarioPost = divElement.querySelector(`#btncomment-${publication.id}`);
+    const containerCommentPost = divElement.querySelector(`#todoscomments-${publication.id}`);
     //  Agregando Likes
     const contadorLikes = (likes) => {
       const countLike = likes.length;
@@ -70,31 +77,50 @@ export const itemPost = (publication) => {
       console.log(countLike);
     };
 
-    // const pintarLikes = () => {
-    //   const auth = firebase.auth();
-    //   return auth.onAuthStateChanged((user) => {
-    //     if (user) {
-    //     }
-    //   });
-    // };
-
-    getLike(publication.id, contadorLikes);
+    const retornar = (likes) => {
+      for (let i = 0; i < likes.length; i++) {
+        console.log(likes[i]);
+        if (userCurrent().uid === likes[i].id) {
+          btnLike.classList.remove('not-like');
+          btnLike.classList.add('liked');
+        }
+      }
+    };
+    getLike(publication.id, contadorLikes, retornar);
     btnLike.addEventListener('click', (event) => {
       event.preventDefault();
       if (event.target.dataset.like === '0') {
         event.target.dataset.like = '1';
+        addLike(publication.id);
         btnLike.classList.remove('not-like');
         btnLike.classList.add('liked');
-        getLike(publication.id, contadorLikes);
+        // getLike(publication.id, contadorLikes, retornar);
         // console.log('te gusto');
-        addLike(publication.id);
       } else {
         event.target.dataset.like = '0';
+        deleteLikePost(publication.id);
         // console.log('no te gusto');
         btnLike.classList.remove('liked');
         btnLike.classList.add('not-like');
-        getLike(publication.id, contadorLikes);
-        deleteLikePost(publication.id);
+        // getLike(publication.id, contadorLikes, retornar);
+      }
+    });
+    const pintarComentario = (comment) => {
+      console.log(comment);
+      comment.forEach((element) => {
+        console.log(element.comment);
+        containerCommentPost.appendChild(itemComment(element));
+      });
+    };
+
+    getCommentPost(publication.id, pintarComentario);
+    btnComentarioPost.addEventListener('click', (e) => {
+      e.preventDefault();
+      const nuevoComentario = divElement.querySelector(`#idcomentario-${publication.id}`).value;
+      console.log(nuevoComentario);
+      if (nuevoComentario !== '') {
+        containerCommentPost.innerHTML = '';
+        addCommentPost(userCurrent().uid, publication.id, publication.email, nuevoComentario);
       }
     });
   }

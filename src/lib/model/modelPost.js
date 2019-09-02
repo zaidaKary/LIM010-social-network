@@ -34,7 +34,7 @@ export const addLikeDb = (iduser, idPost, email) => firebase.firestore().collect
 export const deleteLikeDb = (iduser, idPost) => firebase.firestore().collection('posts').doc(idPost).collection('likes')
   .doc(iduser)
   .delete();
-export const getLike = (idPost, contadorLikes) => {
+export const getLike = (idPost, contadorLikes, retornar) => {
   firebase.firestore().collection('posts').doc(idPost).collection('likes')
     .onSnapshot((querySnapshot) => {
       const likes = [];
@@ -42,6 +42,33 @@ export const getLike = (idPost, contadorLikes) => {
         likes.push({ id: doc.id, ...doc.data() });
       });
       contadorLikes(likes);
+      retornar(likes);
       // console.log(likes);
+    });
+};
+
+
+export const addCommentPost = (iduser, idPost, email, comment) => {
+  firebase.firestore().collection('posts').doc(idPost).collection('comments')
+    .add({
+      iduser,
+      idPost,
+      email,
+      comment,
+    });
+};
+
+// export const addCommentSubmit = (objPost, objUser, comment) => {
+//   addCommentPost(objPost.id, objUser.uid, objUser.email, comment);
+// };
+
+export const getCommentPost = (idPost, pintarComentario) => {
+  firebase.firestore().collection('posts').doc(idPost).collection('comments')
+    .onSnapshot((querySnapshot) => {
+      const comment = [];
+      querySnapshot.forEach((doc) => {
+        comment.push({ idPost, id: doc.id, ...doc.data() });
+      });
+      pintarComentario(comment);
     });
 };
