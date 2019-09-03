@@ -1,4 +1,4 @@
-import { signInWithEmailAndPassword, signInGoogle, signInFacebook, saveDataGF } from '../model/modelLoginRegistro.js';
+import { signInWithEmailAndPassword, signInGoogle, signInFacebook, createUser } from '../model/modelLoginRegistro.js';
 // ---------------------------------------------------------------------//
 // AUTENTICACIÓN CON CUALQUIER OTRA CUENTA
 // ---------------------------------------------------------------------//
@@ -33,7 +33,7 @@ export const authAccountGoogle = () => {
     .then((resultado) => {
       const user = resultado.user;
       const token = resultado.credential.accessToken;
-      saveDataGF(user.uid, user.displayName, user.email, user.photoURL);
+      createUser(user.uid, user.displayName, user.email, user.photoURL);
       window.location.hash = '#/home';
       // console.log('autenticado usuario ', resultado.user, user, token);
     })
@@ -52,7 +52,7 @@ export const authAccountFacebook = () => {
     .then((result) => {
       const user = result.user;
       const token = result.credential.accessToken;
-      guardandoDatosGF(user.uid, user.displayName, user.email, user.photoURL);
+      createUser(user.uid, user.displayName, user.email, user.photoURL);
       window.location.hash = '#/home';
       console.log('autenticado usuario ', result.user, user, token);
     })

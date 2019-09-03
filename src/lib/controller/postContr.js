@@ -5,7 +5,7 @@ import { addPostFirebase, deleteLikeDb, addLikeDb, editPost } from '../model/mod
 const allDatePost = (fullDate) => {
   const getDate = fullDate.getDate();
   const getMonth = fullDate.getMonth() + 1;
-  const getFullYear = fullDate.getFullYear();
+  const getFullYear = fullDate.getFullYear(); //Devuelve el año
 
   const minutes = fullDate.getMinutes();
   const seconds = fullDate.getSeconds();
@@ -32,7 +32,6 @@ export const textPost = () => {
       // console.error('Error adding document: ', error);.
     });
 };
-// muestra todos los post
 
 /* likes */
 export const deleteLikePost = (idPost) => {
