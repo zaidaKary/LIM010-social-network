@@ -1,6 +1,6 @@
 /*Almacenamiento en Firebase-Ventana de cargar imagen*/
 body{
-    display: flex;
+    /* display: flex; */
     min-height: 100vh;
     width: 100%;
     padding: 0;
@@ -50,10 +50,12 @@ body{
 .not-like{
     background-image:url('https://img.icons8.com/ios/50/000000/like.png');
     background-size: cover;
+    cursor:pointer;
 }
 .liked{
     background-image: url('https://img.icons8.com/officel/16/000000/hearts.png');
     background-size: cover;
+    cursor:pointer;
 }
 .ojo{
     position: relative;
@@ -74,8 +76,8 @@ body{
 }
 .post{
     padding: 11px;
-    margin: 9px;
-    margin-right: 39px;
+    margin: 2%;
+    margin-right: 2%;
     border: 1px solid #070707;
 }
 .comentario{
@@ -117,17 +119,47 @@ body{
     font-size: 20px;
 }
 /* Post */
+/*comentarios post*/
+.img-compartir{
+    margin-top: 30%;
+    cursor:pointer;
+}
+.gmail-usuario{
+    font-weight: bold;
+    font-size: medium;
+}
+
+.comentario-post{
+    background-color: #dfe5e9;
+    font-weight: bold;
+    margin: 2%;
+}
+.color-post{
+    color: #10316b;
+    font-size: medium;
+}
+
+.text-area-comentario{
+    width: 98%;
+    margin: 1%;
+    border-radius: 4px;
+    border: 1px solid rgb(92, 166, 209);
+    padding: 5px 15px 5px 15px;
+    resize: none;
+}
 .postear{
     width: 95%;
-    margin: 1%;
+    margin: 2%;
+    margin-right: 2%;
     padding-bottom: 9px;
-    padding-top: 9px;
+    padding-top: 0px;
+    border: 2px solid #838a9b;
 }
 .post textarea{
     width: 100%;
     height: 100px;
     resize: none;
-    border: 1px solid #5AC39B;
+    border: 1px solid rgb(92, 166, 209);
     padding: 7px 20px 7px 20px;
 }
 .comparte{
@@ -140,8 +172,6 @@ body{
     border-radius: 3px 3px 0px 0px;
     background: rgb(94, 152, 238);
     color: #1b1116;
-    font-weight: bold;
-    padding: 1rem;
     display: flex;
     justify-content: space-between;
     padding: 4px;
@@ -153,7 +183,6 @@ body{
     color: #fff;
     border: none;
     cursor:pointer;
-    border-radius: 14px;
 }
 footer{
     margin-top: 60px;
@@ -171,10 +200,10 @@ footer{
     width: 28px;
 }
 .texto-publicacion {
-    border: 1px solid #070707;
+    /* border: 1px solid #070707; */
     display: flex;
     justify-content: space-between;
-    padding: 9px;
+    padding: 1px;
 }
 .img-publicar{
     width: 40px;
@@ -190,6 +219,7 @@ footer{
 
 .fondo-likes {
     background-color: #f2f2ef;
+    margin: 0.5%;
 }
 .ocultar {
     display: none;
@@ -201,8 +231,6 @@ footer{
     background: white;
     border: none;
     resize: none;
-    height: 6em;
-    width: 500px;
 }
 .fecha {
     font-size: 11px;
@@ -217,7 +245,9 @@ footer{
 
 /* Perfil User Inicio*/
 #datos-user{
-    padding-top: 28px;
+    padding-top: 2%;
+    margin-right: 3%;
+    margin-left: 2%;
 }
 .datos{
     display: flex;
@@ -229,7 +259,7 @@ footer{
     width: 90%;
     height: 50%;
     padding-top: 2%;
-    margin: 0 auto;
+    margin-left: 4%;
 }
 
 #foto {
@@ -240,6 +270,7 @@ footer{
     margin: 5%;
     display: flex;
     align-self: center;
+    
   }
 .profile-name{
     font-weight: bold;

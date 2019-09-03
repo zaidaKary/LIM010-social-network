@@ -40,7 +40,7 @@ export default (data) => {
                 <textarea   id= "publicacion" name="post" id="new-post" cols="30" rows="5" placeholder="¿Qué quieres compartir?"></textarea>              
                 <div class="btn-imagen-compartir">
                 <button id="btn-compartir" class="compartir">Compartir</button>
-                  <select id="options">
+                  <select id="options" class="compartir">
                         <option value="Público">Público</option>
                         <option value="Privado">Privado</option>
                   </select>

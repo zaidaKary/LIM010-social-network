@@ -2,14 +2,10 @@
 export const itemComment = (objComment) => {
   const divElement = document.createElement('div');
   divElement.innerHTML = `
-    <div>
-    <div  class=">
-    <p class="">Publicado por:  ${objComment.email} </p>
-    </div>  
-    <div class="">
+    <div class="comentario-post">
+    <p class="color-post">${objComment.email}</p>
     <p >${objComment.comment}</p>
-    </div>  
-    </div>  
+    </div>    
     `;
   return divElement;
 };
