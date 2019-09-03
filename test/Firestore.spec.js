@@ -1,5 +1,7 @@
 import MockFirebase from 'mock-cloud-firestore';
-import { addPostFirebase, getPost, deletePost, editPost, privacyPost, addLikeDb, getLike } from '../src/lib/model/modelPost.js';
+import {
+ addPostFirebase, getPost, deletePost, editPost, privacyPost, addLikeDb, getLike 
+} from '../src/lib/model/modelPost.js';
 
 const fixtureData = {
   __collection__: {
@@ -48,8 +50,7 @@ const fixtureData = {
 
 global.firebase = new MockFirebase(fixtureData, { isNaiveSnapshotListenerEnabled: true });
 describe('addPostFirebase', () => {
-  it('Deberia agregar un post', (done) => {
-    return addPostFirebase('usuario@gmail.com', 'post de viajes', '1', '30/08/19', 'privado')
+  it('Deberia agregar un post', (done) => addPostFirebase('usuario@gmail.com', 'post de viajes', '1', '30/08/19', 'privado')
       .then(() => {
         const callback = (notes) => {
           const result = notes.find((element) => {
@@ -59,13 +60,11 @@ describe('addPostFirebase', () => {
           done();
         }
         getPost(callback);
-      });
-  });
+      }));
 });
 
 describe('deletePost', () => {
-  it('deberia eliminar el post con el id: efgh123456', (done) => {
-    return deletePost('efgh123456')
+  it('deberia eliminar el post con el id: efgh123456', (done) => deletePost('efgh123456')
       .then(() => {
         const callback = (post) => {
           const result = post.find((elemento) => {
@@ -75,8 +74,7 @@ describe('deletePost', () => {
           done();
         };
         getPost(callback);
-      });
-  });
+      }));
 });
 
 describe('editPost', () => {
@@ -92,28 +90,40 @@ describe('editPost', () => {
 });
 
 describe('privacyPost', () => {
-  it('deberia leer los post tipo privado', (done) => {
-    return privacyPost('abcd123456', 'privado')
+  it('deberia leer los post tipo privado', (done) => privacyPost('abcd123456', 'privado')
       .then(() => getPost(
         (posts) => {
           const result = posts.find((post) => post.typePost === 'privado')
           expect(result.typePost).toBe('privado');
           done();
         }
-      ))
-  })
-})
+      )));
+});
 
 describe('addLikeDb', () => {
   it('deberia agregar like a un post', (done) => {
     addLikeDb('xyz012', 'abcd123456', 'prueba@gmail.com')
       .then(() => {
-        const callback1 = (likes) => {
+        const callback = (likes) => {
           const result = likes.find(element => element.iduser === 'xyz012');
           expect(result.iduser).toBe('xyz012');
           done();
         };
-        getLike('abcd123456', callback1, '1');
+        getLike(callback);
       });
   });
 });
+
+// describe('deletePost', () => {
+//   it('deberia eliminar el post con el id: efgh123456', (done) => deletePost('efgh123456')
+//       .then(() => {
+//         const callback = (post) => {
+//           const result = post.find((elemento) => {
+//             return elemento.id === 'efgh123456';
+//           });
+//           expect(result).toBe(undefined);
+//           done();
+//         };
+//         getPost(callback);
+//       }));
+// });
