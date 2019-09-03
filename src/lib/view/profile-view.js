@@ -16,6 +16,7 @@ export default () => {
     </div>`;
   const divElem = document.createElement('div');
   divElem.innerHTML = viewProfile;
+
   const userNombre = divElem.querySelector('#nombre');
   const userCorreo = divElem.querySelector('#correo');
   const userFoto = divElem.querySelector('#foto');

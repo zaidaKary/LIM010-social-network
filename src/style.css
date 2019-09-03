@@ -114,7 +114,6 @@ body{
 }
 .font{
     font-family:'Pacifico', cursive;
-
     font-size: 20px;
 }
 /* Post */
@@ -123,8 +122,6 @@ body{
     margin: 1%;
     padding-bottom: 9px;
     padding-top: 9px;
-    border: 3px solid rgb(55, 57, 58);
-    
 }
 .post textarea{
     width: 100%;
@@ -167,26 +164,17 @@ footer{
     justify-content: space-between;
 }
 .img-eliminar {
-    width: 22px;  
+    width: 22px;
     height: 22px;
 }
 .img-corazon {
     width: 28px;
 }
-
-.agregar-comentarios{
-    border: 1px solid rgb(132, 213, 233);
-    width: 100%;
-    height: 100px;
-    resize: none;
-
-    padding: 7px 20px 7px 20px;
-}
 .texto-publicacion {
-    /* border: 1px solid #070707; */
+    border: 1px solid #070707;
     display: flex;
     justify-content: space-between;
-    padding: 2px;
+    padding: 9px;
 }
 .img-publicar{
     width: 40px;
@@ -294,27 +282,6 @@ footer{
 }
 .margen-input {
     margin-bottom: 12px;
-}
-/*Comentarios del post*/
-.comentar-post{
-    color:blue;
-}
-.text-area-coment {
-    background: white;
-    border: none;
-    resize: none;
-    height: 4em;
-    width: 469px;
-}
-.comment-post {
-    background: rgba(41, 15, 32, 0.1) ;
-    border-radius: 3px 3px 0px 0px;
-    color: #1b1116;
-    font-weight: bold;
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    padding: 4px;
 }
   /*Barra de menu para web*/
 header {
