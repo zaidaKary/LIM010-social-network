@@ -1,27 +1,27 @@
+/* eslint-disable no-console */
 import { userCurrent } from '../model/modelLoginRegistro.js';
 import {
-  deletePost, getLike, addCommentPost, getCommentPost, privacyPost
+  deletePost, getLike, addCommentPost, getCommentPost, privacyPost,
 } from '../model/modelPost.js';
 import { actualizandoPost, deleteLikePost, addLike } from '../controller/postContr.js';
 import { itemComment } from './commentsPost-view.js';
 
 // import { TextPost } from '../controller/postContr.js'
 export const itemPost = (publication) => {
-  // console.log(data);
-  console.log(publication);
   const divElement = document.createElement('div');
   if (publication.typePost === 'Público' || userCurrent().uid === publication.idPost) {
     divElement.innerHTML = `
     <div class="postear">
     <div class="user-post">
     <div>
-    <p>Publicado por:  ${publication.email} </p>
+    <p class="gmail-usuario">Publicado por:  ${publication.email} </p>
+    <p class="date">${publication.date}</p>
     </div>
     <p>${publication.typePost}<p/>
     ${userCurrent().uid === publication.idPost ? `     
-    <input id="eliminar" type=image src="https://img.icons8.com/offices/16/000000/delete-sign.png" class="img-eliminar">` : ''}
+    <input id="eliminar" type=image src="https://img.icons8.com/windows/64/000000/xbox-x.png" class="img-eliminar">` : ''}
     </div>
-    <div> <p>${publication.date}</p></div>
+  
     <div class="texto-publicacion border-public">
       <textarea id="idpublicacion-${publication.id}" class="text-area" disabled>${publication.textPost}</textarea>
     </div>
@@ -33,22 +33,24 @@ export const itemPost = (publication) => {
             <a> personas le gusta tu publicación.</a>
             </p>
             ${userCurrent().uid === publication.idPost ? `
-              <select id="options-privacy-${publication.id}">
+              <select  class="compartir" id="options-privacy-${publication.id}">
                 ${publication.typePost === 'Público' ? `
-                <option value="Público">${publication.typePost}</option>
+                <option  value="Público">${publication.typePost}</option>
                 <option value="Privado">Privado</option>`:
-          `<option value="Privado">${publication.typePost}</option>
-                    <option value="Público">Público</option>`}      
+               `<option value="Privado">${publication.typePost}</option>
+                <option value="Público">Público</option>`}      
               </select>   
             <input id="editar" type=image src="https://img.icons8.com/color/48/000000/edit-property.png" class="icon sin-ocultar">
-            <input id="guardar" type=image src="https://img.icons8.com/color/48/000000/save.png" class="icon ocultar">`: ``}
+            <input id="guardar" type=image src="https://img.icons8.com/color/48/000000/save.png" class="icon ocultar">` : ''}
       </div>
-        <div class="texto-publicacion border-public">
-        <textarea id="idcomentario-${publication.id}" class="text-area"></textarea>
-        </div>
-        <div><button  class="compartir"id="btncomment-${publication.id}">COMPARTIR</button></div>
         <div id="todoscomments-${publication.id}">        
         </div>
+        <div class="texto-publicacion border-public">
+        <textarea id="idcomentario-${publication.id}" class="text-area-comentario" placeholder="Escribe un comentario..."></textarea>
+        <div><button type=image  class ="img-compartir"id="btncomment-${publication.id}">  <img src="https://img.icons8.com/ios-glyphs/30/000000/share.png"></button></div>
+        </div>
+       
+       
       </div>
     `;
     if (userCurrent().uid === publication.idPost) {
@@ -72,10 +74,10 @@ export const itemPost = (publication) => {
         divElement.querySelector('#guardar').style.display = 'none';
         divElement.querySelector('#editar').style.display = 'block';
       });
-      const tipoPost = divElement.querySelector(`#options-privacy-${publication.id}`)
+      const tipoPost = divElement.querySelector(`#options-privacy-${publication.id}`);
       tipoPost.addEventListener('change', () => {
         const nuevoTipoPost = tipoPost.value;
-        privacyPost(publication.id, nuevoTipoPost)
+        privacyPost(publication.id, nuevoTipoPost);
       });
     }
     const btnLike = divElement.querySelector(`#liked-${publication.id}`);
@@ -89,7 +91,7 @@ export const itemPost = (publication) => {
     };
 
     const likesPintadosPost = (likes) => {
-      for (let i = 0; i < likes.length; i++) {
+      for (let i = 0; i < likes.length; i += 1) {
         if (userCurrent().uid === likes[i].id) {
           btnLike.classList.remove('not-like');
           btnLike.classList.add('liked');
