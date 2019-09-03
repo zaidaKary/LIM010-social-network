@@ -34,7 +34,7 @@ export default (data) => {
                 </div>
                 </div>
             </div>
-            <div class="">
+            <div class="postear">
             <div class="post">
                 <form id="form-post">
                 <textarea   id= "publicacion" name="post" id="new-post" cols="30" rows="5" placeholder="¿Qué quieres compartir?"></textarea>              
