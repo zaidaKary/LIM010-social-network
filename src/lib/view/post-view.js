@@ -19,9 +19,9 @@ export const itemPost = (publication) => {
     </div>
     <p>${publication.typePost}<p/>
     ${userCurrent().uid === publication.idPost ? `     
-    <input id="eliminar" type=image src="https://img.icons8.com/offices/16/000000/delete-sign.png" class="img-eliminar">` : ''}
+    <input id="eliminar" type=image src="https://img.icons8.com/windows/64/000000/xbox-x.png" class="img-eliminar">` : ''}
     </div>
-    
+  
     <div class="texto-publicacion border-public">
       <textarea id="idpublicacion-${publication.id}" class="text-area" disabled>${publication.textPost}</textarea>
     </div>
