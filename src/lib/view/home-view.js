@@ -39,11 +39,11 @@ export default (data) => {
                 <form id="form-post">
                 <textarea   id= "publicacion" name="post" id="new-post" cols="30" rows="5" placeholder="¿Qué quieres compartir?"></textarea>              
                 <div class="btn-imagen-compartir">
-                <button id="btn-compartir" class="compartir">Compartir</button>
-                  <select id="options">
+                  <select id="options" class="compartir">
                         <option value="Público">Público</option>
                         <option value="Privado">Privado</option>
                   </select>
+                 <div> <button type=image   id="btn-compartir"class ="img-compartir"> <img src="https://img.icons8.com/ios-glyphs/30/000000/share.png"></button></div>
                 </div>
                 </form>
             </div>  

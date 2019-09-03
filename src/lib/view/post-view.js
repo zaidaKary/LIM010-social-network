@@ -14,13 +14,14 @@ export const itemPost = (publication) => {
     <div class="postear">
     <div class="user-post">
     <div>
-    <p>Publicado por:  ${publication.email} </p>
+    <p class="gmail-usuario">Publicado por:  ${publication.email} </p>
+    <p class="date">${publication.date}</p>
     </div>
     <p>${publication.typePost}<p/>
     ${userCurrent().uid === publication.idPost ? `     
-    <input id="eliminar" type=image src="https://img.icons8.com/offices/16/000000/delete-sign.png" class="img-eliminar">` : ''}
+    <input id="eliminar" type=image src="https://img.icons8.com/windows/64/000000/xbox-x.png" class="img-eliminar">` : ''}
     </div>
-    <div> <p>${publication.date}</p></div>
+  
     <div class="texto-publicacion border-public">
       <textarea id="idpublicacion-${publication.id}" class="text-area" disabled>${publication.textPost}</textarea>
     </div>
@@ -32,9 +33,9 @@ export const itemPost = (publication) => {
             <a> personas le gusta tu publicación.</a>
             </p>
             ${userCurrent().uid === publication.idPost ? `
-              <select id="options-privacy-${publication.id}">
+              <select  class="compartir" id="options-privacy-${publication.id}">
                 ${publication.typePost === 'Público' ? `
-                <option value="Público">${publication.typePost}</option>
+                <option  value="Público">${publication.typePost}</option>
                 <option value="Privado">Privado</option>`:
                `<option value="Privado">${publication.typePost}</option>
                 <option value="Público">Público</option>`}      
@@ -42,12 +43,14 @@ export const itemPost = (publication) => {
             <input id="editar" type=image src="https://img.icons8.com/color/48/000000/edit-property.png" class="icon sin-ocultar">
             <input id="guardar" type=image src="https://img.icons8.com/color/48/000000/save.png" class="icon ocultar">` : ''}
       </div>
-        <div class="texto-publicacion border-public">
-        <textarea id="idcomentario-${publication.id}" class="text-area"></textarea>
-        </div>
-        <div><button  class="compartir"id="btncomment-${publication.id}">COMPARTIR</button></div>
         <div id="todoscomments-${publication.id}">        
         </div>
+        <div class="texto-publicacion border-public">
+        <textarea id="idcomentario-${publication.id}" class="text-area-comentario" placeholder="Escribe un comentario..."></textarea>
+        <div><button type=image  class ="img-compartir"id="btncomment-${publication.id}">  <img src="https://img.icons8.com/ios-glyphs/30/000000/share.png"></button></div>
+        </div>
+       
+       
       </div>
     `;
     if (userCurrent().uid === publication.idPost) {
