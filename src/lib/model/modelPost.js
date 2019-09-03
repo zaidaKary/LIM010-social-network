@@ -38,6 +38,7 @@ export const deleteLikeDb = (iduser, idPost) => firebase.firestore().collection(
 export const getLike = (idPost, contadorLikes, likesPintadosPost) => {
   firebase.firestore().collection('posts').doc(idPost).collection('likes')
     .onSnapshot((querySnapshot) => {
+      
       const likes = [];
       querySnapshot.forEach((doc) => {
         likes.push({ id: doc.id, ...doc.data() });
