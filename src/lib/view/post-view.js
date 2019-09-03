@@ -127,12 +127,9 @@ export const itemPost = (publication) => {
       e.preventDefault();
       const nuevoComentario = divElement.querySelector(`#idcomentario-${publication.id}`).value;
       console.log(nuevoComentario);
-      if (nuevoComentario !== '') {
+      if (nuevoComentario !== '') {    
         containerCommentPost.innerHTML = '';
-        addCommentPost(userCurrent().uid, publication.id, publication.email, nuevoComentario);
-        getLike(publication.id, contadorLikes, likesPintadosPost);
-        btnLike.classList.add('not-like');
-        btnLike.classList.remove('liked');
+        addCommentPost(userCurrent().uid, publication.id, userCurrent().email, nuevoComentario);
       }
     });
   }
