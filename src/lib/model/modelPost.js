@@ -13,6 +13,7 @@ export const getPost = (datapost) => {
       const array = [];
       querySnapshot.forEach((doc) => {
         array.push({ id: doc.id, ...doc.data() });
+        console.log(array);
       });
       datapost(array);
     });

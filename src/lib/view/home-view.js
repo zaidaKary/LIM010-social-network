@@ -29,7 +29,7 @@ export default (data) => {
             <div class="usuario">
                 <img class="foto-user" id="foto" src="./img/profile.png" />
                 <div class="datos">
-                    <label class="profile-name" id="name" for="name"></label>
+                    <label id="name" class="profile-name" for="name"></label>
                     <label id="correo" class="profile-name" for="name"></label>
                 </div>
                 </div>

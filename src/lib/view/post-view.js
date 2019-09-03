@@ -101,10 +101,10 @@ export const itemPost = (publication) => {
 
     btnLike.addEventListener('click', (event) => {
       event.preventDefault();
+      console.log(event.target.dataset.like, 'hice click')
       if (event.target.dataset.like === '0') {
         event.target.dataset.like = '1';
         addLike(publication.id);
-        getLike(publication.id, contadorLikes, likesPintadosPost);
         btnLike.classList.remove('not-like');
         btnLike.classList.add('liked');
       } else {
