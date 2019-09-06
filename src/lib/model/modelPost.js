@@ -1,6 +1,6 @@
 export const addPostFirebase = (email, textPost, idPost, date, typePost) => firebase.firestore().collection('posts').add({
   email,
-  textPost,
+  textPost, 
   idPost,
   date,
   typePost,

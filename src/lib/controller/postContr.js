@@ -28,7 +28,7 @@ export const textPost = () => {
       document.querySelector('#publicacion').value = '';
       // console.log('Document written with ID: ', res.id);
     })
-    .catch(() => {
+    .catch((e) => {
       // console.error('Error adding document: ', error);.
     });
 };

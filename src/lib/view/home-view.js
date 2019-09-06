@@ -4,6 +4,7 @@ import { itemPost } from '../view/post-view.js';
 import { textPost } from '../controller/postContr.js';
 
 export default (data) => {
+  const divElem = document.createElement('div');
   const viewHome = `
   <header class="barra-menu" id="barra-menu">
   <div class="contenedor-logo">
@@ -54,7 +55,7 @@ export default (data) => {
     </div>
 </div>
 </div>`;
-  const divElem = document.createElement('div');
+ 
   divElem.innerHTML = viewHome;
   const userName = divElem.querySelector('#name');
   const userCorreo = divElem.querySelector('#correo');
