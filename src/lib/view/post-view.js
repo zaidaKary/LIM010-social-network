@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { userCurrent } from '../model/modelLoginRegistro.js';
 import {
   deletePost, getLike, addCommentPost, getCommentPost, privacyPost,
@@ -6,7 +5,6 @@ import {
 import { actualizandoPost, deleteLikePost, addLike } from '../controller/postContr.js';
 import { itemComment } from './commentsPost-view.js';
 
-// import { TextPost } from '../controller/postContr.js'
 export const itemPost = (publication) => {
   const divElement = document.createElement('div');
   if (publication.typePost === 'Público' || userCurrent().uid === publication.idPost) {
@@ -18,8 +16,9 @@ export const itemPost = (publication) => {
     <p class="date">${publication.date}</p>
     </div>
     <p>${publication.typePost}<p/>
-    ${userCurrent().uid === publication.idPost ? `     
-    <input id="eliminar" type=image src="https://img.icons8.com/windows/64/000000/xbox-x.png" class="img-eliminar">` : ''}
+    ${userCurrent().uid === publication.idPost
+    ? '<input id="eliminar" type=image src="https://img.icons8.com/windows/64/000000/xbox-x.png" class="img-eliminar">'
+    : ''}
     </div>
   
     <div class="texto-publicacion border-public">
@@ -32,25 +31,23 @@ export const itemPost = (publication) => {
             <a id="counter-${publication.id}"></a>  
             <a> personas le gusta tu publicación.</a>
             </p>
-            ${userCurrent().uid === publication.idPost ? `
-              <select  class="compartir" id="options-privacy-${publication.id}">
-                ${publication.typePost === 'Público' ? `
-                <option  value="Público">${publication.typePost}</option>
-                <option value="Privado">Privado</option>`:
-               `<option value="Privado">${publication.typePost}</option>
-                <option value="Público">Público</option>`}      
-              </select>   
+    ${userCurrent().uid === publication.idPost
+    ? `<select  class="compartir" id="options-privacy-${publication.id}">
+    ${publication.typePost === 'Público'
+    ? `<option  value="Público">${publication.typePost}</option><option value="Privado">Privado</option>` 
+    : `<option value="Privado">${publication.typePost}</option><option value="Público">Público</option>`}      
+      </select>   
             <input id="editar" type=image src="https://img.icons8.com/color/48/000000/edit-property.png" class="icon sin-ocultar">
-            <input id="guardar" type=image src="https://img.icons8.com/color/48/000000/save.png" class="icon ocultar">` : ''}
+            <input id="guardar" type=image src="https://img.icons8.com/color/48/000000/save.png" class="icon ocultar">` 
+    : ''}
       </div>
         <div id="todoscomments-${publication.id}">        
         </div>
         <div class="texto-publicacion border-public">
-        <textarea id="idcomentario-${publication.id}" class="text-area-comentario" placeholder="Escribe un comentario..."></textarea>
-        <div><button type=image  class ="img-compartir"id="btncomment-${publication.id}">  <img src="https://img.icons8.com/ios-glyphs/30/000000/share.png"></button></div>
+           <textarea id="idcomentario-${publication.id}" class="text-area-comentario" placeholder="Escribe un comentario..."></textarea>
+           <div><button type=image  class ="img-compartir"id="btncomment-${publication.id}">  
+           <img src="https://img.icons8.com/ios-glyphs/30/000000/share.png"></button></div>
         </div>
-       
-       
       </div>
     `;
     if (userCurrent().uid === publication.idPost) {
@@ -91,19 +88,19 @@ export const itemPost = (publication) => {
     };
 
     const likesPintadosPost = (likes) => {
-      for (let i = 0; i < likes.length; i += 1) {
-        if (userCurrent().uid === likes[i].id) {
+      likes.forEach((element) => {
+        if (userCurrent().uid === element.id) {
           btnLike.classList.remove('not-like');
           btnLike.classList.add('liked');
+          btnLike.dataset.like = '1';
         }
-      }
+      });
     };
 
     getLike(publication.id, contadorLikes, likesPintadosPost);
 
     btnLike.addEventListener('click', (event) => {
       event.preventDefault();
-      console.log(event.target.dataset.like, 'hice click')
       if (event.target.dataset.like === '0') {
         event.target.dataset.like = '1';
         addLike(publication.id);
@@ -126,8 +123,7 @@ export const itemPost = (publication) => {
     btnComentarioPost.addEventListener('click', (e) => {
       e.preventDefault();
       const nuevoComentario = divElement.querySelector(`#idcomentario-${publication.id}`).value;
-      console.log(nuevoComentario);
-      if (nuevoComentario !== '') {    
+      if (nuevoComentario !== '') {
         containerCommentPost.innerHTML = '';
         addCommentPost(userCurrent().uid, publication.id, userCurrent().email, nuevoComentario);
       }

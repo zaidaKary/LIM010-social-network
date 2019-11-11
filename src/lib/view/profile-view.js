@@ -1,4 +1,5 @@
 import { pintarInfoPerfil, actualizandoPerfil } from '../controller/profile-controller.js';
+
 export default () => {
   const viewProfile = `
     <div id="vista-profile" class="perfil">

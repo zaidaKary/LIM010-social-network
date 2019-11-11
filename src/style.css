@@ -11,11 +11,12 @@ body{
 }
 .login{
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     flex-direction: column;  
     font-family: 'Pacifico', cursive;
     background: white;
     color: #282929;
+    height: -webkit-fill-available;
 }
 .logo{
     height: 150px;
@@ -238,6 +239,7 @@ footer{
     background: white;
     border: none;
     resize: none;
+    width: -webkit-fill-available;
 }
 .fecha {
     font-size: 11px;
@@ -427,7 +429,7 @@ header {
     .logoIzquierda{
         width: 50%;
         background-image: url(../src/img/travel.gif);
-        height: -webkit-fill-available;
+        /* height: -webkit-fill-available; */
         background-repeat: no-repeat;
         background-size: cover;
     }

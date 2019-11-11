@@ -9,7 +9,6 @@ export const obtenerInfo = (userName, userCorreo, userImage) => { // pinta en el
       firebase.firestore().collection('users').where("ID", "==", id).get()
         .then((querySnapshot) => {
           querySnapshot.forEach((doc) => { // forEach -> se repite por cada documento que este en users
-            // console.log(doc.id, " => ", doc.data());
             console.log("Datos del documento:", doc.data());
             userName.textContent = doc.data().Nombre;// consoleamos el nombre que hay en el documento
             userCorreo.textContent = doc.data().Email;// consoleamos el nombre que hay en el documento
